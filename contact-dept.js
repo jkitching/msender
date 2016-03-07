@@ -78,7 +78,7 @@
             this.body +="Après les révélations sur les conditions d'abattage des animaux à l'abattoir d'Alès, L214 a dévoilé de nouvelles violences exercées sur des moutons, cochons et bovins dans l'abattoir intercommunal certifié bio du Vigan (Gard).\n\n";
             this.body +="Ces deux enquêtes de grande ampleur sont la preuve que d'importants dysfonctionnements existent dans les abattoirs en France.\n\n";
             this.body +="Face à cette situation et au vu de l’indignation suscitée par ces images, je me joins à l'association L214 pour demander l'ouverture d'une commission d'enquête parlementaire sur l'ensemble des abattoirs français afin de faire toute la lumière sur des pratiques des abattoirs français trop longtemps dissimulées au public. L'enquête judiciaire en cours à l'abattoir du Vigan n'entrave pas la création d'une commission couvrant l'ensemble du territoire.\n\n";
-            this.body +="En tant que parlementaire, vous pouvez déposer une proposition de résolution allant dans ce sens.\n\n";
+            this.body +="En tant que parlementaire, vous pouvez déposer ou co-signer une proposition de résolution allant dans ce sens.\n\n";
             this.body +="Merci à vous de bien vouloir agir.\n\n";
             this.body +="Bien à vous,\n\n";
 
