@@ -1,0 +1,32 @@
+#contact-dept h2 {margin-bottom:30px;}
+#contact-dept form {font-size: 1.5em;vertical-align: middle;}
+#contact-dept form div {margin:10px;}
+#contact-dept form .ms-etape {font-size:2em; vertical-align: middle; padding-right:10px;transition: all .5s ease-in;}
+#contact-dept .ms-etape.valid {color: #0C8C0C;}
+#contact-dept .ms-etape-4 a {text-transform:capitalize;}
+#contact-dept form .disabled {opacity:.5;}
+#contact-dept form select,
+#contact-dept form input {width:80%;}
+#contact-dept form .ms-mailclient-selector {text-align:center;margin:0;line-height:40px;}
+#contact-dept form .ms-mailclient-selector .ms-yahoo {background: #990099;color:#FFF;}
+#contact-dept form .ms-mailclient-selector .ms-laposte {background: #ffff33;}
+#contact-dept .ms-preview {background: #EEE;border:1px solid #DDD;}
+#contact-dept .ms-preview.disabled {opacity:.5;
+                                             background: #AAA;
+                                             background: repeating-linear-gradient(
+                                                 45deg,
+                                                 #CCC,
+                                                 #CCC 5px,
+                                                 #BBB 5px,
+                                                 #BBB 10px);
+                                             }
+#contact-dept .ms-preview h4 {margin-bottom:20px;}
+#contact-dept .ms-mail {border-left:1px dotted #aaa;}
+#contact-dept .ms-mail,
+#contact-dept .ms-to {padding:10px 15px 15px 15px;}
+#contact-dept .ms-message h4 {margin-bottom:2px;}
+#contact-dept .ms-message .ms-body {margin-top:20px; border:1px solid #aaa; padding:10px 15px; white-space:pre-line;}
+#contact-dept .photo-depu {background:no-repeat left top;height: 50px;padding-left:50px;margin-bottom:2px;}
+#contact-dept .to-copy {border:1px dotted #aaa; background: #EEE; padding:10px;}
+#contact-dept .ms-indic {font-size:1.2em;}
+#contact-dept .ms-indic .ms-etape {font-size:2.6em;vertical-align: middle;}
