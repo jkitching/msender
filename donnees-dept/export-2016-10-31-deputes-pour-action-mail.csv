@@ -30,9 +30,9 @@ abachelay@assemblee-nationale.fr,Alexis,Bachelay,des,Hauts-de-Seine,92,alexis-ba
 gbachelay@assemblee-nationale.fr,Guillaume,Bachelay,de la,Seine-Maritime,76,guillaume-bachelay
 jpbacquet@assemblee-nationale.fr,Jean-Paul,Bacquet,du,Puy-de-Dôme,63,jean-paul-bacquet
 dbaert@assemblee-nationale.fr,Dominique,Baert,du,Nord,59,dominique-baert
-gbailliart@assemblee-nationale.fr,Guy,Bailliart,du,Calvados,14,
+gbailliart@assemblee-nationale.fr,Guy,Bailliart,du,Calvados,14,guy-bailliart
 pbalkany@assemblee-nationale.fr,Patrick,Balkany,des,Hauts-de-Seine,92,patrick-balkany
-aballay@assemblee-nationale.fr,Alain,Ballay,de la,Corrèze,19,
+aballay@assemblee-nationale.fr,Alain,Ballay,de la,Corrèze,19,alain-ballay
 gbapt@assemblee-nationale.fr,Gérard,Bapt,de la,Haute-Garonne,31,gerard-bapt
 jpbarbier@assemblee-nationale.fr,Jean-Pierre,Barbier,de l',Isère,38,jean-pierre-barbier
 sbardy@assemblee-nationale.fr,Serge,Bardy,de,Maine-et-Loire,49,serge-bardy
@@ -44,7 +44,7 @@ lbaumel@assemblee-nationale.fr,Laurent,Baumel,d',Indre-et-Loire,37,laurent-baume
 pbaumel@assemblee-nationale.fr,Philippe,Baumel,de la,Saône-et-Loire,71,philippe-baumel
 dbaupin@assemblee-nationale.fr,Denis,Baupin,de,Paris,75,denis-baupin
 nbays@assemblee-nationale.fr,Nicolas,Bays,du,Pas-de-Calais,62,nicolas-bays
-cbeaubatie@assemblee-nationale.fr,Catherine,Beaubatie,de la,Haute-Vienne,87,
+cbeaubatie@assemblee-nationale.fr,Catherine,Beaubatie,de la,Haute-Vienne,87,catherine-beaubatie
 mfbechtel@assemblee-nationale.fr,Marie-Françoise,Bechtel,de l',Aisne,2,marie-francoise-bechtel
 jmbeffara@assemblee-nationale.fr,Jean-Marie,Beffara,d',Indre-et-Loire,37,jean-marie-beffara
 hbello@assemblee-nationale.fr,Huguette,Bello,de la,Réunion,974,huguette-bello
@@ -78,7 +78,7 @@ mboutih@assemblee-nationale.fr,Malek,Boutih,de l',Essonne,91,malek-boutih
 kbouziane@assemblee-nationale.fr,Kheira,Bouziane-Laroussi,de la,Côte-d'Or,21,kheira-bouziane
 vboyer@assemblee-nationale.fr,Valérie,Boyer,des,Bouches-du-Rhône,13,valerie-boyer
 ebrehier@assemblee-nationale.fr,Emeric,Bréhier,de la,Seine-et-Marne,77,emeric-brehier
-mbrenier@assemblee-nationale.fr,Marine,Brenier,des,Alpes-Maritimes,6,
+mbrenier@assemblee-nationale.fr,Marine,Brenier,des,Alpes-Maritimes,6,marine-brenier
 xbreton@assemblee-nationale.fr,Xavier,Breton,de l',Ain,1,xavier-breton
 pbriand@assemblee-nationale.fr,Philippe,Briand,d',Indre-et-Loire,37,philippe-briand
 jlbricout@assemblee-nationale.fr,Jean-Louis,Bricout,de l',Aisne,2,jean-louis-bricout
@@ -133,9 +133,9 @@ sclaireaux@assemblee-nationale.fr,Stéphane,Claireaux,de,Saint-Pierre-et-Miquelo
 jmclement@assemblee-nationale.fr,Jean-Michel,Clément,de la,Vienne,86,jean-michel-clement
 mfclergeau@assemblee-nationale.fr,Marie-Françoise,Clergeau,de la,Loire-Atlantique,44,marie-francoise-clergeau
 pcochet@assemblee-nationale.fr,Philippe,Cochet,du,Rhône,69,philippe-cochet
-rcolas@assemblee-nationale.fr,Romain,Colas,de l',Essonne,91,
+rcolas@assemblee-nationale.fr,Romain,Colas,de l',Essonne,91,romain-colas
 gcollard@assemblee-nationale.fr,Gilbert,Collard,du,Gard,30,gilbert-collard
-dcomet@assemblee-nationale.fr,David,Comet,de la,Charente,16,
+dcomet@assemblee-nationale.fr,David,Comet,de la,Charente,16,david-comet
 jfcope@assemblee-nationale.fr,Jean-François,Copé,de la,Seine-et-Marne,77,jean-francois-cope
 pcordery@assemblee-nationale.fr,Philip,Cordery,des,Français établis hors de France,999,philip-cordery
 fcornut-gentille@assemblee-nationale.fr,François,Cornut-Gentille,de la,Haute-Marne,52,francois-cornut-gentille
@@ -152,7 +152,7 @@ fcuvillier@assemblee-nationale.fr,Frédéric,Cuvillier,du,Pas-de-Calais,62,frede
 cdasilva@assemblee-nationale.fr,Carlos,Da Silva,de l',Essonne,91,carlos-da-silva
 sdagoma@assemblee-nationale.fr,Seybah,Dagoma,de,Paris,75,seybah-dagoma
 mcdalloz@assemblee-nationale.fr,Marie-Christine,Dalloz,du,Jura,39,marie-christine-dalloz
-kdaniel@assemblee-nationale.fr,Karine,Daniel,de la,Loire-Atlantique,44,
+kdaniel@assemblee-nationale.fr,Karine,Daniel,de la,Loire-Atlantique,44,karine-daniel
 ydaniel@assemblee-nationale.fr,Yves,Daniel,de la,Loire-Atlantique,44,yves-daniel
 odassault@assemblee-nationale.fr,Olivier,Dassault,de l',Oise,60,olivier-dassault
 mpdaubresse@assemblee-nationale.fr,Marc-Philippe,Daubresse,du,Nord,59,marc-philippe-daubresse
@@ -173,8 +173,8 @@ rdelatte@assemblee-nationale.fr,Rémi,Delatte,de la,Côte-d'Or,21,remi-delatte
 mdelaunay@assemblee-nationale.fr,Michèle,Delaunay,de la,Gironde,33,michele-delaunay
 fdelaunay@assemblee-nationale.fr,Florence,Delaunay,des,Landes,40,florence-delaunay
 gdelcourt@assemblee-nationale.fr,Guy,Delcourt,du,Pas-de-Calais,62,guy-delcourt
-cdelga@assemblee-nationale.fr,Carole,Delga,de la,Haute-Garonne,31,
-jdellerie@assemblee-nationale.fr,Jacques,Dellerie,de la,Seine-Maritime,76,
+cdelga@assemblee-nationale.fr,Carole,Delga,de la,Haute-Garonne,31,carole-delga
+jdellerie@assemblee-nationale.fr,Jacques,Dellerie,de la,Seine-Maritime,76,jacques-dellerie
 pdemarthe@assemblee-nationale.fr,Pascal,Demarthe,de la,Somme,80,pascal-demarthe
 sdemilly@assemblee-nationale.fr,Stéphane,Demilly,de la,Somme,80,stephane-demilly
 sdenaja@assemblee-nationale.fr,Sébastien,Denaja,de l',Hérault,34,sebastien-denaja
@@ -184,7 +184,7 @@ mdestot@assemblee-nationale.fr,Michel,Destot,de l',Isère,38,michel-destot
 pdevedjian@assemblee-nationale.fr,Patrick,Devedjian,des,Hauts-de-Seine,92,patrick-devedjian
 ndhuicq@assemblee-nationale.fr,Nicolas,Dhuicq,de l',Aube,10,nicolas-dhuicq
 sdion@assemblee-nationale.fr,Sophie,Dion,de la,Haute-Savoie,74,sophie-dion
-jdive@assemblee-nationale.fr,Julien,Dive,de l',Aisne,2,
+jdive@assemblee-nationale.fr,Julien,Dive,de l',Aisne,2,julien-dive
 mdolez@assemblee-nationale.fr,Marc,Dolez,du,Nord,59,marc-dolez
 fdombrecoste@assemblee-nationale.fr,Fanny,Dombre Coste,de l',Hérault,34,fanny-dombre-coste
 jpdoor@assemblee-nationale.fr,Jean-Pierre,Door,du,Loiret,45,jean-pierre-door
@@ -192,7 +192,7 @@ ddord@assemblee-nationale.fr,Dominique,Dord,de la,Savoie,73,dominique-dord
 rdosiere@assemblee-nationale.fr,René,Dosière,de l',Aisne,2,rene-dosiere
 sdoucet@assemblee-nationale.fr,Sandrine,Doucet,de la,Gironde,33,sandrine-doucet
 pdoucet@assemblee-nationale.fr,Philippe,Doucet,du,Val-d'Oise,95,philippe-doucet
-ddouillet@assemblee-nationale.fr,David,Douillet,des,Yvelines,78,
+ddouillet@assemblee-nationale.fr,David,Douillet,des,Yvelines,78,david-douillet
 jdubie@assemblee-nationale.fr,Jeanine,Dubié,des,Hautes-Pyrénées,65,jeanine-dubie
 mdubois@assemblee-nationale.fr,Marianne,Dubois,du,Loiret,45,marianne-dubois
 fdubois@assemblee-nationale.fr,Françoise,Dubois,de la,Sarthe,72,francoise-dubois
@@ -209,7 +209,7 @@ jpdupre@assemblee-nationale.fr,Jean-Paul,Dupré,de l',Aude,11,jean-paul-dupre
 ydurand@assemblee-nationale.fr,Yves,Durand,du,Nord,59,yves-durand
 pduron@assemblee-nationale.fr,Philippe,Duron,du,Calvados,14,philippe-duron
 odussopt@assemblee-nationale.fr,Olivier,Dussopt,de l',Ardèche,7,olivier-dussopt
-eelkouby@assemblee-nationale.fr,Éric,Elkouby,du,Bas-Rhin,67,
+eelkouby@assemblee-nationale.fr,Éric,Elkouby,du,Bas-Rhin,67,eric-elkouby
 hemmanuelli@assemblee-nationale.fr,Henri,Emmanuelli,des,Landes,40,henri-emmanuelli
 cerhel@assemblee-nationale.fr,Corinne,Erhel,des,Côtes-d'Armor,22,corinne-erhel
 serrante@assemblee-nationale.fr,Sophie,Errante,de la,Loire-Atlantique,44,sophie-errante
@@ -217,7 +217,7 @@ mhfabre@assemblee-nationale.fr,Marie-Hélène,Fabre,de l',Aude,11,marie-helene-f
 ofalorni@assemblee-nationale.fr,Olivier,Falorni,de la,Charente-Maritime,17,olivier-falorni
 dfasquelle@assemblee-nationale.fr,Daniel,Fasquelle,du,Pas-de-Calais,62,daniel-fasquelle
 mfaure@assemblee-nationale.fr,Martine,Faure,de la,Gironde,33,martine-faure
-ofaure@assemblee-nationale.fr,Olivier,Faure,de la,Seine-et-Marne,77,
+ofaure@assemblee-nationale.fr,Olivier,Faure,de la,Seine-et-Marne,77,olivier-faure
 afaure@assemblee-nationale.fr,Alain,Fauré,de l',Ariège,9,alain-faure
 yfavennec@assemblee-nationale.fr,Yannick,Favennec,de la,Mayenne,53,yannick-favennec
 gfenech@assemblee-nationale.fr,Georges,Fenech,du,Rhône,69,georges-fenech
@@ -225,7 +225,7 @@ hferon@assemblee-nationale.fr,Hervé,Féron,de la,Meurthe-et-Moselle,54,herve-fe
 rferrand@assemblee-nationale.fr,Richard,Ferrand,du,Finistère,29,richard-ferrand
 afilippetti@assemblee-nationale.fr,Aurélie,Filippetti,de la,Moselle,57,aurelie-filippetti
 ffillon@assemblee-nationale.fr,François,Fillon,de,Paris,75,francois-fillon
-gfioraso@assemblee-nationale.fr,Geneviève,Fioraso,de l',Isère,38,
+gfioraso@assemblee-nationale.fr,Geneviève,Fioraso,de l',Isère,38,genevieve-fioraso
 pfolliot@assemblee-nationale.fr,Philippe,Folliot,du,Tarn,81,philippe-folliot
 mlfort@assemblee-nationale.fr,Marie-Louise,Fort,de l',Yonne,89,marie-louise-fort
 yfoulon@assemblee-nationale.fr,Yves,Foulon,de la,Gironde,33,yves-foulon
@@ -246,7 +246,7 @@ ggaillard@assemblee-nationale.fr,Geneviève,Gaillard,des,Deux-Sèvres,79,genevie
 ygalut@assemblee-nationale.fr,Yann,Galut,du,Cher,18,yann-galut
 sgandolfi-scheit@assemblee-nationale.fr,Sauveur,Gandolfi-Scheit,de la,Haute-Corse,2B,sauveur-gandolfi-scheit
 ggarot@assemblee-nationale.fr,Guillaume,Garot,de la,Mayenne,53,guillaume-garot
-rgauquelin@assemblee-nationale.fr,Renaud,Gauquelin,du,Rhône,69,
+rgauquelin@assemblee-nationale.fr,Renaud,Gauquelin,du,Rhône,69,renaud-gauquelin
 hgaymard@assemblee-nationale.fr,Hervé,Gaymard,de la,Savoie,73,herve-gaymard
 agenevard@assemblee-nationale.fr,Annie,Genevard,du,Doubs,25,annie-genevard
 ggeoffroy@assemblee-nationale.fr,Guy,Geoffroy,de la,Seine-et-Marne,77,guy-geoffroy
@@ -270,7 +270,6 @@ jpgorges@assemblee-nationale.fr,Jean-Pierre,Gorges,d',Eure-et-Loir,28,jean-pierr
 pgosselin@assemblee-nationale.fr,Philippe,Gosselin,de la,Manche,50,philippe-gosselin
 ggosselin@assemblee-nationale.fr,Geneviève,Gosselin-Fleury,de la,Manche,50,genevieve-gosselin
 pgot@assemblee-nationale.fr,Pascale,Got,de la,Gironde,33,pascale-got
-brigitte.L214@gmail.com,Brigitte,Gothiere,de la,Loire,42,brigitte-gothiere
 mgoua@assemblee-nationale.fr,Marc,Goua,de,Maine-et-Loire,49,marc-goua
 pgoujon@assemblee-nationale.fr,Philippe,Goujon,de,Paris,75,philippe-goujon
 contact@lindagourjade.fr,Linda,Gourjade,du,Tarn,81,linda-gourjade
@@ -296,7 +295,7 @@ mheinrich@assemblee-nationale.fr,Michel,Heinrich,des,Vosges,88,michel-heinrich
 mherbillon@assemblee-nationale.fr,Michel,Herbillon,du,Val-de-Marne,94,michel-herbillon
 aherth@assemblee-nationale.fr,Antoine,Herth,du,Bas-Rhin,67,antoine-herth
 phetzel@assemblee-nationale.fr,Patrick,Hetzel,du,Bas-Rhin,67,patrick-hetzel
-fhillmeyer@assemblee-nationale.fr,Francis,Hillmeyer,du,Haut-Rhin,68,
+fhillmeyer@assemblee-nationale.fr,Francis,Hillmeyer,du,Haut-Rhin,68,francis-hillmeyer
 ghobert@assemblee-nationale.fr,Gilda,Hobert,du,Rhône,69,gilda-hobert
 phouillon@assemblee-nationale.fr,Philippe,Houillon,du,Val-d'Oise,95,philippe-houillon
 ghuet@assemblee-nationale.fr,Guénhaël,Huet,de la,Manche,50,guenhael-huet
@@ -312,7 +311,7 @@ ejalton@assemblee-nationale.fr,Éric,Jalton,de la,Guadeloupe,971,eric-jalton
 sjanquin@assemblee-nationale.fr,Serge,Janquin,du,Pas-de-Calais,62,serge-janquin
 yjego@assemblee-nationale.fr,Yves,Jégo,de la,Seine-et-Marne,77,yves-jego
 hjibrayel@assemblee-nationale.fr,Henri,Jibrayel,des,Bouches-du-Rhône,13,henri-jibrayel
-rjoron@assemblee-nationale.fr,Romain,Joron,de la,Somme,80,
+rjoron@assemblee-nationale.fr,Romain,Joron,de la,Somme,80,romain-joron
 rjuanico@assemblee-nationale.fr,Régis,Juanico,de la,Loire,42,regis-juanico
 lkalinowski@assemblee-nationale.fr,Laurent,Kalinowski,de la,Moselle,57,laurent-kalinowski
 mkaramanli@assemblee-nationale.fr,Marietta,Karamanli,de la,Sarthe,72,marietta-karamanli
@@ -356,12 +355,12 @@ dlemener@assemblee-nationale.fr,Dominique,Le Mèner,de la,Sarthe,72,dominique-le
 pleray@assemblee-nationale.fr,Philippe,Le Ray,du,Morbihan,56,philippe-le-ray
 jpleroch@assemblee-nationale.fr,Jean-Pierre,Le Roch,du,Morbihan,56,jean-pierre-le-roch
 bleroux@assemblee-nationale.fr,Bruno,Le Roux,de la,Seine-Saint-Denis,93,bruno-le-roux
-mtleroy@assemblee-nationale.fr,Marie-Thérèse,Le Roy,du,Finistère,29,
-mlevern@assemblee-nationale.fr,Marie,Le Vern,de la,Seine-Maritime,76,
+mtleroy@assemblee-nationale.fr,Marie-Thérèse,Le Roy,du,Finistère,29,marie-therese-le-roy
+mlevern@assemblee-nationale.fr,Marie,Le Vern,de la,Seine-Maritime,76,marie-le-vern
 aleboeuf@assemblee-nationale.fr,Alain,Leboeuf,de la,Vendée,85,alain-leboeuf
-mlebranchu@assemblee-nationale.fr,Marylise,Lebranchu,du,Finistère,29,
+mlebranchu@assemblee-nationale.fr,Marylise,Lebranchu,du,Finistère,29,marylise-lebranchu
 plebreton@assemblee-nationale.fr,Patrick,Lebreton,de la,Réunion,974,patrick-lebreton
-vledoux@assemblee-nationale.fr,Vincent,Ledoux,du,Nord,59,
+vledoux@assemblee-nationale.fr,Vincent,Ledoux,du,Nord,59,vincent-ledoux
 mlefait@assemblee-nationale.fr,Michel,Lefait,du,Pas-de-Calais,62,michel-lefait
 flefebvre@assemblee-nationale.fr,Frédéric,Lefebvre,des,Français établis hors de France,999,frederic-lefebvre
 dlefebvre@assemblee-nationale.fr,Dominique,Lefebvre,du,Val-d'Oise,95,dominique-lefebvre
@@ -428,7 +427,7 @@ amoyne-bressand@assemblee-nationale.fr,Alain,Moyne-Bressand,de l',Isère,38,alai
 pamuet@assemblee-nationale.fr,Pierre-Alain,Muet,du,Rhône,69,pierre-alain-muet
 jmyard@assemblee-nationale.fr,Jacques,Myard,des,Yvelines,78,jacques-myard
 dnachury@assemblee-nationale.fr,Dominique,Nachury,du,Rhône,69,dominique-nachury
-pnaillet@assemblee-nationale.fr,Philippe,Naillet,de la,Réunion,974,
+pnaillet@assemblee-nationale.fr,Philippe,Naillet,de la,Réunion,974,philippe-naillet
 pnauche@assemblee-nationale.fr,Philippe,Nauche,de la,Corrèze,19,philippe-nauche
 ynicolin@assemblee-nationale.fr,Yves,Nicolin,de la,Loire,42,yves-nicolin
 nnieson@assemblee-nationale.fr,Nathalie,Nieson,de la,Drôme,26,nathalie-nieson
@@ -442,18 +441,17 @@ morphe@assemblee-nationale.fr,Monique,Orphé,de la,Réunion,974,monique-orphe
 mpajon@assemblee-nationale.fr,Michel,Pajon,de la,Seine-Saint-Denis,93,michel-pajon
 bpancher@assemblee-nationale.fr,Bertrand,Pancher,de la,Meuse,55,bertrand-pancher
 lpane@assemblee-nationale.fr,Luce,Pane,de la,Seine-Maritime,76,luce-pane
-,George,Pau-Langevin,de,Paris,75,
 cpaul@assemblee-nationale.fr,Christian,Paul,de la,Nièvre,58,christian-paul
 rpauvros@assemblee-nationale.fr,Rémi,Pauvros,du,Nord,59,remi-pauvros
 gpeiro@assemblee-nationale.fr,Germinal,Peiro,de la,Dordogne,24,germinal-peiro
 jpelissard@assemblee-nationale.fr,Jacques,Pélissard,du,Jura,39,jacques-pelissard
 hpellois@assemblee-nationale.fr,Hervé,Pellois,du,Morbihan,56,herve-pellois
 jcperez@assemblee-nationale.fr,Jean-Claude,Perez,de l',Aude,11,jean-claude-perez
-spernodbeaudon@assemblee-nationale.fr,Stéphanie,Pernod Beaudon,de l',Ain,1,
+spernodbeaudon@assemblee-nationale.fr,Stéphanie,Pernod Beaudon,de l',Ain,1,stephanie-pernod-beaudon
 bperrut@assemblee-nationale.fr,Bernard,Perrut,du,Rhône,69,bernard-perrut
 ephilippe@assemblee-nationale.fr,Edouard,Philippe,de la,Seine-Maritime,76,edouard-philippe
 spietrasanta@assemblee-nationale.fr,Sébastien,Pietrasanta,des,Hauts-de-Seine,92,sebastien-pietrasanta
-spinel@assemblee-nationale.fr,Sylvia,Pinel,du,Tarn-et-Garonne,82,
+spinel@assemblee-nationale.fr,Sylvia,Pinel,du,Tarn-et-Garonne,82,sylvia-pinel
 cpiresbeaune@assemblee-nationale.fr,Christine,Pires Beaune,du,Puy-de-Dôme,63,christine-pires-beaune
 mpiron@assemblee-nationale.fr,Michel,Piron,de,Maine-et-Loire,49,michel-piron
 pplisson@assemblee-nationale.fr,Philippe,Plisson,de la,Gironde,33,philippe-plisson
@@ -483,7 +481,7 @@ jlreitzer@assemblee-nationale.fr,Jean-Luc,Reitzer,du,Haut-Rhin,68,jean-luc-reitz
 mlreynaud@assemblee-nationale.fr,Marie-Line,Reynaud,de la,Charente,16,marie-line-reynaud
 breynes@assemblee-nationale.fr,Bernard,Reynès,des,Bouches-du-Rhône,13,bernard-reynes
 freynier@assemblee-nationale.fr,Franck,Reynier,de la,Drôme,26,franck-reynier
-pribeaud@assemblee-nationale.fr,Pierre,Ribeaud,de l',Isère,38,
+pribeaud@assemblee-nationale.fr,Pierre,Ribeaud,de l',Isère,38,pierre-ribeaud
 arichard@assemblee-nationale.fr,Arnaud,Richard,des,Yvelines,78,arnaud-richard
 friester@assemblee-nationale.fr,Franck,Riester,de la,Seine-et-Marne,77,franck-riester
 erihancypel@assemblee-nationale.fr,Eduardo,Rihan Cypel,de la,Seine-et-Marne,77,eduardo-rihan-cypel
@@ -539,7 +537,7 @@ gteissier@assemblee-nationale.fr,Guy,Teissier,des,Bouches-du-Rhône,13,guy-teiss
 pterrasse@assemblee-nationale.fr,Pascal,Terrasse,de l',Ardèche,7,pascal-terrasse
 mterrot@assemblee-nationale.fr,Michel,Terrot,du,Rhône,69,michel-terrot
 jmtetart@assemblee-nationale.fr,Jean-Marie,Tétart,des,Yvelines,78,jean-marie-tetart
-pthevenot@assemblee-nationale.fr,Pascal,Thévenot,des,Yvelines,78,
+pthevenot@assemblee-nationale.fr,Pascal,Thévenot,des,Yvelines,78,pascal-thevenot
 tthevenoud@assemblee-nationale.fr,Thomas,Thévenoud,de la,Saône-et-Loire,71,thomas-thevenoud
 dtian@assemblee-nationale.fr,Dominique,Tian,des,Bouches-du-Rhône,13,dominique-tian
 stolmont@assemblee-nationale.fr,Sylvie,Tolmont,de la,Sarthe,72,sylvie-tolmont
@@ -558,7 +556,7 @@ fvercamer@assemblee-nationale.fr,Francis,Vercamer,du,Nord,59,francis-vercamer
 pverchere@assemblee-nationale.fr,Patrice,Verchère,du,Rhône,69,patrice-verchere
 fverdier@assemblee-nationale.fr,Fabrice,Verdier,du,Gard,30,fabrice-verdier
 mvergnier@assemblee-nationale.fr,Michel,Vergnier,de la,Creuse,23,michel-vergnier
-aviala@assemblee-nationale.fr,Arnaud,Viala,de l',Aveyron,12,
+aviala@assemblee-nationale.fr,Arnaud,Viala,de l',Aveyron,12,arnaud-viala
 jsvialatte@assemblee-nationale.fr,Jean-Sébastien,Vialatte,du,Var,83,jean-sebastien-vialatte
 pvigier@assemblee-nationale.fr,Philippe,Vigier,d',Eure-et-Loir,28,philippe-vigier
 jpvigier@assemblee-nationale.fr,Jean-Pierre,Vigier,de la,Haute-Loire,43,jean-pierre-vigier
@@ -570,7 +568,7 @@ jvlody@assemblee-nationale.fr,Jean Jacques,Vlody,de la,Réunion,974,jean-jacques
 mvoisin@assemblee-nationale.fr,Michel,Voisin,de l',Ain,1,michel-voisin
 jlwarsmann@assemblee-nationale.fr,Jean-Luc,Warsmann,des,Ardennes,8,jean-luc-warsmann
 lwauquiez@assemblee-nationale.fr,Laurent,Wauquiez,de la,Haute-Loire,43,laurent-wauquiez
-pweiten@assemblee-nationale.fr,Patrick,Weiten,de la,Moselle,57,
+pweiten@assemblee-nationale.fr,Patrick,Weiten,de la,Moselle,57,patrick-weiten
 ewoerth@assemblee-nationale.fr,Éric,Woerth,de l',Oise,60,eric-woerth
 pzanetti@assemblee-nationale.fr,Paola,Zanetti,de la,Moselle,57,paola-zanetti
 mjzimmermann@assemblee-nationale.fr,Marie-Jo,Zimmermann,de la,Moselle,57,marie-jo-zimmermann
