@@ -25,8 +25,9 @@
 #contact-dept .ms-mail,
 #contact-dept .ms-to {padding:10px 15px 15px 15px;}
 #contact-dept .ms-message h4 {margin-bottom:2px;}
-#contact-dept .ms-message .ms-body {margin-top:20px; border:1px solid #aaa; padding:10px 15px; white-space:pre-line;}
+#contact-dept .ms-message .ms-subject,
+#contact-dept .ms-message .ms-body {margin-top:10px; border:1px solid #aaa; padding:10px 15px; white-space:pre-line;background:#FFF;}
 #contact-dept .photo-depu {background:no-repeat left top;height: 50px;padding-left:50px;margin-bottom:2px;}
-#contact-dept .to-copy {border:1px dotted #aaa; background: #EEE; padding:10px;}
+#contact-dept .to-copy {border:1px dotted #aaa; background: #EEE; padding:10px;background:#FFF;}
 #contact-dept .ms-indic {font-size:1.2em;}
 #contact-dept .ms-indic .ms-etape {font-size:2.6em;vertical-align: middle;}
