@@ -18,7 +18,6 @@
                 this.recipients.groupName = depRow.nom_circo;
                 this.recipients.du_des_de_la = depRow.du_des_de_la;
                 this.recipients.destLabel = $('#msender').data('ms-label');
-                this.recipients.dirImgURI = $('#msender').data('ms-imgdir');
             }
             $rootScope.$broadcast('recipients', this.recipients);
         };

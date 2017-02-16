@@ -3,23 +3,28 @@
     <div class="col-md-4">
         <form name="ms-form" target="_blank"
               ng-submit="msCtrl.doNothing()">
-            <div ng-class="{disabled: !msCtrl.deptValid}">
-                <span class="ms-etape" ng-class="{valid: msCtrl.deptValid}">&#10103;</span>
-                <input id="msender-from-name" type="text"
+            <div ng-class="{disabled: !msCtrl.msgValid}">
+                <h3><span class="ms-etape" ng-class="{valid: msCtrl.msgValid}">&#10103;</span>
+                    <input id="msender-from-name" type="text"
                        ng-model="msCtrl.fromName"
                        ng-change="msCtrl.update()"
                        placeholder="Votre prénom Votre nom" value="" />
+                </h3>
             </div>
-            <div ng-show="msCtrl.mobile" ng-class="{disabled: !msCtrl.valid}">
-                <span class="ms-etape" ng-class="{valid: msCtrl.nameValid}">&#10104;</span>
-                <a href="{{msCtrl.mailtoURL['std']}}"
-                   class="btn btn-lg btn-success">
-                    Envoyer votre email
-                </a>
+            <div ng-show="msCtrl.mobile" ng-class="{disabled: !msCtrl.msgValid}">
+                <h3>
+                    <span class="ms-etape" ng-class="{valid: msCtrl.nameValid}">&#10104;</span>
+                    <a href="{{msCtrl.mailtoURL['std']}}"
+                       ng-app=""class="btn btn-lg btn-success">
+                        Envoyer votre email
+                    </a>
+                </h3>
             </div>
             <div ng-show="!msCtrl.mobile" ng-class="{disabled: !msCtrl.valid}">
-                <span class="ms-etape" ng-class="{valid: msCtrl.nameValid}">&#10104;</span>
-                <span style="vertical-align: middle;"> Envoyer via&nbsp;:</span>
+                <h3>
+                    <span class="ms-etape" ng-class="{valid: msCtrl.nameValid}">&#10104;</span>
+                    <span style="vertical-align: middle;"> Envoyer via&nbsp;:</span>
+                </h3>
                 <div class="ms-mailclient-selector">
                     <a ng-href="{{msCtrl.mailtoURL['gmail']}}" target="_blank"
                        ng-click="msCtrl.userMailClient = 'gmail'"
@@ -68,53 +73,44 @@
     </div>
 
     <div class="col-md-8">
-
         <!-- *************************************** -->
         <!-- SEND BY HAND                            -->
         <!-- *************************************** -->
         <div ng-show="msCtrl.sendByHand()" class="ms-indic">
-            <div class="ms-etape-4">
-                <span class="ms-etape" ng-class="{valid: msCtrl.userMailClient}">&#10105;</span>
+            <div>
+                <h3><span class="ms-etape" ng-class="{valid: msCtrl.userMailClient}">&#10105;</span>
                 Accédez à votre messagerie
+                </h3>
                 <a ng-show="msCtrl.userMailClient !== 'other'"
                     ng-href="{{msCtrl.mailtoURL[msCtrl.userMailClient]}}" target="_blank">
                     &rarr; {{msCtrl.userMailClient}}
                 </a>
             </div>
             <div>
-                <span class="ms-etape" ng-class="{valid: msCtrl.userMailClient}">&#10106;</span>
-                Copiez les destinataires de votre mail&nbsp;:
+                <h3><span class="ms-etape" ng-class="{valid: msCtrl.userMailClient}">&#10106;</span>
+                    Copiez les destinataires de votre mail&nbsp;:
+                </h3>
                 <div class="to-copy">
                     {{msCtrl.toMailsOnly}}
                 </div>
             </div>
             <div>
-                <span class="ms-etape" ng-class="{valid: msCtrl.userMailClient}">&#10107;</span>
+                <h3><span class="ms-etape" ng-class="{valid: msCtrl.userMailClient}">&#10107;</span>
                 Copiez l'objet et le message de votre mail ci-dessous&nbsp;:
+                </h3>
             </div>
         </div>
 
         <!-- *************************************** -->
         <!-- PREVIEW                                 -->
-        <!-- *************************************** -->
-        <div class="row ms-preview" ng-class="{disabled: !msCtrl.recipientsValid}">
-            <div class="ms-to col-md-4">
-                <div>
-                    <h4>Vos {{msCtrl.recipients.destLabel}}s ({{msCtrl.recipients.groupName}})</h4>
-                    <div ng-repeat="recipient in msCtrl.recipients.items">
-                        <div class="photo-recipient" ng-style="msCtrl.cssBgPicture(recipient.imgUrl)">
-                            {{recipient.prenom}} {{recipient.nom_de_famille}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="ms-mail col-md-8">
+        <!-- *************************************** -->                    <div class="ms-preview" ng-class="{disabled: !msCtrl.valid}">
+            <div class="ms-mail">
                 <div class="ms-message">
                     <h4>Objet</h4>
                     <div class="ms-subject">{{msCtrl.subject}}</div>
                     <h4>Votre message</h4>
                     <div class="ms-body">{{msCtrl.body}}</div>
-                    <div class="ms-body-can-change">(Vous pourrez le modifier dans votre boite email)<div>
+                    <div class="ms-body-can-change">(Vous pourrez le modifier dans votre boite email)</div>
                 </div>
             </div>
         </div>

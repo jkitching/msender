@@ -1,12 +1,12 @@
 #msender h2 {margin-bottom:30px;}
-#msender form {font-size: 1.5em;vertical-align: middle;}
-#msender form div {margin:10px;}
-#msender form .ms-etape {font-size:2em; vertical-align: middle; padding-right:10px;transition: all .5s ease-in;}
+#msender .ms-etape {font-size:2em; vertical-align: middle; padding-right:10px;transition: all .5s ease-in;}
 #msender .ms-etape.valid {color: #0C8C0C;}
 #msender .ms-etape-4 a {text-transform:capitalize;}
 #msender form .disabled {opacity:.5;}
+#msender #msender-from-name {font-size:18px; width:75%;
+                             padding: 6px;}
 #msender form select,
-#msender form input {width:80%;}
+/*#msender form input {width:80%;}*/
 #msender form .ms-mailclient-selector {text-align:center;margin:0;line-height:40px;}
 #msender form .ms-mailclient-selector .ms-yahoo {background: #990099;color:#FFF;}
 #msender form .ms-mailclient-selector .ms-laposte {background: #ffff33;}
@@ -28,6 +28,23 @@
 #msender .ms-message .ms-subject,
 #msender .ms-message .ms-body {margin-top:10px; border:1px solid #aaa; padding:10px 15px; white-space:pre-line;background:#FFF;}
 #msender .photo-recipient {background:no-repeat left top;height: 50px;padding-left:50px;margin-bottom:2px;}
-#msender .to-copy {border:1px dotted #aaa; background: #EEE; padding:10px;background:#FFF;}
+#msender .to-copy {border:1px dotted #aaa; background: #EEE; padding:10px;background:#FFF;font-size:13px;}
 #msender .ms-indic {font-size:1.2em;}
 #msender .ms-indic .ms-etape {font-size:2.6em;vertical-align: middle;}
+#msender #ms-select-simple form {
+    margin:0 0 20px 50px;
+}
+#msender label {
+    background: no-repeat left top;
+    padding:8px 0 0 70px;
+    background-size: 60px;
+    cursor:pointer;
+    height: 60px;
+    vertical-align: middle;
+}
+#msender input[type='checkbox'] {margin-top:0;}
+#msender .contact {
+    display: inline-block;
+    width: 220px;
+    font-size: 15px;
+}

@@ -2,14 +2,14 @@
     var app = angular.module('msender', []);
 
     app.controller('msenderController', ['$scope', '$parse', function($scope, $parse) {
-        $scope.$on('recipients', function(event, arg) {
-            $scope.msCtrl.recipients = arg;
+        $scope.$on('msg', function(event, arg) {
+            $scope.msCtrl.msg = arg;
             $scope.msCtrl.update();
         });
 
         this.valid = false;
         this.nameValid = false;
-        this.recipientsValid = false;
+        this.msgValid = false;
 
         this.mobile = jQuery.browser.mobile;
 
@@ -19,7 +19,7 @@
         this.bcc = $('#msender').data('ms-bcc');
         this.subject = $('#msender').data('ms-subject');
         this.fromName = '';
-        this.recipients;
+        this.msg;
         this.names = '';
         this.body = this.fromName +"\n --";
 
@@ -35,32 +35,27 @@
 
 
         this.cssBgPicture = function(imgUrl) {
-            if(this.recipientsValid) {
+            if(this.msgValid) {
                 return {"background-image" : "url('"+ imgUrl +"')"};
             }
             return {"background-image" : "none"};
         };
 
         this.update = function() {
-            //console.debug(this.recipients);
 
-            this.recipientsValid = (this.recipients !== false);
+            this.msgValid = (this.msg !== false);
             this.nameValid = (this.fromName !== '');
-            this.valid = (this.recipientsValid && this.nameValid);
+            this.valid = (this.msgValid && this.nameValid);
 
-            if(this.recipientsValid) {
+            if(this.msgValid) {
                 var names = '';
                 var emails = '';
                 var emailsOnly = '';
-                this.recipients['items'].forEach(function(contact) {
-                    names += contact['prenom'] +' '+ contact['nom_de_famille'] +', ';
-                    emails += '"'+ contact['prenom'] +' '+ contact['nom_de_famille'] +'" <'+ contact['email'] +'>, ';
+                this.msg['recipients'].forEach(function(contact) {
+                    names += contact['firstname'] +' '+ contact['lastname'] +', ';
+                    emails += '"'+ contact['firstname'] +' '+ contact['lastname'] +'" <'+ contact['email'] +'>, ';
                     emailsOnly += contact['email'] +',';
                 });
-                if(names.length > 60) {
-                    var spaceAfterDuDes = (this.recipients.du_des_de_la.slice(-1) === "'") ? '' : ' ';
-                    names = 'Chers '+ this.recipients.destLabel +'s '+ this.recipients.du_des_de_la + spaceAfterDuDes + this.recipients.groupName +',';
-                }
                 this.names = names;
                 this.to = emails;
                 this.toMailsOnly = emailsOnly.slice(0, -1);
