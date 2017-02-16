@@ -52,12 +52,19 @@
                 var emails = '';
                 var emailsOnly = '';
                 this.msg['recipients'].forEach(function(contact) {
-                    names += ((contact['gender'] == 'F') ? 'Mme' : 'M.') +' '+ contact['lastname'] +', ';
-                    emails += '"'+ contact['firstname'] +' '+ contact['lastname'] +'" <'+ contact['email'] +'>, ';
+                    name = ((contact['gender'] == 'F') ? 'Mme' : 'M.') +' '+ contact['lastname'];
+                    names += name +', ';
+                    /* If email contains more than one email adress (separated with comma) */
+                    if(contact['email'].indexOf(',') !== -1) {
+                        emails += contact['email'] +', ';
+                    }
+                    else {
+                        emails += '"'+ name +'" <'+ contact['email'] +'>, ';
+                    }
                     emailsOnly += contact['email'] +',';
                 });
                 this.names = names;
-                this.to = emails;
+                this.to = emails.slice(0, -2);
                 this.toMailsOnly = emailsOnly.slice(0, -1);
             }
 

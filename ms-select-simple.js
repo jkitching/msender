@@ -1,25 +1,30 @@
 (function(){
-    angular.module('msender').controller('msenderSelect', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
+    angular.module('msender').controller('msenderSelect', ['$rootScope', '$scope', '$timeout', function($rootScope, $scope, $timeout) {
 
-        this.contacts = msContacts;
+        $scope.contacts = msContacts;
+        $scope.msg = ["recipients"];
+        $scope.msg.recipients = [];
         msContacts.forEach(function(contact) {
             contact.imgUrl = $('#msender').data('ms-imgdir') + contact.slug + '.jpg';
             contact.isSelected = true;
-        });
+            $scope.msg.recipients.push(contact);
+        }, $scope);
 
         this.cssBgImg = function(imgUrl) {
             return {"background-image" : "url('"+ imgUrl +"')"};
         };
 
         this.update = function() {
-            this.msg = ["recipients"];
-            this.msg["recipients"] = [];
+            $scope.msg.recipients = [];
             msContacts.forEach(function(contact) {
                 if(contact.isSelected) {
-                    this.msg.recipients.push(contact);
+                    $scope.msg.recipients.push(contact);
                 }
-            }, this);
-            $rootScope.$broadcast('msg', this.msg);
+            }, $scope);
+            $rootScope.$broadcast('msg', $scope.msg);
         };
+        $timeout(function(){
+            $rootScope.$broadcast('msg', $scope.msg);
+        }, 300);
     }]);
 })();

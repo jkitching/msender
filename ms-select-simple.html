@@ -1,8 +1,8 @@
 <div id="ms-select-simple" ng-controller="msenderSelect as msSlct">
-    <h3><span class="ms-etape valid">&#10102;</span> Candidats à contacter</h3>
+    <h3><span class="ms-etape valid">&#10102;</span> Je souhaite envoyer un email à&nbsp;:</h3>
     <form name="ms-form"
           ng-submit="msSlct.doNothing()">
-        <div ng-repeat="contact in msSlct.contacts"
+        <div ng-repeat="contact in contacts"
              ng-class="{selected: contact.isSelected}"
              class="contact">
             <label for="{{contact.slug}}" ng-style="msSlct.cssBgImg(contact.imgUrl)">
