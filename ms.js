@@ -52,7 +52,7 @@
                 var emails = '';
                 var emailsOnly = '';
                 this.msg['recipients'].forEach(function(contact) {
-                    names += contact['firstname'] +' '+ contact['lastname'] +', ';
+                    names += ((contact['gender'] == 'F') ? 'Mme' : 'M.') +' '+ contact['lastname'] +', ';
                     emails += '"'+ contact['firstname'] +' '+ contact['lastname'] +'" <'+ contact['email'] +'>, ';
                     emailsOnly += contact['email'] +',';
                 });
