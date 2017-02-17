@@ -29,7 +29,7 @@
         this.mailtoURL['gmail']   = 'mailto:';
         this.mailtoURL['orange']  = 'https://webmail1f.orange.fr/webmail/fr_FR/write.html';
         this.mailtoURL['sfr']     = 'https://messagerie.sfr.fr/';
-        this.mailtoURL['laposte'] = 'https://webmailz.laposte.net/mail#1';
+        this.mailtoURL['laposte'] = 'https://www.laposte.net/accueil';
         this.mailtoURL['live']    = 'https://login.live.com/fr';
         this.mailtoURL['other']   = '';
 
