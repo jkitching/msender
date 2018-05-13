@@ -1,4 +1,19 @@
 (function(){
+    var getPetitionFromName = function() {
+        if (typeof(Storage) === "undefined") {
+            return null;
+        }
+        var userData = localStorage.getItem('l214.lib-change-org.userdata');
+        if (!userData) {
+            return null;
+        }
+        userData = JSON.parse(userData) || null;
+        if (!userData) {
+            return null;
+        }
+        return '' + userData['first_name'] + ' ' + userData['last_name'];
+    };
+
     var app = angular.module('msender', []);
 
     app.controller('msenderController', ['$scope', '$parse', function($scope, $parse) {
@@ -31,7 +46,7 @@
         this.cc = '';
         this.bcc = $('#msender').data('ms-bcc');
         this.subject = $('#msender').data('ms-subject');
-        this.fromName = '';
+        this.fromName = getPetitionFromName() || '';
         this.msg;
         this.names = '';
         this.body = this.fromName + "\n --";
