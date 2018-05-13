@@ -7,6 +7,19 @@
             $scope.msCtrl.update();
         });
 
+        // get first name + last name from petition
+        var _this = this;
+        $(document).on('petition:didSucceed', function(e, d) {
+            if (_this.fromName.length > 0) {
+                return;
+            }
+            var name = '' + d.postData.firstName + ' ' + d.postData.lastName;
+            $scope.$apply(function() {
+                _this.fromName = name;
+                _this.update();
+            });
+        });
+
         this.valid = false;
         this.nameValid = false;
         this.msgValid = false;
@@ -21,7 +34,7 @@
         this.fromName = '';
         this.msg;
         this.names = '';
-        this.body = this.fromName +"\n --";
+        this.body = this.fromName + "\n --";
 
         this.userMailClient = '';
         this.mailtoURL = new Array();
@@ -31,6 +44,7 @@
         this.mailtoURL['sfr']     = 'https://messagerie.sfr.fr/';
         this.mailtoURL['laposte'] = 'https://www.laposte.net/accueil';
         this.mailtoURL['live']    = 'https://login.live.com/fr';
+        this.mailtoURL['yahoo']   = 'mailto:';
         this.mailtoURL['other']   = '';
 
 
@@ -104,4 +118,3 @@
         };
     }]);
 })();
-

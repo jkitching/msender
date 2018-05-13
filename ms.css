@@ -1,36 +1,51 @@
+#msender {
+    margin: 50px 0 0 0;
+}
 #msender h2 {margin-bottom:30px;}
 #msender .ms-etape {font-size:2em; vertical-align: middle; padding-right:10px;transition: all .5s ease-in;}
 #msender .ms-etape.valid {color: #0C8C0C;}
 #msender .ms-etape-4 a {text-transform:capitalize;}
 #msender form .disabled {opacity:.5;}
-#msender #msender-from-name {font-size:18px; width:75%;
-                             padding: 6px;}
 #msender form select,
 /*#msender form input {width:80%;}*/
-#msender form .ms-mailclient-selector {text-align:center;margin:0;line-height:40px;}
-#msender form .ms-mailclient-selector .ms-yahoo {background: #990099;color:#FFF;}
-#msender form .ms-mailclient-selector .ms-laposte {background: #ffff33;}
-#msender .ms-preview {background: #EEE;border:1px solid #DDD;}
-#msender .ms-preview.disabled {opacity:.5;
+#msender form .ms-mailclient-selector {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#msender form .ms-mailclient-selector a:link {
+    margin: 5px 5px;
+}
+#msender .ms-preview {
+    background: rgba(0, 0, 0, 0.1);
+}
+#msender .ms-preview.disabled {
+    opacity:.5;
     background: #AAA;
     background: repeating-linear-gradient(
         45deg,
-        #CCC,
-        #CCC 5px,
-        #BBB 5px,
-        #BBB 10px);
+        rgba(0, 0, 0, 0.1) 0px,
+        rgba(0, 0, 0, 0.1) 5px,
+        rgba(0, 0, 0, 0.2) 5px,
+        rgba(0, 0, 0, 0.2) 10px
+    );
 }
 #msender .ms-preview h4 {margin-bottom:20px;}
-#msender .ms-mail {border-left:1px dotted #aaa;}
 #msender .ms-mail,
 #msender .ms-to {padding:10px 15px 15px 15px;}
 #msender .ms-message h4 {margin-bottom:2px;}
 #msender .ms-message .ms-subject,
 #msender .ms-message .ms-body {margin-top:10px; border:1px solid #aaa; padding:10px 15px; white-space:pre-line;background:#FFF;}
+#msender .ms-message textarea {
+    height: 250px;
+}
 #msender .photo-recipient {background:no-repeat left top;height: 50px;padding-left:50px;margin-bottom:2px;}
-#msender .to-copy {border:1px dotted #aaa; background: #EEE; padding:10px;background:#FFF;font-size:13px;}
-#msender .ms-indic {font-size:1.2em;}
+#msender .ms-indic {font-size:1.2em; margin: 0 0 15px 0;}
 #msender .ms-indic .ms-etape {font-size:2.6em;vertical-align: middle;}
+#msender .form-label.ms-step-label {
+    margin: 0 0 10px 0;
+}
 #msender #ms-select-simple form {
     margin:0 0 20px 50px;
 }
@@ -62,4 +77,8 @@
     display: inline-block;
     vertical-align: middle;
     margin-left: 71px;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
 }

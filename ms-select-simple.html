@@ -5,15 +5,16 @@
         <div ng-repeat="contact in contacts"
              ng-class="{selected: contact.isSelected}"
              class="contact">
-            <label for="{{contact.slug}}" ng-style="msSlct.cssBgImg(contact.imgUrl)">
+            <div class="form-group">
+                <label for="{{contact.slug}}" ng-style="msSlct.cssBgImg(contact.imgUrl)"></label>
                 <input id="{{contact.slug}}"
                        type="checkbox"
                        ng-model="contact.isSelected"
                        ng-change="msSlct.update()">
-                <div class="name">
-                    {{contact.firstname}}<br>{{contact.lastname}}
-                </div>
-            </label>
+            </div>
+            <div class="name">
+                {{contact.firstname}}<br>{{contact.lastname}}
+            </div>
         </div>
     </form>
 </div>

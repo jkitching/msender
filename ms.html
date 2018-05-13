@@ -1,116 +1,135 @@
-<div ng-controller="msenderController as msCtrl" class="row">
+<div ng-controller="msenderController as msCtrl" class="row ng-cloak">
     <!-- contact-dept is a free software under AGPLv3 Licence : https://gitlab.com/l214/contact-dept -->
     <div class="col-md-4">
         <form name="ms-form" target="_blank"
               ng-submit="msCtrl.doNothing()">
             <div ng-class="{disabled: !msCtrl.msgValid}">
-                <h3><span class="ms-etape" ng-class="{valid: msCtrl.msgValid}">&#10103;</span>
-                    <input id="msender-from-name" type="text"
-                       ng-model="msCtrl.fromName"
-                       ng-change="msCtrl.update()"
-                       placeholder="Votre prénom Votre nom" value="" />
-                </h3>
+                <span class="ms-etape" ng-class="{valid: msCtrl.msgValid}">&#10103;</span>
+                <div class="form-group">
+                    <label for="msender-from-name" class="form-label ms-step-label">
+                      <span class="ms-step" ng-class="{'ms-step-valid': msCtrl.msgValid}">1</span>
+                      <span>Prénom &amp; nom</span>
+                    </label>
+                    <input id="msender-from-name"
+                           type="text"
+                           ng-model="msCtrl.fromName"
+                           ng-change="msCtrl.update()"
+                           class="light"
+                           value="" />
+                </div>
             </div>
             <div ng-show="msCtrl.mobile" ng-class="{disabled: !msCtrl.msgValid}">
-                <h3>
-                    <span class="ms-etape" ng-class="{valid: msCtrl.nameValid}">&#10104;</span>
-                    <a href="{{msCtrl.mailtoURL['std']}}"
-                       ng-app=""class="btn btn-lg btn-success">
-                        Envoyer votre email
-                    </a>
-                </h3>
+                <p class="form-label ms-step-label">
+                  <span class="ms-etape" ng-class="{valid: msCtrl.nameValid}">&#10104;</span>
+                  <span class="ms-step" ng-class="{'ms-step-valid': msCtrl.nameValid}">2</span>
+                </p>
+                <a href="{{msCtrl.mailtoURL['std']}}" ng-app="" class="btn btn-black">
+                    Envoyer votre email
+                </a>
             </div>
             <div ng-show="!msCtrl.mobile" ng-class="{disabled: !msCtrl.valid}">
-                <h3>
-                    <span class="ms-etape" ng-class="{valid: msCtrl.nameValid}">&#10104;</span>
-                    <span style="vertical-align: middle;"> Envoyer via&nbsp;:</span>
-                </h3>
-                <div class="ms-mailclient-selector">
-                    <a ng-href="{{msCtrl.mailtoURL['gmail']}}" target="_blank"
-                       ng-click="msCtrl.userMailClient = 'gmail'"
-                       ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'gmail'}"
-                       class="btn btn-danger ms-gmail">Gmail</a>
-                    <a ng-click="msCtrl.userMailClient = 'orange'"
-                       ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'orange'}"
-                       class="btn btn-warning ms-orange">Orange</a>
-                    <a ng-click="msCtrl.userMailClient = 'sfr'"
-                       ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'sfr'}"
-                       class="btn btn-danger ms-sfr">SFR</a>
-                    <a ng-click="msCtrl.userMailClient = 'live'"
-                       ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'live'}"
-                       class="btn btn-primary ms-live">Live</a>
-                    <a ng-href="{{msCtrl.mailtoURL['yahoo']}}" target="_blank"
-                       ng-click="msCtrl.userMailClient = 'yahoo'"
-                       ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'yahoo'}"
-                       class="btn btn-default ms-yahoo">Yahoo</a>
-                    <a ng-click="msCtrl.userMailClient = 'laposte'"
-                       ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'laposte'}"
-                       class="btn btn-default ms-laposte">LaPoste</a>
-                    <a ng-click="msCtrl.userMailClient = 'other'"
-                       ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'other'}"
-                       class="btn btn-default ms-other">autre...</a>
-                    <br>
-                    <a ng-href="{{msCtrl.mailtoURL['std']}}" target="_blank"
-                       ng-click="msCtrl.userMailClient = 'std'"
-                       ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'std'}"
-                       class="btn btn-info ms-std">Thunderbird</a>
-                    <a ng-href="{{msCtrl.mailtoURL['std']}}" target="_blank"
-                       ng-click="msCtrl.userMailClient = 'std'"
-                       ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'std'}"
-                       class="btn btn-info ms-std">Mac OS X Mail</a>
-                    <a ng-href="{{msCtrl.mailtoURL['std']}}" target="_blank"
-                       ng-click="msCtrl.userMailClient = 'std'"
-                       ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'std'}"
-                       class="btn btn-info ms-std">Windows Live Mail</a>
-
-                    <a ng-href="{{msCtrl.mailtoURL['std']}}" target="_blank"
-                       ng-click="msCtrl.userMailClient = 'std'"
-                       ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'std'}"
-                       class="btn btn-info ms-std">autre client sur votre ordinateur</a>
+                <span class="ms-etape" ng-class="{valid: msCtrl.nameValid}">&#10104;</span>
+                <div class="form-group">
+                    <p class="form-label ms-step-label">
+                      <span class="ms-step" ng-class="{'ms-step-valid': msCtrl.nameValid}">2</span>
+                      <span>Envoyer via</span>
+                    </p>
+                    <div class="ms-mailclient-selector">
+                        <a ng-href="{{msCtrl.mailtoURL['gmail']}}" target="_blank"
+                           ng-click="msCtrl.userMailClient = 'gmail'"
+                           ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'gmail'}"
+                           class="btn btn-black btn-sm">Gmail</a>
+                        <a href="#"
+                           ng-click="msCtrl.userMailClient = 'orange'; $event.stopPropagation(); $event.preventDefault();"
+                           ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'orange'}"
+                           class="btn btn-black btn-sm">Orange</a>
+                        <a href="#"
+                           ng-click="msCtrl.userMailClient = 'sfr'; $event.stopPropagation(); $event.preventDefault();"
+                           ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'sfr'}"
+                           class="btn btn-black btn-sm">SFR</a>
+                        <a href="#"
+                           ng-click="msCtrl.userMailClient = 'live'; $event.stopPropagation(); $event.preventDefault();"
+                           ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'live'}"
+                           class="btn btn-black btn-sm">Live</a>
+                        <a ng-href="{{msCtrl.mailtoURL['yahoo']}}" target="_blank"
+                           ng-click="msCtrl.userMailClient = 'yahoo'"
+                           ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'yahoo'}"
+                           class="btn btn-black btn-sm">Yahoo</a>
+                        <a href="#"
+                           ng-click="msCtrl.userMailClient = 'laposte'; $event.stopPropagation(); $event.preventDefault();"
+                           ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'laposte'}"
+                           class="btn btn-black btn-sm">LaPoste</a>
+                        <a href="#"
+                           ng-click="msCtrl.userMailClient = 'other'; $event.stopPropagation(); $event.preventDefault();"
+                           ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'other'}"
+                           class="btn btn-black btn-sm">autre...</a>
+                    </div>
+                    <hr />
+                    <div class="ms-mailclient-selector">
+                        <a ng-href="{{msCtrl.mailtoURL['std']}}" target="_blank"
+                           ng-click="msCtrl.userMailClient = 'std'"
+                           ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'std'}"
+                           class="btn btn-black btn-sm">Thunderbird</a>
+                        <a ng-href="{{msCtrl.mailtoURL['std']}}" target="_blank"
+                           ng-click="msCtrl.userMailClient = 'std'"
+                           ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'std'}"
+                           class="btn btn-black btn-sm">macOS Mail</a>
+                        <a ng-href="{{msCtrl.mailtoURL['std']}}" target="_blank"
+                           ng-click="msCtrl.userMailClient = 'std'"
+                           ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'std'}"
+                           class="btn btn-black btn-sm">Windows Live Mail</a>
+                        <a ng-href="{{msCtrl.mailtoURL['std']}}" target="_blank"
+                           ng-click="msCtrl.userMailClient = 'std'"
+                           ng-class="{disabled: !msCtrl.valid, selected: msCtrl.userMailClient === 'std'}"
+                           class="btn btn-black btn-sm">Autre client sur votre ordinateur</a>
+                    </div>
                 </div>
             </div>
         </form>
     </div>
 
     <div class="col-md-8">
-        <!-- *************************************** -->
-        <!-- SEND BY HAND                            -->
-        <!-- *************************************** -->
         <div ng-show="msCtrl.sendByHand()" class="ms-indic">
+            <p class="form-label ms-step-label">
+              <span class="ms-etape" ng-class="{valid: msCtrl.userMailClient}">&#10105;</span>
+              <span class="ms-step" ng-class="{'ms-step-valid': msCtrl.nameValid}">3</span>
+              <span>Accédez à votre messagerie</span>
+            </p>
             <div>
-                <h3><span class="ms-etape" ng-class="{valid: msCtrl.userMailClient}">&#10105;</span>
-                Accédez à votre messagerie
-                </h3>
-                <a ng-show="msCtrl.userMailClient !== 'other'"
-                    ng-href="{{msCtrl.mailtoURL[msCtrl.userMailClient]}}" target="_blank">
-                    &rarr; {{msCtrl.userMailClient}}
-                </a>
+              <a ng-show="msCtrl.userMailClient !== 'other'"
+                 ng-href="{{msCtrl.mailtoURL[msCtrl.userMailClient]}}"
+                 class="btn btn-black btn-sm"
+                 target="_blank">Messagerie {{msCtrl.userMailClient}}</a>
             </div>
+        </div>
+        <div ng-show="msCtrl.sendByHand()" class="ms-indic">
+            <label for="id_ms_mailscopy" class="form-label ms-step-label">
+                <span class="ms-etape" ng-class="{valid: msCtrl.userMailClient}">&#10106;</span>
+                <span class="ms-step" ng-class="{'ms-step-valid': msCtrl.nameValid}">4</span>
+                <span>Copiez les destinataires de votre mail</span>
+            </label>
             <div>
-                <h3><span class="ms-etape" ng-class="{valid: msCtrl.userMailClient}">&#10106;</span>
-                    Copiez les destinataires de votre mail&nbsp;:
-                </h3>
-                <div class="to-copy">
-                    {{msCtrl.toMailsOnly}}
-                </div>
-            </div>
-            <div>
-                <h3><span class="ms-etape" ng-class="{valid: msCtrl.userMailClient}">&#10107;</span>
-                Copiez l'objet et le message de votre mail ci-dessous&nbsp;:
-                </h3>
+              <input type="text" name="ms_mailscopy" id="id_ms_mailscopy" class="light" readonly ng-value="msCtrl.toMailsOnly" />
             </div>
         </div>
 
-        <!-- *************************************** -->
-        <!-- PREVIEW                                 -->
-        <!-- *************************************** -->                    <div class="ms-preview" ng-class="{disabled: !msCtrl.valid}">
+        <p class="form-label ms-step-label" ng-show="msCtrl.sendByHand()">
+          <span class="ms-etape" ng-class="{valid: msCtrl.userMailClient}">&#10107;</span>
+          <span class="ms-step" ng-class="{'ms-step-valid': msCtrl.nameValid}">5</span>
+          <span>Copiez l'objet et le message de votre mail ci-dessous</span>
+        </p>
+        <div class="ms-preview" ng-class="{disabled: !msCtrl.valid}">
             <div class="ms-mail">
                 <div class="ms-message">
-                    <h4>Objet</h4>
-                    <div class="ms-subject">{{msCtrl.subject}}</div>
-                    <h4>Votre message</h4>
-                    <div class="ms-body">{{msCtrl.body}}</div>
-                    <div class="ms-body-can-change">(Vous pourrez le modifier dans votre boite email)</div>
+                    <div class="form-group">
+                        <label for="id_ms_subject">Objet</label>
+                        <input type="text" name="subject" id="id_ms_subject" class="light" readonly ng-value="msCtrl.subject" />
+                    </div>
+                    <div class="form-group">
+                        <label for="id_ms_message">Votre message</label>
+                        <textarea name="message" id="id_ms_message" class="light" readonly>{{msCtrl.body}}</textarea>
+                    </div>
+                    <p class="hint">(Vous pourrez le modifier dans votre boite email)</p>
                 </div>
             </div>
         </div>
