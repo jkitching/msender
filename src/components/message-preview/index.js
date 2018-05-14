@@ -7,9 +7,9 @@ const MessagePreview = (props) => {
   const { msender } = props
   return (
     <div className={style.message_preview}>
-      <ValueField labelText="Envoyer à :" value="service.clients@carrefour.fr" />
+      <ValueField labelText="Envoyer à :" value={msender.getToEmailsString()} />
       <hr className={style.message_hr} />
-      <ValueField labelText="Objet :" value="Produits la Boulangère B’vegan" />
+      <ValueField labelText="Objet :" value={msender.getSubject()} />
       <hr className={style.message_hr} />
       <ValueField labelText="Message :"
                   labelHint="(vous pourrez le modifier dans votre boite email)"

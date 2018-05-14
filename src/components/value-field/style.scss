@@ -11,17 +11,17 @@
   display: flex;
 }
 
-.label {
+.label_container {
   display: flex;
 }
 
-.label_multiline {
-  composes: label;
+.label_container_multiline {
+  composes: label_container;
   flex-direction: column;
   flex-grow: 1;
 }
 
-.label_text {
+.label {
   flex-grow: 0;
   flex-shrink: 0;
   font-family: $font-system;
@@ -31,6 +31,8 @@
   color: $color-blue-native;
   margin: 0 2px 0 0;
   padding: 6px 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 .label_hint {
@@ -60,4 +62,9 @@
   resize: none;
   margin: 0 -5px;
   padding: 5px;
+}
+
+.copy_container {
+  margin: 0 0 0 5px;
+  padding: 5px 0 3px 0;
 }

@@ -1,0 +1,28 @@
+@import "../constants.scss";
+
+$button-copy-black: #757575;
+
+.button {
+  display: inline-block;
+  border: 1px solid $button-copy-black;
+  background: none;
+  font-family: $font-montserrat;
+  font-weight: 900;
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 15px;
+  color: $button-copy-black;
+  -webkit-font-smoothing: antialiased;
+  padding: 1px 6px 1px 6px;
+  outline: none;
+  border-radius: 2px;
+
+  &, &:link, &:active, &:visited, &:hover {
+    text-decoration: none;
+  }
+
+  &:active {
+    background: $button-copy-black;
+    color: #fff;
+  }
+}

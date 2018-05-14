@@ -86,7 +86,6 @@ export default class MsenderContainer extends Component {
 
   setIn(keys, value) {
     const { msender } = this.state
-    console.log(msender.setIn(keys, value).toJS())
     this.setState({
       msender: msender.setIn(keys, value)
     })
