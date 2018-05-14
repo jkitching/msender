@@ -1,6 +1,6 @@
 let poly = require('preact-cli/lib/lib/webpack/polyfills')
 
-import { h } from 'preact'
+import React, { Component } from 'react'
 import habitat from 'preact-habitat'
 
 import Widget from './components/msender'

@@ -1,0 +1,19 @@
+@import "../constants.scss";
+
+.select {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  font-family: $font-gotham;
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: 200;
+  color: #FFFFFF;
+  -webkit-font-smoothing: antialiased;
+  padding: 10px;
+  outline: none;
+
+  &:focus {
+    border-width: 2px;
+    padding: 9px;
+  }
+}
