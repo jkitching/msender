@@ -10,12 +10,20 @@ import MessagePreview from '../message-preview'
 import { msenderFromProps } from '../../models/msender'
 import { getDepartments } from '../../models/department'
 import { getMessengers, MESSENGER_MODE_NONE } from '../../models/messenger'
+import detectEmailMessenger from '../../utils/detectEmailMessenger'
 
 const departments = getDepartments()
 const messengers = getMessengers()
 
 const MsenderForm = (props) => {
   const { msender, setIn } = props
+  const onEmailChange = (e) => {
+    detectEmailMessenger(e.target.value).then(messenger => {
+      if (messenger) {
+        setIn(['messenger'], messenger)
+      }
+    })
+  }
   return (
     <div className={style.msender_form}>
       <Step title="Mes informations" number="1">
@@ -27,7 +35,8 @@ const MsenderForm = (props) => {
                     onInput={(e) => setIn(['last_name'], e.target.value)} />
         <InputLabel labelText="Email"
                     value={msender.get('email')}
-                    onInput={(e) => setIn(['email'], e.target.value)} />
+                    onInput={(e) => setIn(['email'], e.target.value)}
+                    onChange={onEmailChange} />
       </Step>
       <Step title="Les magasins autour de moi" number="2">
         <SelectLabel labelText="Département"

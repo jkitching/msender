@@ -168,7 +168,7 @@ export class MessengerLaposte extends MessengerCopy {
 // Copy None
 //
 
-class MessengerNone extends MessengerMailto {
+export class MessengerNone extends MessengerMailto {
   constructor() {
     super({
       identifier: 'othernone',

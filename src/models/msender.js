@@ -1,6 +1,6 @@
 import { Record } from 'immutable'
 
-import { MessengerGmail } from './messenger'
+import { MessengerNone } from './messenger'
 
 export default class Msender extends Record({
   first_name: null,
@@ -11,7 +11,7 @@ export default class Msender extends Record({
   message_bcc: null,
   message_subject: null,
   message_text: null,
-  messenger: new MessengerGmail(),
+  messenger: new MessengerNone(),
 }) {
   getName() {
     const firstName = this.getFirstName()
