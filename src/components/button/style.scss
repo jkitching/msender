@@ -1,7 +1,9 @@
+@import "../constants.scss";
+
 .button {
   border: 0;
   background: #000;
-  font-family: 'Montserrat', sans-serif;
+  font-family: $font-montserrat;
   font-weight: 900;
   font-size: 14px;
   text-transform: uppercase;

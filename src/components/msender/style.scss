@@ -19,3 +19,12 @@ html, body {
     font-weight: 400;
     background: #EB9339;
 }
+
+.msender {
+  display: flex;
+}
+
+.msender_form {
+  flex-grow: 0.8;
+  flex-basis: 0;
+}

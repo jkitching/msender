@@ -1,4 +1,4 @@
-import { h, Component } from 'preact'
+import { h } from 'preact'
 import style from './style.scss'
 
 import StepTitle from '../step-title'
@@ -6,8 +6,8 @@ import StepTitle from '../step-title'
 const Step = props => {
   return (
     <div>
-    	<StepTitle number={props.number}>{props.title}</StepTitle>
-    	{props.children}
+      <StepTitle number={props.number}>{props.title}</StepTitle>
+      {props.children}
     </div>
   )
 }
