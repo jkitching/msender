@@ -7,23 +7,31 @@ import SelectLabel from '../select-label'
 import Button from '../button'
 import MessagePreview from '../message-preview'
 
+import { msenderFromProps } from '../../models/msender'
 import { getDepartments } from '../../models/department'
 
 const departments = getDepartments()
 
 const MsenderForm = (props) => {
+  const { msender, setIn } = props
   return (
     <div className={style.msender_form}>
       <Step title="Mes informations" number="1">
-        <InputLabel labelText="Prénom" value="Micha" />
-        <InputLabel labelText="Nom" value="Mazaheri" />
-        <InputLabel labelText="Email" value="micha@mazaheri.me" />
+        <InputLabel labelText="Prénom"
+                    value={msender.get('first_name')}
+                    onInput={(e) => setIn(['first_name'], e.target.value)} />
+        <InputLabel labelText="Nom"
+                    value={msender.get('last_name')}
+                    onInput={(e) => setIn(['last_name'], e.target.value)} />
+        <InputLabel labelText="Email"
+                    value={msender.get('email')}
+                    onInput={(e) => setIn(['email'], e.target.value)} />
       </Step>
       <Step title="Les magasins autour de moi" number="2">
         <SelectLabel labelText="Département"
-                     value={null}
+                     value={msender.getIn(['department', 'code'])}
                      options={departments.map(d => d.getSelectOption()).toArray()}
-                     onChange={(v) => { console.log(v) }} />
+                     onChange={(e) => { setIn(['department'], departments.find(d => e.target.value == d.get('code'))) }} />
       </Step>
       <Step title="Envoyer mon message" number="3">
         <Button>Ouvrir ma messagerie</Button>
@@ -32,13 +40,30 @@ const MsenderForm = (props) => {
   )
 }
 
-export default class Msender extends Component {
-  render(props) {
+export default class MsenderContainer extends Component {
+  constructor(props) {
+    super()
+    this.state = {
+      msender: msenderFromProps(props)
+    }
+    this.setInBound = this.setIn.bind(this)
+  }
+
+  render() {
+    const { msender } = this.state
     return (
       <div className={style.msender}>
-        <MsenderForm />
-        <MessagePreview />
+        <MsenderForm msender={msender} setIn={this.setInBound} />
+        <MessagePreview msender={msender} setIn={this.setInBound} />
       </div>
     )
+  }
+
+  setIn(keys, value) {
+    const { msender } = this.state
+    console.log(msender.setIn(keys, value).toJS())
+    this.setState({
+      msender: msender.setIn(keys, value)
+    })
   }
 }

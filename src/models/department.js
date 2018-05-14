@@ -14,7 +14,7 @@ export default class Department extends Record({
   }
   getSelectOption() {
     return {
-      val: this.get('code'),
+      value: this.get('code'),
       text: this.getDisplayName(),
     }
   }
