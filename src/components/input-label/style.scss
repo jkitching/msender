@@ -1,0 +1,16 @@
+.label {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 15px 0;
+}
+
+.label_text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  text-transform: uppercase;
+  line-height: 19px;
+  color: #000;
+  -webkit-font-smoothing: antialiased;
+  margin: 0 0 7px 0;
+}
