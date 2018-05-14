@@ -8,6 +8,7 @@ const urlEncode = (d) => {
 
 export const MESSENGER_MODE_LINK = 'link'
 export const MESSENGER_MODE_COPY = 'copy'
+export const MESSENGER_MODE_NONE = 'none'
 
 class Messenger extends Record({ // abstract
   identifier: null,
@@ -163,6 +164,22 @@ export class MessengerLaposte extends MessengerCopy {
   }
 }
 
+//
+// Copy None
+//
+
+class MessengerNone extends MessengerMailto {
+  constructor() {
+    super({
+      identifier: 'othernone',
+      name: 'Autre',
+    })
+  }
+  getMode() {
+    return MESSENGER_MODE_NONE
+  }
+}
+
 export const getMessengers = () => {
   return Immutable.List([
     new MessengerGmail(),
@@ -174,5 +191,6 @@ export const getMessengers = () => {
     new MessengerThunderbird(),
     new MessengerMacOSMail(),
     new MessengerWindowsLiveMail(),
+    new MessengerNone(),
   ])
 }

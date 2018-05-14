@@ -9,7 +9,7 @@ import MessagePreview from '../message-preview'
 
 import { msenderFromProps } from '../../models/msender'
 import { getDepartments } from '../../models/department'
-import { getMessengers, MESSENGER_MODE_LINK } from '../../models/messenger'
+import { getMessengers, MESSENGER_MODE_NONE } from '../../models/messenger'
 
 const departments = getDepartments()
 const messengers = getMessengers()
@@ -43,10 +43,14 @@ const MsenderForm = (props) => {
                       text: m.get('name'),
                      })).toArray()}
                      onChange={(e) => { setIn(['messenger'], messengers.find(d => e.target.value == d.get('identifier'))) }} />
-        <Button isLink={true}
-                href={msender.get('messenger').getMailtoLink(msender)}>
-          Ouvrir ma messagerie
-        </Button>
+        {msender.get('messenger').getMode() !== MESSENGER_MODE_NONE ?
+          (
+            <Button isLink={true}
+                    href={msender.get('messenger').getMailtoLink(msender)}>
+              Ouvrir ma messagerie
+            </Button>
+          ) : null
+        }
       </Step>
     </div>
   )
