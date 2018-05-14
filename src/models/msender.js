@@ -1,5 +1,7 @@
 import { Record } from 'immutable'
 
+import { MessengerGmail } from './messenger'
+
 export default class Msender extends Record({
   first_name: null,
   last_name: null,
@@ -9,6 +11,7 @@ export default class Msender extends Record({
   message_bcc: null,
   message_subject: null,
   message_text: null,
+  messenger: new MessengerGmail(),
 }) {
   getName() {
     const firstName = this.getFirstName()
@@ -26,14 +29,30 @@ export default class Msender extends Record({
     if (department) {
       return department.get('name')
     }
-    return null
+    return ''
   }
   getDepartmentCode() {
     const department = this.get('department')
     if (department) {
       return department.get('code')
     }
-    return null
+    return ''
+  }
+  
+  getToString() {
+    return this.get('message_to')
+  }
+  getToEmailsString() {
+    return this.get('message_to')
+  }
+  getCcString() {
+    return ''
+  }
+  getBccString() {
+    return this.get('message_bcc')
+  }
+  getSubject() {
+    return this.get('message_subject')
   }
   getMessage() {
     let message = this.get('message_text')
