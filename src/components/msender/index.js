@@ -7,6 +7,10 @@ import SelectLabel from '../select-label'
 import Button from '../button'
 import MessagePreview from '../message-preview'
 
+import { getDepartments } from '../../models/department'
+
+const departments = getDepartments()
+
 const MsenderForm = (props) => {
   return (
     <div className={style.msender_form}>
@@ -16,10 +20,10 @@ const MsenderForm = (props) => {
         <InputLabel labelText="Email" value="micha@mazaheri.me" />
       </Step>
       <Step title="Les magasins autour de moi" number="2">
-        <SelectLabel labelText="Département" value="Micha" options={[
-          {val: '28', text: '28 - Eure-et-Loir'},
-          {val: '75', text: '75 - Paris'},
-        ]} onChange={(v) => { console.log(v) }} />
+        <SelectLabel labelText="Département"
+                     value={null}
+                     options={departments.map(d => d.getSelectOption()).toArray()}
+                     onChange={(v) => { console.log(v) }} />
       </Step>
       <Step title="Envoyer mon message" number="3">
         <Button>Ouvrir ma messagerie</Button>
