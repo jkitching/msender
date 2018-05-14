@@ -16,6 +16,7 @@ $button-copy-black: #757575;
   padding: 1px 6px 1px 6px;
   outline: none;
   border-radius: 2px;
+  user-select: none;
 
   &, &:link, &:active, &:visited, &:hover {
     text-decoration: none;

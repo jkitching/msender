@@ -13,6 +13,7 @@
   -webkit-font-smoothing: antialiased;
   padding: 10px 15px 11px 15px;
   outline: none;
+  user-select: none;
 
   &, &:link, &:active, &:visited, &:hover {
     text-decoration: none;
