@@ -19,6 +19,12 @@ const messengers = getMessengers()
 const MsenderForm = (props) => {
   const { msender, setIn } = props
   const onEmailChange = (e) => {
+    // ignore on mobile
+    if (msender.get('is_mobile_or_tablet')) {
+      return
+    }
+
+    // detect email messenger
     detectEmailMessenger(e.target.value).then(messenger => {
       if (messenger) {
         setIn(['messenger'], messenger)
@@ -46,13 +52,16 @@ const MsenderForm = (props) => {
                      onChange={(e) => { setIn(['department'], departments.find(d => e.target.value === d.get('code'))) }} />
       </Step>
       <Step title="Envoyer mon message" number="3">
-        <SelectLabel labelText="Messagerie"
-                     value={msender.getIn(['messenger', 'identifier'])}
-                     options={messengers.map(m => ({
-                      value: m.get('identifier'),
-                      text: m.get('name'),
-                     })).toArray()}
-                     onChange={(e) => { setIn(['messenger'], messengers.find(d => e.target.value === d.get('identifier'))) }} />
+        {!msender.get('is_mobile_or_tablet') ?
+          ( <SelectLabel labelText="Messagerie"
+                         value={msender.getIn(['messenger', 'identifier'])}
+                         options={messengers.map(m => ({
+                          value: m.get('identifier'),
+                          text: m.get('name'),
+                         })).toArray()}
+                         onChange={(e) => { setIn(['messenger'], messengers.find(d => e.target.value === d.get('identifier'))) }} />
+          ) : null
+        }
         {msender.get('messenger').getMode() !== MESSENGER_MODE_NONE ?
           (
             <Button isLink={true}
@@ -110,11 +119,15 @@ export default class MsenderContainer extends Component {
       this.setIn(['last_name'], userData.last_name)
       this.setIn(['email'], userData.email)
       this.setIn(['department'], departments.find(d => userData.postal_code.substr(0, 2).toString() === d.get('code')))
-      detectEmailMessenger(userData.email).then(messenger => {
-        if (messenger) {
-          this.setIn(['messenger'], messenger)
-        }
-      })
+
+      // ignore on mobile
+      if (!msender.get('is_mobile_or_tablet')) {
+        detectEmailMessenger(userData.email).then(messenger => {
+          if (messenger) {
+            this.setIn(['messenger'], messenger)
+          }
+        })
+      }
     }
   }
 }

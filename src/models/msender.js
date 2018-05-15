@@ -1,7 +1,10 @@
 import { Record } from 'immutable'
 
-import { MessengerNone } from './messenger'
+import { MessengerNone, MessengerMailto } from './messenger'
 import { makeRecipientList } from './recipient'
+
+import isMobileOrTablet from '../utils/isMobileOrTablet'
+const is_mobile_or_tablet = isMobileOrTablet()
 
 export default class Msender extends Record({
   first_name: null,
@@ -13,7 +16,8 @@ export default class Msender extends Record({
   message_bcc: null,
   message_subject: null,
   message_text: null,
-  messenger: new MessengerNone(),
+  messenger: (is_mobile_or_tablet ? new MessengerMailto() : new MessengerNone()),
+  is_mobile_or_tablet: is_mobile_or_tablet,
 }) {
   getName() {
     const firstName = this.getFirstName()

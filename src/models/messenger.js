@@ -26,9 +26,9 @@ class Messenger extends Record({ // abstract
 // Link Mode
 //
 
-class MessengerMailto extends Record({
-  identifier: null,
-  name: null,
+export class MessengerMailto extends Record({
+  identifier: 'mailto',
+  name: 'Mail',
 }) {
   getMode() {
     return MESSENGER_MODE_LINK
