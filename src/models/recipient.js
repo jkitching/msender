@@ -48,6 +48,12 @@ export default class Recipient extends Record({
   getToString() {
     return `${this.getNameString()} <${this.get('email')}>`
   }
+  getSelectOption() {
+    return {
+      value: this.get('email'),
+      text: this.getNameString(),
+    }
+  }
 }
 
 const normalizeInput = (str) => {

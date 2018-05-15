@@ -1,4 +1,4 @@
-import { Record } from 'immutable'
+import Immutable, { Record } from 'immutable'
 
 import { MessengerNone, MessengerMailto } from './messenger'
 import { makeRecipientList } from './recipient'
@@ -16,7 +16,9 @@ export default class Msender extends Record({
   message_bcc: null,
   message_subject: null,
   message_text: null,
+  message_to_current: null,
   select_department: false,
+  select_to: false,
   messenger: (is_mobile_or_tablet ? new MessengerMailto() : new MessengerNone()),
   is_mobile_or_tablet: is_mobile_or_tablet,
 }) {
@@ -46,11 +48,17 @@ export default class Msender extends Record({
     return ''
   }
   
+  getToRecipients() {
+    if (this.get('select_to') && this.get('message_to_current')) {
+      return Immutable.List([this.get('message_to_current')])
+    }
+    return this.get('message_to')
+  }
   getToString() {
-    return this.get('message_to').map(recipient => recipient.getToString()).join(', ')
+    return this.getToRecipients().map(recipient => recipient.getToString()).join(', ')
   }
   getToEmailsString() {
-    return this.get('message_to').map(recipient => recipient.getToEmail()).join(', ')
+    return this.getToRecipients().map(recipient => recipient.getToEmail()).join(', ')
   }
   getCcString() {
     return this.get('message_cc').map(recipient => recipient.getToEmail()).join(', ')
@@ -73,12 +81,17 @@ export default class Msender extends Record({
 }
 
 export const msenderFromProps = (props) => {
+  const to = makeRecipientList(props.to)
+  const cc = makeRecipientList(props.cc)
+  const bcc = makeRecipientList(props.bcc)
   return new Msender({
-    message_to: makeRecipientList(props.to),
-    message_cc: makeRecipientList(props.cc),
-    message_bcc: makeRecipientList(props.bcc),
+    message_to: to,
+    message_cc: cc,
+    message_bcc: bcc,
     message_subject: props.subject,
     message_text: props.message,
+    message_to_current: (props.select_to ? to.first() : null),
     select_department: props.select_department,
+    select_to: props.select_to,
   })
 }
