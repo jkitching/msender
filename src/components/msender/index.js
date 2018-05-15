@@ -63,7 +63,8 @@ const MsenderForm = (props) => {
                          onChange={(e) => { setIn(['messenger'], messengers.find(d => e.target.value === d.get('identifier'))) }} />
           ) : null
         }
-        {msender.get('messenger').getMode() === MESSENGER_MODE_COPY ?
+        {(msender.get('messenger').getMode() === MESSENGER_MODE_COPY ||
+          msender.get('messenger').getMode() === MESSENGER_MODE_NONE) ?
           (
             <CopyAdvice />
           ) : null
