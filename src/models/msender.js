@@ -1,6 +1,7 @@
 import { Record } from 'immutable'
 
 import { MessengerNone } from './messenger'
+import { makeRecipientList } from './recipient'
 
 export default class Msender extends Record({
   first_name: null,
@@ -8,6 +9,7 @@ export default class Msender extends Record({
   email: null,
   department: null,
   message_to: null,
+  message_cc: null,
   message_bcc: null,
   message_subject: null,
   message_text: null,
@@ -40,16 +42,16 @@ export default class Msender extends Record({
   }
   
   getToString() {
-    return this.get('message_to')
+    return this.get('message_to').map(recipient => recipient.getToString()).join(', ')
   }
   getToEmailsString() {
-    return this.get('message_to')
+    return this.get('message_to').map(recipient => recipient.getToEmail()).join(', ')
   }
   getCcString() {
-    return ''
+    return this.get('message_cc').map(recipient => recipient.getToEmail()).join(', ')
   }
   getBccString() {
-    return this.get('message_bcc')
+    return this.get('message_bcc').map(recipient => recipient.getToEmail()).join(', ')
   }
   getSubject() {
     return this.get('message_subject')
@@ -67,8 +69,9 @@ export default class Msender extends Record({
 
 export const msenderFromProps = (props) => {
   return new Msender({
-    message_to: props.to,
-    message_bcc: props.bcc,
+    message_to: makeRecipientList(props.to),
+    message_cc: makeRecipientList(props.cc),
+    message_bcc: makeRecipientList(props.bcc),
     message_subject: props.subject,
     message_text: props.message,
   })
