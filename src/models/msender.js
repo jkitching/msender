@@ -16,6 +16,7 @@ export default class Msender extends Record({
   message_bcc: null,
   message_subject: null,
   message_text: null,
+  select_department: false,
   messenger: (is_mobile_or_tablet ? new MessengerMailto() : new MessengerNone()),
   is_mobile_or_tablet: is_mobile_or_tablet,
 }) {
@@ -78,5 +79,6 @@ export const msenderFromProps = (props) => {
     message_bcc: makeRecipientList(props.bcc),
     message_subject: props.subject,
     message_text: props.message,
+    select_department: props.select_department,
   })
 }

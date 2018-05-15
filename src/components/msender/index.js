@@ -32,9 +32,17 @@ const MsenderForm = (props) => {
       }
     })
   }
+  const selectDepartment = msender.get('select_department')
+  const infoStep = 1
+  let departmentStep = null
+  let sendStep = 2
+  if (selectDepartment) {
+    departmentStep = 2
+    sendStep = 3
+  }
   return (
     <div className={style.msender_form}>
-      <Step title="Mes informations" number="1">
+      <Step title="Mes informations" number={infoStep}>
         <InputLabel labelText="Prénom"
                     value={msender.get('first_name')}
                     onInput={(e) => setIn(['first_name'], e.target.value)} />
@@ -46,13 +54,17 @@ const MsenderForm = (props) => {
                     onInput={(e) => setIn(['email'], e.target.value)}
                     onChange={onEmailChange} />
       </Step>
-      <Step title="Les magasins autour de moi" number="2">
-        <SelectLabel labelText="Département"
-                     value={msender.getIn(['department', 'code'])}
-                     options={departments.map(d => d.getSelectOption()).toArray()}
-                     onChange={(e) => { setIn(['department'], departments.find(d => e.target.value === d.get('code'))) }} />
-      </Step>
-      <Step title="Envoyer mon message" number="3">
+      {selectDepartment ?
+        (
+          <Step title="Les magasins autour de moi" number={departmentStep}>
+            <SelectLabel labelText="Département"
+                         value={msender.getIn(['department', 'code'])}
+                         options={departments.map(d => d.getSelectOption()).toArray()}
+                         onChange={(e) => { setIn(['department'], departments.find(d => e.target.value === d.get('code'))) }} />
+          </Step>
+        ) : null
+      }
+      <Step title="Envoyer mon message" number={sendStep}>
         {!msender.get('is_mobile_or_tablet') ?
           ( <SelectLabel labelText="Messagerie"
                          value={msender.getIn(['messenger', 'identifier'])}
