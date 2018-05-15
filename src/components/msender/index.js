@@ -4,9 +4,9 @@ import style from './style.scss'
 import Step from '../step'
 import InputLabel from '../input-label'
 import SelectLabel from '../select-label'
-import Button from '../button'
 import MessagePreview from '../message-preview'
 import CopyAdvice from '../copy-advice'
+import ButtonContainer from '../button-container'
 
 import { msenderFromProps } from '../../models/msender'
 import { getDepartments } from '../../models/department'
@@ -69,14 +69,7 @@ const MsenderForm = (props) => {
             <CopyAdvice />
           ) : null
         }
-        {msender.get('messenger').getMode() !== MESSENGER_MODE_NONE ?
-          (
-            <Button isLink={true}
-                    href={msender.get('messenger').getMailtoLink(msender)}>
-              Ouvrir ma messagerie
-            </Button>
-          ) : null
-        }
+        {msender.get('messenger').getMode() !== MESSENGER_MODE_NONE ? <ButtonContainer msender={msender} /> : null}
       </Step>
       <div className={style.message_hint_mobile}>
         Ci-dessous le message à envoyer. Vous pourrez le modifier dans votre messagerie.
@@ -86,6 +79,7 @@ const MsenderForm = (props) => {
 }
 
 const MSenderUI = withPetitionBindings((props) => {
+  const { msender } = props
   return (
     <div className={style.msender}>
       <MsenderForm {...props} />
