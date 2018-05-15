@@ -13,6 +13,7 @@ import { getDepartments } from '../../models/department'
 import { getMessengers, MESSENGER_MODE_NONE, MESSENGER_MODE_COPY } from '../../models/messenger'
 import detectEmailMessenger from '../../utils/detectEmailMessenger'
 import withPetitionBindings from '../../utils/withPetitionBindings'
+import isEmailValid from '../../utils/isEmailValid'
 
 const departments = getDepartments()
 const messengers = getMessengers()
@@ -80,7 +81,8 @@ const MsenderForm = (props) => {
                          onChange={(e) => { setIn(['messenger'], messengers.find(d => e.target.value === d.get('identifier'))) }} />
           ) : null
         }
-        {(msender.get('messenger').getMode() === MESSENGER_MODE_COPY ||
+        {isEmailValid(msender.get('email')) && 
+         (msender.get('messenger').getMode() === MESSENGER_MODE_COPY ||
           msender.get('messenger').getMode() === MESSENGER_MODE_NONE) ?
           (
             <CopyAdvice />
