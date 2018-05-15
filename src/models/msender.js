@@ -84,13 +84,21 @@ export const msenderFromProps = (props) => {
   const to = makeRecipientList(props.to)
   const cc = makeRecipientList(props.cc)
   const bcc = makeRecipientList(props.bcc)
+  let message_to_current = null
+  if (props.select_to) {
+    if (props.select_to_random) {
+      message_to_current = to.get(Math.round(Math.random() * (to.count() - 1)))
+    } else {
+      message_to_current = to.first()
+    }
+  }
   return new Msender({
     message_to: to,
     message_cc: cc,
     message_bcc: bcc,
     message_subject: props.subject,
     message_text: props.message,
-    message_to_current: (props.select_to ? to.first() : null),
+    message_to_current: message_to_current,
     select_department: props.select_department,
     select_to: props.select_to,
   })
