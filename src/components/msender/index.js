@@ -11,6 +11,7 @@ import { msenderFromProps } from '../../models/msender'
 import { getDepartments } from '../../models/department'
 import { getMessengers, MESSENGER_MODE_NONE } from '../../models/messenger'
 import detectEmailMessenger from '../../utils/detectEmailMessenger'
+import withPetitionBindings from '../../utils/withPetitionBindings'
 
 const departments = getDepartments()
 const messengers = getMessengers()
@@ -42,7 +43,7 @@ const MsenderForm = (props) => {
         <SelectLabel labelText="Département"
                      value={msender.getIn(['department', 'code'])}
                      options={departments.map(d => d.getSelectOption()).toArray()}
-                     onChange={(e) => { setIn(['department'], departments.find(d => e.target.value == d.get('code'))) }} />
+                     onChange={(e) => { setIn(['department'], departments.find(d => e.target.value === d.get('code'))) }} />
       </Step>
       <Step title="Envoyer mon message" number="3">
         <SelectLabel labelText="Messagerie"
@@ -51,7 +52,7 @@ const MsenderForm = (props) => {
                       value: m.get('identifier'),
                       text: m.get('name'),
                      })).toArray()}
-                     onChange={(e) => { setIn(['messenger'], messengers.find(d => e.target.value == d.get('identifier'))) }} />
+                     onChange={(e) => { setIn(['messenger'], messengers.find(d => e.target.value === d.get('identifier'))) }} />
         {msender.get('messenger').getMode() !== MESSENGER_MODE_NONE ?
           (
             <Button isLink={true}
@@ -65,6 +66,15 @@ const MsenderForm = (props) => {
   )
 }
 
+const MSenderUI = withPetitionBindings((props) => {
+  return (
+    <div className={style.msender}>
+      <MsenderForm {...props} />
+      <MessagePreview {...props} />
+    </div>
+  )
+})
+
 export default class MsenderContainer extends Component {
   constructor(props) {
     super()
@@ -72,16 +82,14 @@ export default class MsenderContainer extends Component {
       msender: msenderFromProps(props)
     }
     this.setInBound = this.setIn.bind(this)
+    this.didGetPetitionDataBound = this.didGetPetitionData.bind(this)
   }
 
   render() {
     const { msender } = this.state
-    return (
-      <div className={style.msender}>
-        <MsenderForm msender={msender} setIn={this.setInBound} />
-        <MessagePreview msender={msender} setIn={this.setInBound} />
-      </div>
-    )
+    return <MSenderUI msender={msender}
+                      setIn={this.setInBound}
+                      didGetPetitionData={this.didGetPetitionDataBound} />
   }
 
   setIn(keys, value) {
@@ -89,5 +97,21 @@ export default class MsenderContainer extends Component {
     this.setState({
       msender: msender.setIn(keys, value)
     })
+  }
+
+  didGetPetitionData(userData) {
+    const { msender } = this.state
+    if ((!msender.get('first_name') || msender.get('first_name').length === 0) &&
+        (!msender.get('last_name') || msender.get('last_name').length === 0)) {
+      this.setIn(['first_name'], userData.first_name)
+      this.setIn(['last_name'], userData.last_name)
+      this.setIn(['email'], userData.email)
+      this.setIn(['department'], departments.find(d => userData.postal_code.substr(0, 2).toString() === d.get('code')))
+      detectEmailMessenger(userData.email).then(messenger => {
+        if (messenger) {
+          this.setIn(['messenger'], messenger)
+        }
+      })
+    }
   }
 }
