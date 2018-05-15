@@ -6,10 +6,11 @@ import InputLabel from '../input-label'
 import SelectLabel from '../select-label'
 import Button from '../button'
 import MessagePreview from '../message-preview'
+import CopyAdvice from '../copy-advice'
 
 import { msenderFromProps } from '../../models/msender'
 import { getDepartments } from '../../models/department'
-import { getMessengers, MESSENGER_MODE_NONE } from '../../models/messenger'
+import { getMessengers, MESSENGER_MODE_NONE, MESSENGER_MODE_COPY } from '../../models/messenger'
 import detectEmailMessenger from '../../utils/detectEmailMessenger'
 import withPetitionBindings from '../../utils/withPetitionBindings'
 
@@ -60,6 +61,11 @@ const MsenderForm = (props) => {
                           text: m.get('name'),
                          })).toArray()}
                          onChange={(e) => { setIn(['messenger'], messengers.find(d => e.target.value === d.get('identifier'))) }} />
+          ) : null
+        }
+        {msender.get('messenger').getMode() === MESSENGER_MODE_COPY ?
+          (
+            <CopyAdvice />
           ) : null
         }
         {msender.get('messenger').getMode() !== MESSENGER_MODE_NONE ?
