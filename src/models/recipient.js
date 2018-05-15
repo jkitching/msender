@@ -69,6 +69,19 @@ const normalizeGender = (gender) => {
   }
 }
 
+const normalizeFormat = (format) => {
+  const normalizedFormatStr = (normalizeInput(format) || '').toLowerCase()
+  switch (normalizedFormatStr) {
+    case RECIPIENT_FORMAT_TITLE_NAME:
+    case RECIPIENT_FORMAT_FULL_NAME:
+    case RECIPIENT_FORMAT_TITLE_FULL_NAME:
+    case RECIPIENT_FORMAT_ORGANIZATION:
+      return normalizedFormatStr
+    default:
+      return RECIPIENT_FORMAT_TITLE_NAME
+  }
+}
+
 export const makeRecipient = (source) => {
   return new Recipient({
     first_name: normalizeInput(source.firstname),
@@ -76,6 +89,7 @@ export const makeRecipient = (source) => {
     organization: normalizeInput(source.organization),
     email: normalizeInput(source.email),
     gender: normalizeGender(source.gender),
+    format: normalizeFormat(source.format),
   })
 }
 
