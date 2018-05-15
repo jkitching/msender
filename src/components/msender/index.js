@@ -84,6 +84,7 @@ const MSenderUI = withPetitionBindings((props) => {
     <div className={style.msender}>
       <MsenderForm {...props} />
       <MessagePreview {...props} />
+      {msender.get('messenger').getMode() !== MESSENGER_MODE_NONE ? <ButtonContainer msender={msender} mobileOnly={true} /> : null}
     </div>
   )
 })

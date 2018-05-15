@@ -1,4 +1,15 @@
 .button_container {
   display: flex;
   justify-content: center;
+  margin: 15px 0;
+}
+
+.button_container_mobile {
+  composes: button_container;
+}
+
+@media screen and (min-width: 768px) {
+  .button_container_mobile {
+    display: none;
+  }
 }
