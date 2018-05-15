@@ -62,6 +62,9 @@ const MsenderForm = (props) => {
           ) : null
         }
       </Step>
+      <div className={style.message_hint_mobile}>
+        Ci-dessous le message à envoyer. Vous pourrez le modifier dans votre messagerie.
+      </div>
     </div>
   )
 }
