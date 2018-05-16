@@ -19,6 +19,7 @@ export default class Msender extends Record({
   message_to_current: null,
   select_department: false,
   select_to: false,
+  step_two_title: null,
   filter_to_department: false,
   messenger: (is_mobile_or_tablet ? new MessengerMailto() : new MessengerNone()),
   is_mobile_or_tablet: is_mobile_or_tablet,
@@ -111,6 +112,7 @@ export const msenderFromProps = (props) => {
     message_to_current: message_to_current,
     select_department: props.select_department,
     select_to: props.select_to,
+    step_two_title: props.step_two_title,
     filter_to_department: props.filter_to_department,
   })
 }
