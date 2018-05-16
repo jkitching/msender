@@ -1,6 +1,6 @@
 import Immutable, { Record } from 'immutable'
 
-import { MessengerNone, MessengerMailto } from './messenger'
+import { MessengerGmail, MessengerMailto } from './messenger'
 import { makeRecipientList } from './recipient'
 
 import isMobileOrTablet from '../utils/isMobileOrTablet'
@@ -21,7 +21,7 @@ export default class Msender extends Record({
   select_to: false,
   step_two_title: null,
   filter_to_department: false,
-  messenger: (is_mobile_or_tablet ? new MessengerMailto() : new MessengerNone()),
+  messenger: (is_mobile_or_tablet ? new MessengerMailto() : new MessengerGmail()),
   is_mobile_or_tablet: is_mobile_or_tablet,
 }) {
   getName() {
