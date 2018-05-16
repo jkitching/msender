@@ -37,6 +37,10 @@ $button-copy-gray: #DADADA;
   margin: 3px 0 3px 5px;
 }
 
-.icon_group {
+.icon_copy_group {
   fill: $button-copy-black;
+}
+
+.icon_copied_group {
+  stroke: $button-copy-black;
 }
