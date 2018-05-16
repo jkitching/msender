@@ -16,6 +16,7 @@ export default class Recipient extends Record({
   email: null,
   gender: RECIPIENT_GENDER_NEUTRAL,
   format: RECIPIENT_FORMAT_TITLE_NAME,
+  department_code: null,
 }) {
   getTitle() {
     switch (this.get('gender')) {
@@ -96,6 +97,7 @@ export const makeRecipient = (source) => {
     email: normalizeInput(source.email),
     gender: normalizeGender(source.gender),
     format: normalizeFormat(source.format),
+    department_code: normalizeInput(source.department),
   })
 }
 

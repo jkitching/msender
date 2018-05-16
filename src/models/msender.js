@@ -19,6 +19,7 @@ export default class Msender extends Record({
   message_to_current: null,
   select_department: false,
   select_to: false,
+  filter_to_department: false,
   messenger: (is_mobile_or_tablet ? new MessengerMailto() : new MessengerNone()),
   is_mobile_or_tablet: is_mobile_or_tablet,
 }) {
@@ -51,6 +52,15 @@ export default class Msender extends Record({
   getToRecipients() {
     if (this.get('select_to') && this.get('message_to_current')) {
       return Immutable.List([this.get('message_to_current')])
+    }
+    else if (this.get('filter_to_department')) {
+      const code = this.getDepartmentCode()
+      if (!code) {
+        return Immutable.List()
+      }
+      return this.get('message_to')
+                 .filter(recipient => recipient.get('department_code') === code)
+                 .sortBy(recipient => recipient.get('last_name'))
     }
     return this.get('message_to')
   }
@@ -101,5 +111,6 @@ export const msenderFromProps = (props) => {
     message_to_current: message_to_current,
     select_department: props.select_department,
     select_to: props.select_to,
+    filter_to_department: props.filter_to_department,
   })
 }
