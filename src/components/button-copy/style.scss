@@ -1,29 +1,42 @@
 @import "../constants.scss";
 
 $button-copy-black: #757575;
+$button-copy-gray: #DADADA;
 
 .button {
-  display: inline-block;
-  border: 1px solid $button-copy-black;
+  display: flex;
+  border: 1px solid $button-copy-gray;
+  border-radius: 3px;
   background: none;
-  font-family: $font-montserrat;
-  font-weight: 900;
-  font-size: 12px;
-  text-transform: uppercase;
-  line-height: 15px;
+  font-family: $font-system;
+  font-weight: 500;
+  font-size: 15px;
   color: $button-copy-black;
   -webkit-font-smoothing: antialiased;
-  padding: 1px 6px 1px 6px;
   outline: none;
-  border-radius: 2px;
   user-select: none;
+  padding: 0 5px;
 
   &, &:link, &:active, &:visited, &:hover {
     text-decoration: none;
   }
 
   &:active {
-    background: $button-copy-black;
-    color: #fff;
+    background: $button-copy-gray;
   }
+}
+
+.text {
+  display: block;
+  line-height: 18px;
+  margin: 2px 0 4px 1px;
+}
+
+.icon {
+  display: block;
+  margin: 3px 0 3px 5px;
+}
+
+.icon_group {
+  fill: $button-copy-black;
 }
