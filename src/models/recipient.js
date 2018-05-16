@@ -57,9 +57,11 @@ export default class Recipient extends Record({
   }
 }
 
-const normalizeInput = (str) => {
-  if ('string' === typeof str) {
-    return str.trim()
+const normalizeInput = (...args) => {
+  for (let str of args) {
+    if ('string' === typeof str) {
+      return str.trim()
+    }
   }
   return null
 }
@@ -91,8 +93,8 @@ const normalizeFormat = (format) => {
 
 export const makeRecipient = (source) => {
   return new Recipient({
-    first_name: normalizeInput(source.firstname),
-    last_name: normalizeInput(source.lastname),
+    first_name: normalizeInput(source.first_name, source.firstname),
+    last_name: normalizeInput(source.last_name, source.lastname),
     organization: normalizeInput(source.organization),
     email: normalizeInput(source.email),
     gender: normalizeGender(source.gender),
