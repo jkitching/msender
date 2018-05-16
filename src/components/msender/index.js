@@ -52,6 +52,7 @@ const MsenderForm = (props) => {
                     value={msender.get('last_name')}
                     onInput={(e) => setIn(['last_name'], e.target.value)} />
         <InputLabel labelText="Email"
+                    inputType="email"
                     value={msender.get('email')}
                     onInput={(e) => setIn(['email'], e.target.value)}
                     onChange={onEmailChange} />

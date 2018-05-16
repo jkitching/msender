@@ -40,7 +40,7 @@ class CopyButton extends Component {
     return (
       <CopyToClipboard text={value} onCopy={this.onCopy}>
         <button className={style.button}>
-          <span className={style.text}>{copied ? 'Copié' : 'Copier'}</span>
+          <span className={style.text}>{copied ? 'C\'est copié' : 'Copier'}</span>
           {copied ? <CopiedIcon /> : <CopyIcon />}
         </button>
       </CopyToClipboard>
