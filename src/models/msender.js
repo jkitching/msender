@@ -4,6 +4,7 @@ import { MessengerGmail, MessengerMailto } from './messenger'
 import { makeRecipientList } from './recipient'
 
 import isMobileOrTablet from '../utils/isMobileOrTablet'
+import normalizeName from '../utils/normalizeName'
 const is_mobile_or_tablet = isMobileOrTablet()
 
 export default class Msender extends Record({
@@ -34,10 +35,10 @@ export default class Msender extends Record({
     return `${firstName} ${lastName}`
   }
   getFirstName() {
-    return this.get('first_name') || ''
+    return normalizeName(this.get('first_name') || '')
   }
   getLastName() {
-    return this.get('last_name') || ''
+    return normalizeName(this.get('last_name') || '')
   }
   getDepartmentName() {
     const department = this.get('department')
