@@ -116,7 +116,7 @@ export const msenderFromProps = (props) => {
     select_to: props.select_to,
     step_two_title: props.step_two_title,
     filter_to_department: props.filter_to_department,
-    enable_mailchimp: !!props.enable_mailchimp,
-    send_mailchimp: !!props.send_mailchimp,
+    enable_mailchimp: (!!props.enable_mailchimp),
+    send_mailchimp: (!!props.send_mailchimp),
   })
 }
