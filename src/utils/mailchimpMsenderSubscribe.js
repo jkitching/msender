@@ -19,7 +19,8 @@ const mailchimpMsenderSubscribe = (msender) => {
   const firstName = msender.getFirstName()
   const lastName = msender.getLastName()
   const postalCode = (getBestPostalCode(msender) || '')
-  mailchimpSubscribe(email, firstName, lastName, postalCode).catch(error => {
+  const source = msender.get('mailchimp_source')
+  mailchimpSubscribe(email, firstName, lastName, postalCode, source).catch(error => {
     // NoOp
   })
 }

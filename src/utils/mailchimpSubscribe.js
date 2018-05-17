@@ -1,6 +1,6 @@
 import urlEncode from './urlEncode'
 
-const mailchimpSubscribe = (email, firstName = '', lastName = '', postalCode = '') => {
+const mailchimpSubscribe = (email, firstName = '', lastName = '', postalCode = '', source = 'msender') => {
   return new Promise((resolve, reject) => {
     if (!jQuery) {
       reject(new Error('Needs jQuery for MailChimp subscribe'))
@@ -19,6 +19,7 @@ const mailchimpSubscribe = (email, firstName = '', lastName = '', postalCode = '
         'PRENOM': firstName,
         'NOM': lastName,
         'CP': postalCode,
+        'SOURCE': source,
       },
       contentType: "application/json",
       success: (response) => {
