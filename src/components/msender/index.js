@@ -18,8 +18,15 @@ import isEmailValid from '../../utils/isEmailValid'
 const departments = getDepartments()
 const messengers = getMessengers()
 
+// @TODO Micha this component is way too complex
+// needs to be broken down to multiple smaller components
+// and separate some of the logic code
 const MsenderForm = (props) => {
   const { msender, setIn } = props
+  const selectDepartment = msender.get('select_department')
+  const selectTo = msender.get('select_to')
+
+  // email change function
   const onEmailChange = (e) => {
     // ignore on mobile
     if (msender.get('is_mobile_or_tablet')) {
@@ -33,8 +40,8 @@ const MsenderForm = (props) => {
       }
     })
   }
-  const selectDepartment = msender.get('select_department')
-  const selectTo = msender.get('select_to')
+
+  // step numbers
   const infoStep = 1
   let detailsStep = null
   let sendStep = 2
@@ -42,6 +49,15 @@ const MsenderForm = (props) => {
     detailsStep = 2
     sendStep = 3
   }
+
+  // step activation
+  let stepTwoEnabled = (msender.get('first_name') && msender.get('first_name').length > 0 &&
+                        msender.get('last_name') && msender.get('last_name').length > 0 &&
+                        msender.get('email') && isEmailValid(msender.get('email')))
+  let stepThreeEnabled = (stepTwoEnabled &&
+                          (detailsStep === null || !!msender.getIn(['department', 'code'])))
+  let stepButtonEnabled = (stepThreeEnabled && !!msender.getIn(['messenger', 'identifier']))
+
   return (
     <div className={style.msender_form}>
       <Step title="Mes informations" number={infoStep}>
@@ -63,12 +79,14 @@ const MsenderForm = (props) => {
             <SelectLabel labelText="Département"
                          value={msender.getIn(['department', 'code'])}
                          options={departments.map(d => d.getSelectOption()).toArray()}
+                         enabled={stepTwoEnabled}
                          onChange={(e) => { setIn(['department'], departments.find(d => e.target.value === d.get('code'))) }} />
             {selectTo ? 
               (
                 <SelectLabel labelText="Enseigne"
                              value={msender.getIn(['message_to_current', 'email'])}
                              options={msender.get('message_to').map(d => d.getSelectOption()).toArray()}
+                             enabled={stepTwoEnabled}
                              onChange={(e) => { setIn(['message_to_current'], msender.get('message_to').find(d => e.target.value === d.get('email'))) }} />
               ) : null
             }
@@ -83,6 +101,7 @@ const MsenderForm = (props) => {
                           value: m.get('identifier'),
                           text: m.get('name'),
                          })).toArray()}
+                         enabled={stepThreeEnabled}
                          onChange={(e) => { setIn(['messenger'], messengers.find(d => e.target.value === d.get('identifier'))) }} />
           ) : null
         }
@@ -93,7 +112,7 @@ const MsenderForm = (props) => {
             <CopyAdvice />
           ) : null
         }
-        {msender.get('messenger').getMode() !== MESSENGER_MODE_NONE ? <ButtonContainer msender={msender} /> : null}
+        {msender.get('messenger').getMode() !== MESSENGER_MODE_NONE ? <ButtonContainer msender={msender} enabled={stepButtonEnabled} /> : null}
       </Step>
       <div className={style.message_hint_mobile}>
         Ci-dessous le message à envoyer. Vous pourrez le modifier dans votre messagerie.

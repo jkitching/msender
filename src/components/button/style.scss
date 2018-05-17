@@ -20,3 +20,8 @@
     color: #fff;
   }
 }
+
+.button_disabled {
+  composes: button;
+  background: #555;
+}

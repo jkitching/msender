@@ -17,3 +17,8 @@
   margin: 0 0 7px 0;
   user-select: none;
 }
+
+.label_text_disabled {
+  composes: label_text;
+  color: rgba(0, 0, 0, 0.5);
+}

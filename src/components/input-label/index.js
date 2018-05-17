@@ -5,7 +5,7 @@ import LabelContainer from '../label-container'
 
 const InputLabel = props => {
   return (
-    <LabelContainer labelText={props.labelText}>
+    <LabelContainer labelText={props.labelText} enabled={props.enabled}>
       <Input {...props} />
     </LabelContainer>
   )
