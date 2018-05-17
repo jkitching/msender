@@ -4,6 +4,7 @@ import style from './style.scss'
 import Step from '../step'
 import InputLabel from '../input-label'
 import SelectLabel from '../select-label'
+import Checkbox from '../checkbox'
 import MessagePreview from '../message-preview'
 import CopyAdvice from '../copy-advice'
 import ButtonContainer from '../button-container'
@@ -45,7 +46,7 @@ const MsenderForm = (props) => {
 
   // on send trigger MailChimp
   const onSend = (e) => {
-    if (mailchimpEnabled) {
+    if (mailchimpEnabled && msender.get('send_mailchimp')) {
       mailchimpMsenderSubscribe(msender)
     }
   }
@@ -81,6 +82,13 @@ const MsenderForm = (props) => {
                     value={msender.get('email')}
                     onInput={(e) => setIn(['email'], e.target.value)}
                     onChange={onEmailChange} />
+        {mailchimpEnabled ? 
+          (
+            <Checkbox labelText="Tenez-moi au courant des prochaines campagnes et actions de L214"
+                      value={msender.get('send_mailchimp')}
+                      onChange={(val) => setIn(['send_mailchimp'], val)} />
+          ) : null
+        }
       </Step>
       {detailsStep !== null ?
         (

@@ -24,6 +24,7 @@ export default class Msender extends Record({
   messenger: (is_mobile_or_tablet ? new MessengerMailto() : new MessengerGmail()),
   is_mobile_or_tablet: is_mobile_or_tablet,
   enable_mailchimp: false,
+  send_mailchimp: false,
 }) {
   getName() {
     const firstName = this.getFirstName()
@@ -115,6 +116,7 @@ export const msenderFromProps = (props) => {
     select_to: props.select_to,
     step_two_title: props.step_two_title,
     filter_to_department: props.filter_to_department,
-    enable_mailchimp: props.enable_mailchimp,
+    enable_mailchimp: !!props.enable_mailchimp,
+    send_mailchimp: !!props.send_mailchimp,
   })
 }
