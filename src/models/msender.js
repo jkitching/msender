@@ -69,17 +69,17 @@ export default class Msender extends Record({
     }
     return this.get('message_to')
   }
-  getToString() {
-    return this.getToRecipients().map(recipient => recipient.getToString()).join(', ')
+  getToString(separator = ', ') {
+    return this.getToRecipients().map(recipient => recipient.getToString()).join(separator)
   }
-  getToEmailsString() {
-    return this.getToRecipients().map(recipient => recipient.getToEmail()).join(', ')
+  getToEmailsString(separator = ', ') {
+    return this.getToRecipients().map(recipient => recipient.getToEmail()).join(separator)
   }
-  getCcString() {
-    return this.get('message_cc').map(recipient => recipient.getToEmail()).join(', ')
+  getCcString(separator = ', ') {
+    return this.get('message_cc').map(recipient => recipient.getToEmail()).join(separator)
   }
-  getBccString() {
-    return this.get('message_bcc').map(recipient => recipient.getToEmail()).join(', ')
+  getBccString(separator = ', ') {
+    return this.get('message_bcc').map(recipient => recipient.getToEmail()).join(separator)
   }
   getSubject() {
     return this.get('message_subject')

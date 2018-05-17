@@ -19,7 +19,7 @@ class Messenger extends Record({ // abstract
 }
 
 //
-// Link Mode
+// Mailto Mode
 //
 
 export class MessengerMailto extends Record({
@@ -29,10 +29,14 @@ export class MessengerMailto extends Record({
   getMode() {
     return MESSENGER_MODE_LINK
   }
+  getSeparator() {
+    return ','
+  }
   getMailtoLink(msender) {
-    return `mailto:${encodeURIComponent(msender.getToEmailsString())}?` + urlEncode({
-      cc: msender.getCcString(),
-      bcc: msender.getBccString(),
+    const separator = this.getSeparator()
+    return `mailto:${encodeURIComponent(msender.getToEmailsString(separator))}?` + urlEncode({
+      cc: msender.getCcString(separator),
+      bcc: msender.getBccString(separator),
       subject: msender.getSubject(),
       body: msender.getMessage(),
     })
@@ -51,9 +55,21 @@ export class MessengerThunderbird extends MessengerMailto {
 export class MessengerMacOSMail extends MessengerMailto {
   constructor() {
     super({
-      identifier: 'macosmail',
-      name: 'macOS Mail',
+      identifier: 'applemail',
+      name: 'Apple Mail',
     })
+  }
+}
+
+export class MessengerOutlook extends MessengerMailto {
+  constructor() {
+    super({
+      identifier: 'outlook',
+      name: 'Outlook',
+    })
+  }
+  getSeparator() {
+    return ';'
   }
 }
 
@@ -65,6 +81,10 @@ export class MessengerWindowsLiveMail extends MessengerMailto {
     })
   }
 }
+
+//
+// Link Mode
+//
 
 export class MessengerGmail extends MessengerMailto {
   constructor() {
@@ -184,8 +204,9 @@ export const getMessengers = () => {
     new MessengerLive(),
     new MessengerYahoo(),
     new MessengerLaposte(),
-    new MessengerThunderbird(),
     new MessengerMacOSMail(),
+    new MessengerOutlook(),
+    new MessengerThunderbird(),
     new MessengerWindowsLiveMail(),
     new MessengerNone(),
   ])
