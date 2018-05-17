@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-const getPetitionUserData = () => {
+export const getPetitionUserData = () => {
   if (typeof(Storage) === 'undefined') {
     return null
   }

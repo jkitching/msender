@@ -15,7 +15,8 @@ const ButtonContainer = (props) => {
     <div className={props.mobileOnly ? style.button_container_mobile : style.button_container}>
       <Button isLink={true}
               href={msender.get('messenger').getMailtoLink(msender)}
-              enabled={props.enabled}>
+              enabled={props.enabled}
+              onClick={props.onClick}>
         {text}
       </Button>
     </div>

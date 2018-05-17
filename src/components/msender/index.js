@@ -14,6 +14,7 @@ import { getMessengers, MESSENGER_MODE_NONE, MESSENGER_MODE_COPY } from '../../m
 import detectEmailMessenger from '../../utils/detectEmailMessenger'
 import withPetitionBindings from '../../utils/withPetitionBindings'
 import isEmailValid from '../../utils/isEmailValid'
+import mailchimpMsenderSubscribe from '../../utils/mailchimpMsenderSubscribe'
 
 const departments = getDepartments()
 const messengers = getMessengers()
@@ -39,6 +40,11 @@ const MsenderForm = (props) => {
         setIn(['messenger'], messenger)
       }
     })
+  }
+
+  // on send trigger MailChimp
+  const onSend = (e) => {
+    mailchimpMsenderSubscribe(msender)
   }
 
   // step numbers
@@ -112,7 +118,7 @@ const MsenderForm = (props) => {
             <CopyAdvice />
           ) : null
         }
-        {msender.get('messenger').getMode() !== MESSENGER_MODE_NONE ? <ButtonContainer msender={msender} enabled={stepButtonEnabled} /> : null}
+        {msender.get('messenger').getMode() !== MESSENGER_MODE_NONE ? <ButtonContainer msender={msender} enabled={stepButtonEnabled} onClick={onSend} /> : null}
       </Step>
       <div className={style.message_hint_mobile}>
         Ci-dessous le message à envoyer. Vous pourrez le modifier dans votre messagerie.
