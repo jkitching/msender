@@ -46,7 +46,8 @@ const MsenderForm = (props) => {
 
   // on send trigger MailChimp
   const onSend = (e) => {
-    if (mailchimpEnabled && msender.get('send_mailchimp')) {
+    if (mailchimpEnabled && msender.get('send_mailchimp') && !msender.get('mailchimp_is_sent')) {
+      setIn(['mailchimp_is_sent'], true)
       mailchimpMsenderSubscribe(msender)
     }
   }

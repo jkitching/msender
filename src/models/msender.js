@@ -25,6 +25,7 @@ export default class Msender extends Record({
   is_mobile_or_tablet: is_mobile_or_tablet,
   enable_mailchimp: false,
   send_mailchimp: false,
+  mailchimp_is_sent: false,
 }) {
   getName() {
     const firstName = this.getFirstName()
