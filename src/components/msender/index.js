@@ -26,6 +26,7 @@ const MsenderForm = (props) => {
   const { msender, setIn } = props
   const selectDepartment = msender.get('select_department')
   const selectTo = msender.get('select_to')
+  const mailchimpEnabled = msender.get('enable_mailchimp')
 
   // email change function
   const onEmailChange = (e) => {
@@ -44,7 +45,9 @@ const MsenderForm = (props) => {
 
   // on send trigger MailChimp
   const onSend = (e) => {
-    mailchimpMsenderSubscribe(msender)
+    if (mailchimpEnabled) {
+      mailchimpMsenderSubscribe(msender)
+    }
   }
 
   // step numbers
