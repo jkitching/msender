@@ -1,10 +1,6 @@
 import Immutable, { Record } from 'immutable'
 
-const urlEncode = (d) => {
-  return Object.keys(d).map(k => {
-    return `${encodeURIComponent(k)}=${encodeURIComponent(d[k])}`
-  }).join('&')
-}
+import urlEncode from '../utils/urlEncode'
 
 export const MESSENGER_MODE_LINK = 'link'
 export const MESSENGER_MODE_COPY = 'copy'
