@@ -7,8 +7,9 @@ const style = {
 }
 
 export const StoryDecorator = (props) => {
+  const s = Object.assign({}, style, props.style)
   return (
-    <div style={{ ...style, ...props.style }}>
+    <div style={s}>
       {props.children}
     </div>
   )
