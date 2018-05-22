@@ -4,6 +4,9 @@ import { action } from '@storybook/addon-actions'
 
 import { decoratorFn } from './decorators'
 import MsenderContainer from '../components/msender'
+import { FILTER_RECIPIENT_ALL,
+         FILTER_RECIPIENT_MANUAL,
+         FILTER_RECIPIENT_DEPARTMENT } from '../models/msender'
 import { DEPARTMENT_MODE_DEFAULT,
          DEPARTMENT_MODE_METROPOLITAN,
          DEPARTMENT_MODE_LEGISLATIVE } from '../models/department'
@@ -42,10 +45,9 @@ storiesOf('Msender/Deputies', module)
                       subject="EGalim : inscription de l’interdiction des élevages de poules en cage"
                       message={defaultMessageDeputies}
                       select_department={DEPARTMENT_MODE_LEGISLATIVE}
-                      select_to={false}
-                      select_to_random={false}
+                      filter_recipient={FILTER_RECIPIENT_DEPARTMENT}
+                      filter_recipient_randomize={false}
                       step_two_title="Mes député·e·s"
-                      filter_to_department={true}
                       enable_mailchimp={true}
                       mailchimp_source="msender-2018-debug" />
   ))
@@ -55,10 +57,9 @@ storiesOf('Msender/Deputies', module)
                       subject="EGalim : inscription de l’interdiction des élevages de poules en cage"
                       message={defaultMessageDeputies}
                       select_department={DEPARTMENT_MODE_LEGISLATIVE}
-                      select_to={false}
-                      select_to_random={false}
+                      filter_recipient={FILTER_RECIPIENT_DEPARTMENT}
+                      filter_recipient_randomize={false}
                       step_two_title="Mes député·e·s"
-                      filter_to_department={true}
                       enable_mailchimp={true}
                       mailchimp_source="msender-2018-debug"
                       first_name="John"
@@ -141,8 +142,20 @@ storiesOf('Msender/JeLeVeux.l214.com', module)
                       subject="Produits la Boulangère B’vegan"
                       message={defaultMessageJeLeVeux}
                       select_department={DEPARTMENT_MODE_METROPOLITAN}
-                      select_to={true}
-                      select_to_random={true}
+                      filter_recipient={FILTER_RECIPIENT_MANUAL}
+                      filter_recipient_randomize={true}
+                      step_two_title="Mes magasins" />
+  ))
+  .add('prefilled', () => (
+    <MsenderContainer to={toJeLeVeux}
+                      bcc={defaultBcc}
+                      subject="Produits la Boulangère B’vegan"
+                      message={defaultMessageJeLeVeux}
+                      select_department={DEPARTMENT_MODE_METROPOLITAN}
+                      filter_recipient={FILTER_RECIPIENT_MANUAL}
+                      filter_recipient_randomize={true}
                       step_two_title="Mes magasins"
-                      filter_to_department={false} />
+                      first_name="John"
+                      last_name="Appleseed"
+                      email="john@apple.com" />
   ))

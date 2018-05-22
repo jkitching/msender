@@ -12,6 +12,10 @@ import normalizeName from '../utils/normalizeName'
 import isEmailValid from '../utils/isEmailValid'
 const is_mobile_or_tablet = isMobileOrTablet()
 
+export const FILTER_RECIPIENT_ALL = 'all'
+export const FILTER_RECIPIENT_MANUAL = 'manual'
+export const FILTER_RECIPIENT_DEPARTMENT = 'department'
+
 export default class Msender extends Record({
   first_name: null,
   last_name: null,
@@ -23,10 +27,9 @@ export default class Msender extends Record({
   message_subject: null,
   message_text: null,
   message_to_current: null,
+  filter_recipient: FILTER_RECIPIENT_ALL,
   select_department: false,
-  select_to: false,
   step_two_title: null,
-  filter_to_department: null,
   messenger: (is_mobile_or_tablet ? new MessengerMailto() : new MessengerGmail()),
   is_mobile_or_tablet: is_mobile_or_tablet,
   enable_mailchimp: false,
@@ -82,10 +85,13 @@ export default class Msender extends Record({
   }
 
   getToRecipients() {
-    if (this.get('select_to') && this.get('message_to_current')) {
+    if (this.get('filter_recipient') === FILTER_RECIPIENT_MANUAL) {
+      if (!this.get('message_to_current')) {
+        return Immutable.List()
+      }
       return Immutable.List([this.get('message_to_current')])
     }
-    else if (this.get('filter_to_department')) {
+    else if (this.get('filter_recipient') === FILTER_RECIPIENT_DEPARTMENT) {
       const code = this.getDepartmentCode()
       if (!code) {
         return Immutable.List()
@@ -121,6 +127,16 @@ export default class Msender extends Record({
     return message
   }
 
+  // Conditonal UI
+
+  enableDepartmentSelect() {
+    return (!!this.getSelectDepartmentMode() ||
+            this.get('filter_recipient') === FILTER_RECIPIENT_DEPARTMENT)
+  }
+  enableRecipientSelect() {
+    return this.get('filter_recipient') === FILTER_RECIPIENT_MANUAL
+  }
+
   // Validation
 
   isInfosValid() {
@@ -132,9 +148,9 @@ export default class Msender extends Record({
     return (!this.getSelectDepartmentMode() ||
             !!this.getIn(['department', 'code']))
   }
-  isSelectToValid() {
-    return (!this.get('select_to') ||
-            !!this.get('message_to'))
+  isFilterRecipientValid() {
+    return (this.get('filter_recipient') !== FILTER_RECIPIENT_MANUAL ||
+            !!this.get('message_to_current'))
   }
 }
 
@@ -143,8 +159,8 @@ export const msenderFromProps = (props) => {
   const cc = makeRecipientList(props.cc)
   const bcc = makeRecipientList(props.bcc)
   let message_to_current = null
-  if (props.select_to) {
-    if (props.select_to_random) {
+  if (props.filter_recipient === FILTER_RECIPIENT_MANUAL) {
+    if (props.filter_recipient_randomize) {
       message_to_current = to.get(Math.round(Math.random() * (to.count() - 1)))
     } else {
       message_to_current = to.first()
@@ -160,10 +176,9 @@ export const msenderFromProps = (props) => {
     message_subject: props.subject,
     message_text: props.message,
     message_to_current: message_to_current,
+    filter_recipient: (props.filter_recipient ? props.filter_recipient : FILTER_RECIPIENT_NONE),
     select_department: props.select_department,
-    select_to: props.select_to,
     step_two_title: props.step_two_title,
-    filter_to_department: props.filter_to_department,
     enable_mailchimp: (!!props.enable_mailchimp),
     send_mailchimp: (!!props.send_mailchimp),
     mailchimp_source: (props.mailchimp_source ? props.mailchimp_source : 'msender'),

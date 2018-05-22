@@ -96,7 +96,7 @@ class MsenderFormStepDetails extends Component {
   constructor() {
     super()
     this.onChangeDepartment = this.onChangeDepartment.bind(this)
-    this.onChangeSelectTo = this.onChangeSelectTo.bind(this)
+    this.onChangeFilterRecipient = this.onChangeFilterRecipient.bind(this)
   }
 
   getStepName() {
@@ -114,7 +114,7 @@ class MsenderFormStepDetails extends Component {
                                  .find(d => e.target.value === d.get('code')))
   }
 
-  onChangeSelectTo(e) {
+  onChangeFilterRecipient(e) {
     const { msender, setIn } = this.props
     setIn(['message_to_current'], msender.get('message_to')
                                          .find(d => e.target.value === d.get('email')))
@@ -122,7 +122,7 @@ class MsenderFormStepDetails extends Component {
 
   renderSelectDepartment() {
     const { msender, enabled } = this.props
-    if (!msender.getSelectDepartmentMode()) {
+    if (!msender.enableDepartmentSelect()) {
       return null
     }
     return (
@@ -134,9 +134,9 @@ class MsenderFormStepDetails extends Component {
     )
   }
 
-  renderSelectTo() {
+  renderFilterRecipient() {
     const { msender, enabled } = this.props
-    if (!msender.get('select_to')) {
+    if (!msender.enableRecipientSelect()) {
       return null
     }
     return (
@@ -144,7 +144,7 @@ class MsenderFormStepDetails extends Component {
                    value={msender.getIn(['message_to_current', 'email'])}
                    options={msender.get('message_to').map(d => d.getSelectOption()).toArray()}
                    enabled={enabled}
-                   onChange={this.onChangeSelectTo} />
+                   onChange={this.onChangeFilterRecipient} />
     )
   }
 
@@ -153,7 +153,7 @@ class MsenderFormStepDetails extends Component {
     return (
       <Step title={this.getStepName()} number={number}>
         {this.renderSelectDepartment()}
-        {this.renderSelectTo()}
+        {this.renderFilterRecipient()}
       </Step>
     )
   }
@@ -241,7 +241,7 @@ export default class MsenderForm extends Component {
     const infoStep = 1
     let detailsStep = null
     let sendStep = 2
-    if (!!msender.getSelectDepartmentMode() || !!msender.get('select_to')) {
+    if (msender.enableDepartmentSelect() || msender.enableRecipientSelect()) {
       detailsStep = 2
       sendStep = 3
     }
@@ -250,7 +250,7 @@ export default class MsenderForm extends Component {
     let stepTwoEnabled = msender.isInfosValid()
     let stepThreeEnabled = (msender.isInfosValid() &&
                             msender.isDepartmentValid() &&
-                            msender.isSelectToValid())
+                            msender.isFilterRecipientValid())
 
     return (
       <div className={style.msender_form}>
