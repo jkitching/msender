@@ -19,6 +19,11 @@ test('getDepartments default', () => {
                    dep.get('type') === DEPARTMENT_TYPE_DROM)
   }, true)).toBeTruthy();
 
+  // test some departments
+  expect(departments.filter(dep => dep.get('code') === '75').first().get('name')).toEqual('Paris');
+  expect(departments.filter(dep => dep.get('code') === '75').first().get('code')).toEqual('75');
+  expect(departments.filter(dep => dep.get('code') === '75').first().getIn(['region', 'name'])).toEqual('Île-de-France');
+
   expect(depCodes.contains('01')).toBeTruthy(); // Ain
   expect(depCodes.contains('75')).toBeTruthy(); // Paris
   expect(depCodes.contains('2A')).toBeTruthy(); // Corsica
@@ -74,6 +79,15 @@ test('getDepartments legislative', () => {
                               .toSet()
   // 101 departments + 5 (COM) + 1 (New Caledonia) + 1 (French living abroad)
   expect(depCodes.count()).toBe(108);
+
+  // test some departments
+  expect(departments.filter(dep => dep.get('code') === '75').first().get('name')).toEqual('Paris');
+  expect(departments.filter(dep => dep.get('code') === '75').first().get('code')).toEqual('75');
+  expect(departments.filter(dep => dep.get('code') === '75').first().getIn(['region', 'name'])).toEqual('Île-de-France');
+  expect(departments.filter(dep => dep.get('code') === '975').first().get('name')).toEqual('Saint-Pierre-et-Miquelon');
+  expect(departments.filter(dep => dep.get('code') === '975').first().get('code')).toEqual('975');
+  expect(departments.filter(dep => dep.get('code') === '975').first().get('region')).toBeNull();
+
   expect(depCodes.contains('01')).toBeTruthy(); // Ain
   expect(depCodes.contains('75')).toBeTruthy(); // Paris
   expect(depCodes.contains('2A')).toBeTruthy(); // Corsica

@@ -4,6 +4,7 @@ import { action } from '@storybook/addon-actions'
 
 import { decoratorFn } from './decorators'
 import MsenderContainer from '../components/msender'
+import { DEPARTMENT_MODE_LEGISLATIVE } from '../models/department'
 
 import deputiesFrance from './stubs/deputies-france.json'
 
@@ -42,7 +43,10 @@ storiesOf('Msender/Deputies', module)
                       select_to={false}
                       select_to_random={false}
                       step_two_title="Mes député·e·s"
-                      filter_to_department={true}
+                      filter_to_department={DEPARTMENT_MODE_LEGISLATIVE}
                       enable_mailchimp={true}
-                      mailchimp_source="msender-2018-debug" />
+                      mailchimp_source="msender-2018-debug"
+                      first_name="John"
+                      last_name="Appleseed"
+                      email="john@apple.com" />
   ))

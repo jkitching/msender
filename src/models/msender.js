@@ -2,6 +2,10 @@ import Immutable, { Record } from 'immutable'
 
 import { MessengerGmail, MessengerMailto } from './messenger'
 import { makeRecipientList } from './recipient'
+import { getDepartments,
+         DEPARTMENT_MODE_DEFAULT,
+         DEPARTMENT_MODE_METROPOLITAN,
+         DEPARTMENT_MODE_LEGISLATIVE } from './department'
 
 import isMobileOrTablet from '../utils/isMobileOrTablet'
 import normalizeName from '../utils/normalizeName'
@@ -21,7 +25,7 @@ export default class Msender extends Record({
   select_department: false,
   select_to: false,
   step_two_title: null,
-  filter_to_department: false,
+  filter_to_department: null,
   messenger: (is_mobile_or_tablet ? new MessengerMailto() : new MessengerGmail()),
   is_mobile_or_tablet: is_mobile_or_tablet,
   enable_mailchimp: false,
@@ -54,12 +58,33 @@ export default class Msender extends Record({
     }
     return ''
   }
-  
+  getFilterToDepartmentMode() {
+    const mode = this.get('filter_to_department')
+    if (!mode) {
+      return null
+    }
+    switch (mode) {
+      case DEPARTMENT_MODE_DEFAULT:
+      case DEPARTMENT_MODE_METROPOLITAN:
+      case DEPARTMENT_MODE_LEGISLATIVE:
+        return mode
+      default:
+        return DEPARTMENT_MODE_DEFAULT
+    }
+  }
+  getDepartments() {
+    const mode = this.getFilterToDepartmentMode()
+    if (!mode) {
+      return Immutable.List()
+    }
+    return getDepartments(mode)
+  }
+
   getToRecipients() {
     if (this.get('select_to') && this.get('message_to_current')) {
       return Immutable.List([this.get('message_to_current')])
     }
-    else if (this.get('filter_to_department')) {
+    else if (this.getFilterToDepartmentMode()) {
       const code = this.getDepartmentCode()
       if (!code) {
         return Immutable.List()
@@ -109,6 +134,9 @@ export const msenderFromProps = (props) => {
     }
   }
   return new Msender({
+    first_name: props.first_name,
+    last_name: props.last_name,
+    email: props.email,
     message_to: to,
     message_cc: cc,
     message_bcc: bcc,

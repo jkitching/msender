@@ -10,14 +10,12 @@ import CopyAdvice from '../copy-advice'
 import ButtonContainer from '../button-container'
 
 import { msenderFromProps } from '../../models/msender'
-import { getDepartments } from '../../models/department'
 import { getMessengers, MESSENGER_MODE_NONE, MESSENGER_MODE_COPY } from '../../models/messenger'
 import detectEmailMessenger from '../../utils/detectEmailMessenger'
 import withPetitionBindings from '../../utils/withPetitionBindings'
 import isEmailValid from '../../utils/isEmailValid'
 import mailchimpMsenderSubscribe from '../../utils/mailchimpMsenderSubscribe'
 
-const departments = getDepartments()
 const messengers = getMessengers()
 
 // @TODO Micha this component is way too complex
@@ -68,6 +66,9 @@ const MsenderForm = (props) => {
   let stepThreeEnabled = (stepTwoEnabled &&
                           (detailsStep === null || !!msender.getIn(['department', 'code'])))
   let stepButtonEnabled = (stepThreeEnabled && !!msender.getIn(['messenger', 'identifier']))
+
+  // departments
+  const departments = msender.getDepartments()
 
   return (
     <div className={style.msender_form}>
@@ -176,6 +177,7 @@ export default class MsenderContainer extends Component {
 
   didGetPetitionData(userData) {
     const { msender } = this.state
+    const departments = msender.getDepartments()
     if ((!msender.get('first_name') || msender.get('first_name').length === 0) &&
         (!msender.get('last_name') || msender.get('last_name').length === 0)) {
       this.setIn(['first_name'], userData.first_name)
