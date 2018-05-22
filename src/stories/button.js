@@ -6,7 +6,7 @@ import { decoratorFn } from './decorators'
 import Button from '../components/button'
 
 storiesOf('Controls/Button', module)
-  .addDecorator(decoratorFn)
+  .addDecorator(decoratorFn({ style: { maxWidth: '500px' }}))
   .add('enabled', () => (
     <Button onClick={action('clicked')}>Hello Button</Button>
   ))

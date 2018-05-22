@@ -2,22 +2,21 @@ import React from 'react'
 
 const style = {
   backgroundColor: '#EB9339',
-  padding: '40px',
-  maxWidth: '500px',
+  padding: '20px',
   borderRadius: '10px'
 }
 
 export const StoryDecorator = (props) => {
   return (
-    <div style={style}>
+    <div style={{ ...style, ...props.style }}>
       {props.children}
     </div>
   )
 }
 
-export const decoratorFn = (story) => {
+export const decoratorFn = (props) => (story) => {
   return (
-    <StoryDecorator>
+    <StoryDecorator {...props}>
       {story()}
     </StoryDecorator>
   )

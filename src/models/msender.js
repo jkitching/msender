@@ -83,10 +83,10 @@ export default class Msender extends Record({
     return this.get('message_bcc').map(recipient => recipient.getToEmail()).join(separator)
   }
   getSubject() {
-    return this.get('message_subject')
+    return this.get('message_subject') || ''
   }
   getMessage() {
-    let message = this.get('message_text')
+    let message = this.get('message_text') || ''
     message = message.replace('{{name}}', this.getName())
     message = message.replace('{{first_name}}', this.getFirstName())
     message = message.replace('{{last_name}}', this.getLastName())

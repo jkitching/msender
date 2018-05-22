@@ -6,7 +6,7 @@ import { decoratorFn } from './decorators'
 import InputLabel from '../components/input-label'
 
 storiesOf('Controls/Input Label', module)
-  .addDecorator(decoratorFn)
+  .addDecorator(decoratorFn({ style: { maxWidth: '500px' }}))
   .add('enabled', () => (
     <InputLabel labelText="Some label"
                 value="Some static value"
