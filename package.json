@@ -8,12 +8,14 @@
     "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
     "build": "preact build --no-prerender --clean --template src/index.ejs --service-worker false",
     "serve": "npm run build && preact serve",
-    "dev": "preact watch --template src/index.ejs"
+    "dev": "preact watch --template src/index.ejs",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "keywords": [],
-  "author": "Zouhir <zouhir@zouhir.org>",
+  "author": "L214 <micha.ma@l214.com>",
   "license": "MIT",
   "devDependencies": {
+    "@storybook/react": "^3.4.5",
     "eslint": "^4.5.0",
     "identity-obj-proxy": "^3.0.0",
     "if-env": "^1.0.0",

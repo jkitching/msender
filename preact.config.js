@@ -18,8 +18,6 @@ export default (config, env, helpers) => {
     })
   );
 
-  console.log(config.resolve.alias)
-
   if (env.production) {
     config.output.libraryTarget = "umd";
   }
