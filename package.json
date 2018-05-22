@@ -1,6 +1,6 @@
 {
   "name": "msender",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "keywords": [],
-  "author": "L214 <micha.ma@l214.com>",
+  "author": "L214 <web-tech@l214.com>",
   "license": "MIT",
   "devDependencies": {
     "@storybook/react": "^3.4.5",
