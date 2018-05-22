@@ -41,11 +41,11 @@ storiesOf('Msender/Deputies', module)
                       bcc={defaultBcc}
                       subject="EGalim : inscription de l’interdiction des élevages de poules en cage"
                       message={defaultMessageDeputies}
-                      select_department={true}
+                      select_department={DEPARTMENT_MODE_LEGISLATIVE}
                       select_to={false}
                       select_to_random={false}
                       step_two_title="Mes député·e·s"
-                      filter_to_department={DEPARTMENT_MODE_LEGISLATIVE}
+                      filter_to_department={true}
                       enable_mailchimp={true}
                       mailchimp_source="msender-2018-debug" />
   ))
@@ -54,11 +54,11 @@ storiesOf('Msender/Deputies', module)
                       bcc={defaultBcc}
                       subject="EGalim : inscription de l’interdiction des élevages de poules en cage"
                       message={defaultMessageDeputies}
-                      select_department={true}
+                      select_department={DEPARTMENT_MODE_LEGISLATIVE}
                       select_to={false}
                       select_to_random={false}
                       step_two_title="Mes député·e·s"
-                      filter_to_department={DEPARTMENT_MODE_LEGISLATIVE}
+                      filter_to_department={true}
                       enable_mailchimp={true}
                       mailchimp_source="msender-2018-debug"
                       first_name="John"
@@ -140,9 +140,9 @@ storiesOf('Msender/JeLeVeux.l214.com', module)
                       bcc={defaultBcc}
                       subject="Produits la Boulangère B’vegan"
                       message={defaultMessageJeLeVeux}
-                      select_department={true}
+                      select_department={DEPARTMENT_MODE_METROPOLITAN}
                       select_to={true}
                       select_to_random={true}
                       step_two_title="Mes magasins"
-                      filter_to_department={DEPARTMENT_MODE_METROPOLITAN} />
+                      filter_to_department={false} />
   ))

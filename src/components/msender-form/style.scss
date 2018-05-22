@@ -1,0 +1,22 @@
+@import "../constants.scss";
+
+.msender_form {
+  flex-grow: 0.8;
+  flex-basis: 0;
+}
+
+.message_hint_mobile {
+  font-family: $font-gotham;
+  font-size: 15px;
+  line-height: 19px;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
+  margin: 20px 0 12px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .message_hint_mobile {
+    display: none;
+  }
+}

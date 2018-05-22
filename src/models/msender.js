@@ -9,6 +9,7 @@ import { getDepartments,
 
 import isMobileOrTablet from '../utils/isMobileOrTablet'
 import normalizeName from '../utils/normalizeName'
+import isEmailValid from '../utils/isEmailValid'
 const is_mobile_or_tablet = isMobileOrTablet()
 
 export default class Msender extends Record({
@@ -58,8 +59,8 @@ export default class Msender extends Record({
     }
     return ''
   }
-  getFilterToDepartmentMode() {
-    const mode = this.get('filter_to_department')
+  getSelectDepartmentMode() {
+    const mode = this.get('select_department')
     if (!mode) {
       return null
     }
@@ -73,7 +74,7 @@ export default class Msender extends Record({
     }
   }
   getDepartments() {
-    const mode = this.getFilterToDepartmentMode()
+    const mode = this.getSelectDepartmentMode()
     if (!mode) {
       return Immutable.List()
     }
@@ -84,7 +85,7 @@ export default class Msender extends Record({
     if (this.get('select_to') && this.get('message_to_current')) {
       return Immutable.List([this.get('message_to_current')])
     }
-    else if (this.getFilterToDepartmentMode()) {
+    else if (this.get('filter_to_department')) {
       const code = this.getDepartmentCode()
       if (!code) {
         return Immutable.List()
@@ -118,6 +119,22 @@ export default class Msender extends Record({
     message = message.replace('{{department_name}}', this.getDepartmentName())
     message = message.replace('{{department_code}}', this.getDepartmentCode())
     return message
+  }
+
+  // Validation
+
+  isInfosValid() {
+    return (!!this.get('first_name') && this.get('first_name').length > 0 &&
+            !!this.get('last_name') && this.get('last_name').length > 0 &&
+            !!this.get('email') && isEmailValid(this.get('email')))
+  }
+  isDepartmentValid() {
+    return (!this.getSelectDepartmentMode() ||
+            !!this.getIn(['department', 'code']))
+  }
+  isSelectToValid() {
+    return (!this.get('select_to') ||
+            !!this.get('message_to'))
   }
 }
 

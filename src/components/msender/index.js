@@ -1,144 +1,14 @@
 import React, { Component } from 'react'
 import style from './style.scss'
 
-import Step from '../step'
-import InputLabel from '../input-label'
-import SelectLabel from '../select-label'
-import Checkbox from '../checkbox'
+import MsenderForm from '../msender-form'
 import MessagePreview from '../message-preview'
-import CopyAdvice from '../copy-advice'
 import ButtonContainer from '../button-container'
 
 import { msenderFromProps } from '../../models/msender'
-import { getMessengers, MESSENGER_MODE_NONE, MESSENGER_MODE_COPY } from '../../models/messenger'
+import { getMessengers, MESSENGER_MODE_NONE } from '../../models/messenger'
 import detectEmailMessenger from '../../utils/detectEmailMessenger'
 import withPetitionBindings from '../../utils/withPetitionBindings'
-import isEmailValid from '../../utils/isEmailValid'
-import mailchimpMsenderSubscribe from '../../utils/mailchimpMsenderSubscribe'
-
-const messengers = getMessengers()
-
-// @TODO Micha this component is way too complex
-// needs to be broken down to multiple smaller components
-// and separate some of the logic code
-const MsenderForm = (props) => {
-  const { msender, setIn } = props
-  const selectDepartment = msender.get('select_department')
-  const selectTo = msender.get('select_to')
-  const mailchimpEnabled = msender.get('enable_mailchimp')
-
-  // email change function
-  const onEmailChange = (e) => {
-    // ignore on mobile
-    if (msender.get('is_mobile_or_tablet')) {
-      return
-    }
-
-    // detect email messenger
-    detectEmailMessenger(e.target.value).then(messenger => {
-      if (messenger) {
-        setIn(['messenger'], messenger)
-      }
-    })
-  }
-
-  // on send trigger MailChimp
-  const onSend = (e) => {
-    if (mailchimpEnabled && msender.get('send_mailchimp') && !msender.get('mailchimp_is_sent')) {
-      setIn(['mailchimp_is_sent'], true)
-      mailchimpMsenderSubscribe(msender)
-    }
-  }
-
-  // step numbers
-  const infoStep = 1
-  let detailsStep = null
-  let sendStep = 2
-  if (selectDepartment || selectTo) {
-    detailsStep = 2
-    sendStep = 3
-  }
-
-  // step activation
-  let stepTwoEnabled = (msender.get('first_name') && msender.get('first_name').length > 0 &&
-                        msender.get('last_name') && msender.get('last_name').length > 0 &&
-                        msender.get('email') && isEmailValid(msender.get('email')))
-  let stepThreeEnabled = (stepTwoEnabled &&
-                          (detailsStep === null || !!msender.getIn(['department', 'code'])))
-  let stepButtonEnabled = (stepThreeEnabled && !!msender.getIn(['messenger', 'identifier']))
-
-  // departments
-  const departments = msender.getDepartments()
-
-  return (
-    <div className={style.msender_form}>
-      <Step title="Mes informations" number={infoStep}>
-        <InputLabel labelText="Prénom"
-                    value={msender.get('first_name')}
-                    onInput={(e) => setIn(['first_name'], e.target.value)} />
-        <InputLabel labelText="Nom"
-                    value={msender.get('last_name')}
-                    onInput={(e) => setIn(['last_name'], e.target.value)} />
-        <InputLabel labelText="Email"
-                    inputType="email"
-                    value={msender.get('email')}
-                    onInput={(e) => setIn(['email'], e.target.value)}
-                    onChange={onEmailChange} />
-        {mailchimpEnabled ? 
-          (
-            <Checkbox labelText="Tenez-moi au courant des prochaines campagnes et actions de L214"
-                      value={msender.get('send_mailchimp')}
-                      onChange={(val) => setIn(['send_mailchimp'], val)} />
-          ) : null
-        }
-      </Step>
-      {detailsStep !== null ?
-        (
-          <Step title={msender.get('step_two_title') ? msender.get('step_two_title') : 'Destinataires'} number={detailsStep}>
-            <SelectLabel labelText="Département"
-                         value={msender.getIn(['department', 'code'])}
-                         options={departments.map(d => d.getSelectOption()).toArray()}
-                         enabled={stepTwoEnabled}
-                         onChange={(e) => { setIn(['department'], departments.find(d => e.target.value === d.get('code'))) }} />
-            {selectTo ? 
-              (
-                <SelectLabel labelText="Enseigne"
-                             value={msender.getIn(['message_to_current', 'email'])}
-                             options={msender.get('message_to').map(d => d.getSelectOption()).toArray()}
-                             enabled={stepTwoEnabled}
-                             onChange={(e) => { setIn(['message_to_current'], msender.get('message_to').find(d => e.target.value === d.get('email'))) }} />
-              ) : null
-            }
-          </Step>
-        ) : null
-      }
-      <Step title="Envoyer mon message" number={sendStep}>
-        {!msender.get('is_mobile_or_tablet') ?
-          ( <SelectLabel labelText="Messagerie"
-                         value={msender.getIn(['messenger', 'identifier'])}
-                         options={messengers.map(m => ({
-                          value: m.get('identifier'),
-                          text: m.get('name'),
-                         })).toArray()}
-                         enabled={stepThreeEnabled}
-                         onChange={(e) => { setIn(['messenger'], messengers.find(d => e.target.value === d.get('identifier'))) }} />
-          ) : null
-        }
-        {isEmailValid(msender.get('email')) && 
-         (msender.get('messenger').getMode() === MESSENGER_MODE_COPY ||
-          msender.get('messenger').getMode() === MESSENGER_MODE_NONE) ?
-          (
-            <CopyAdvice />
-          ) : null
-        }
-        {msender.get('messenger').getMode() !== MESSENGER_MODE_NONE ? <ButtonContainer msender={msender} enabled={stepButtonEnabled} onClick={onSend} /> : null}
-      </Step>
-      <div className={style.message_hint_mobile}>
-        Ci-dessous le message à envoyer. Vous pourrez le modifier dans votre messagerie.
-      </div>
-    </div>
-  )
-}
 
 const MSenderUI = withPetitionBindings((props) => {
   const { msender } = props

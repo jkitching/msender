@@ -1,4 +1,5 @@
 import Immutable, { Record } from 'immutable'
+import memoize from 'memoize-immutable'
 
 import urlEncode from '../utils/urlEncode'
 
@@ -196,7 +197,7 @@ export class MessengerNone extends MessengerMailto {
   }
 }
 
-export const getMessengers = () => {
+export const getMessengers = memoize(() => {
   return Immutable.List([
     new MessengerGmail(),
     new MessengerOrange(),
@@ -210,4 +211,4 @@ export const getMessengers = () => {
     new MessengerWindowsLiveMail(),
     new MessengerNone(),
   ])
-}
+})
