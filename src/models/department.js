@@ -1,4 +1,5 @@
 import Immutable, { Record } from 'immutable'
+import memoize from 'memoize-immutable'
 
 import Region from './region'
 
@@ -69,7 +70,7 @@ export const filterDepartmentsFn = (mode = DEPARTMENT_MODE_DEFAULT) => (departme
   }
 }
 
-export const getDepartments = (mode = DEPARTMENT_MODE_DEFAULT) => {
+const getDepartmentsFn = (mode = DEPARTMENT_MODE_DEFAULT) => {
   return Immutable.Map(departments)
                   .toSeq()
                   .sortBy(d => d.code)
@@ -85,3 +86,5 @@ export const getDepartments = (mode = DEPARTMENT_MODE_DEFAULT) => {
                   .filter(filterDepartmentsFn(mode))
                   .toList()
 }
+
+export const getDepartments = memoize(getDepartmentsFn)
