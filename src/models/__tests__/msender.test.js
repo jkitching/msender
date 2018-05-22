@@ -90,7 +90,6 @@ describe('getToRecipients', () => {
     expect(new Msender({
       message_to: to,
       department: department,
-      filter_recipient: FILTER_RECIPIENT_ALL,
     }).getToRecipients().toArray()).toEqual(to.toArray())
   })
 
@@ -118,6 +117,118 @@ describe('getToRecipients', () => {
       filter_recipient: FILTER_RECIPIENT_MANUAL,
       message_to_current: null,
     }).getToRecipients().toArray()).toEqual([])
+  })
+})
+
+
+describe('getToString', () => {
+  const to = makeRecipientList([
+    {
+      "organization": "E.Leclerc",
+      "email": "service.conso@e-leclerc.com",
+      "format": "org",
+    },
+    {
+      "organization": "Intermarché",
+      "email": "intermarche@mousquetaires.com",
+      "format": "org",
+    }
+  ])
+
+  test('all', () => {
+    expect(new Msender({
+      message_to: to,
+    }).getToString()).toEqual('E.Leclerc <service.conso@e-leclerc.com>, Intermarché <intermarche@mousquetaires.com>')
+  })
+})
+
+
+describe('getToEmailsString', () => {
+  const to = makeRecipientList([
+    {
+      "organization": "E.Leclerc",
+      "email": "service.conso@e-leclerc.com",
+      "format": "org",
+    },
+    {
+      "organization": "Intermarché",
+      "email": "intermarche@mousquetaires.com",
+      "format": "org",
+    }
+  ])
+
+  test('all', () => {
+    expect(new Msender({
+      message_to: to,
+    }).getToEmailsString()).toEqual('service.conso@e-leclerc.com, intermarche@mousquetaires.com')
+  })
+
+  test('all with separator', () => {
+    expect(new Msender({
+      message_to: to,
+    }).getToEmailsString(';')).toEqual('service.conso@e-leclerc.com;intermarche@mousquetaires.com')
+  })
+})
+
+
+describe('enableDepartmentSelect', () => {
+  test('department default', () => {
+    expect(new Msender({
+      select_department: DEPARTMENT_MODE_DEFAULT,
+    }).enableDepartmentSelect()).toBeTruthy()
+  })
+
+  test('department metropolitan', () => {
+    expect(new Msender({
+      select_department: DEPARTMENT_MODE_METROPOLITAN,
+    }).enableDepartmentSelect()).toBeTruthy()
+  })
+
+  test('department legislative', () => {
+    expect(new Msender({
+      select_department: DEPARTMENT_MODE_LEGISLATIVE,
+    }).enableDepartmentSelect()).toBeTruthy()
+  })
+
+  test('department null', () => {
+    expect(new Msender({
+      select_department: null,
+    }).enableDepartmentSelect()).toBeFalsy()
+  })
+
+  test('department default filter', () => {
+    expect(new Msender({
+      select_department: DEPARTMENT_MODE_DEFAULT,
+      filter_recipient: FILTER_RECIPIENT_DEPARTMENT
+    }).enableDepartmentSelect()).toBeTruthy()
+  })
+
+  test('department null filter', () => {
+    expect(new Msender({
+      select_department: null,
+      filter_recipient: FILTER_RECIPIENT_DEPARTMENT,
+    }).enableDepartmentSelect()).toBeTruthy()
+  })
+})
+
+
+describe('enableRecipientSelect', () => {
+  test('filter by all', () => {
+    expect(new Msender({
+      filter_recipient: FILTER_RECIPIENT_ALL,
+    }).enableRecipientSelect()).toBeFalsy()
+  })
+
+  test('filter by manual', () => {
+    expect(new Msender({
+      filter_recipient: FILTER_RECIPIENT_MANUAL,
+    }).enableRecipientSelect()).toBeTruthy()
+  })
+
+  test('filter by department', () => {
+    expect(new Msender({
+      filter_recipient: FILTER_RECIPIENT_DEPARTMENT,
+    }).enableRecipientSelect()).toBeFalsy()
   })
 })
 
