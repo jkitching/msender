@@ -22,6 +22,12 @@ describe('getSelectDepartmentMode', () => {
     }).getSelectDepartmentMode()).toBeNull()
   })
 
+  test('null', () => {
+    expect(new Msender({
+      select_department: null
+    }).getSelectDepartmentMode()).toBeNull()
+  })
+
   test('default', () => {
     expect(new Msender({
       select_department: DEPARTMENT_MODE_DEFAULT
