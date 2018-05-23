@@ -24,6 +24,11 @@ test('getDepartments default', () => {
   expect(departments.filter(dep => dep.get('code') === '75').first().get('code')).toEqual('75');
   expect(departments.filter(dep => dep.get('code') === '75').first().getIn(['region', 'name'])).toEqual('Île-de-France');
 
+  // test sorting
+  expect(departments.map(dep => dep.get('code')).slice(0, 23).toArray()).toEqual(
+    ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '2A', '2B', '21', '22']
+  )
+
   expect(depCodes.contains('01')).toBeTruthy(); // Ain
   expect(depCodes.contains('75')).toBeTruthy(); // Paris
   expect(depCodes.contains('2A')).toBeTruthy(); // Corsica
@@ -54,6 +59,11 @@ test('getDepartments metropolitan', () => {
   expect(departments.toList().reduce((acc, dep) => {
     return acc && dep.get('type') === DEPARTMENT_TYPE_METROPOLITAN
   }, true)).toBeTruthy();
+
+  // test sorting
+  expect(departments.map(dep => dep.get('code')).slice(0, 23).toArray()).toEqual(
+    ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '2A', '2B', '21', '22']
+  )
 
   expect(depCodes.contains('01')).toBeTruthy(); // Ain
   expect(depCodes.contains('75')).toBeTruthy(); // Paris
@@ -87,6 +97,14 @@ test('getDepartments legislative', () => {
   expect(departments.filter(dep => dep.get('code') === '975').first().get('name')).toEqual('Saint-Pierre-et-Miquelon');
   expect(departments.filter(dep => dep.get('code') === '975').first().get('code')).toEqual('975');
   expect(departments.filter(dep => dep.get('code') === '975').first().get('region')).toBeNull();
+
+  // test sorting
+  expect(departments.map(dep => dep.get('code')).slice(0, 23).toArray()).toEqual(
+    ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '2A', '2B', '21', '22']
+  )
+  expect(departments.map(dep => dep.get('code')).reverse().slice(0, 3).toArray()).toEqual(
+    ['999', '988', '987']
+  )
 
   expect(depCodes.contains('01')).toBeTruthy(); // Ain
   expect(depCodes.contains('75')).toBeTruthy(); // Paris

@@ -70,10 +70,20 @@ export const filterDepartmentsFn = (mode = DEPARTMENT_MODE_DEFAULT) => (departme
   }
 }
 
+const sortByDepartmentsFn = (department) => {
+  const code = department.get('code')
+  if (code === '2A') {
+    return 20
+  }
+  else if (code === '2B') {
+    return 20.1
+  }
+  return parseInt(code)
+}
+
 const getDepartmentsFn = (mode = DEPARTMENT_MODE_DEFAULT) => {
   return Immutable.Map(departments)
                   .toSeq()
-                  .sortBy(d => d.code)
                   .map(d => new Department({
                     name: d.name,
                     code: d.code,
@@ -83,6 +93,7 @@ const getDepartmentsFn = (mode = DEPARTMENT_MODE_DEFAULT) => {
                     }) : null),
                     type: d.type,
                   }))
+                  .sortBy(sortByDepartmentsFn)
                   .filter(filterDepartmentsFn(mode))
                   .toList()
 }
