@@ -27,14 +27,6 @@ module.exports = (base, env, helpers) => {
             'sass-loader?sourceMap',
           ],
           include: path.resolve(__dirname, "../"),
-        },
-        {
-          test: /\.css$/,
-          loaders: [
-            'style-loader?sourceMap',
-            'css-loader',
-          ],
-          include: path.resolve(__dirname, "../"),
         }
       ].concat(config.module.rules)
     }),
