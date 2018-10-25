@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import { IntlProvider, FormattedMessage, addLocaleData } from 'react-intl'
+import enLocaleData from 'react-intl/locale-data/en'
+import frLocaleData from 'react-intl/locale-data/fr'
+
 import style from './style.scss'
 
 import MsenderForm from '../msender-form'
@@ -9,11 +13,18 @@ import { msenderFromProps } from '../../models/msender'
 import { getMessengers, MESSENGER_MODE_NONE } from '../../models/messenger'
 import detectEmailMessenger from '../../utils/detectEmailMessenger'
 import withPetitionBindings from '../../utils/withPetitionBindings'
+import { getMessagesLocale } from '../../utils/i18n'
+
+
+// add local configs from React Intl
+addLocaleData(enLocaleData)
+addLocaleData(frLocaleData)
 
 const MSenderUI = withPetitionBindings((props) => {
   const { msender } = props
   return (
     <div className={style.msender}>
+      <FormattedMessage id="hello" />
       <MsenderForm {...props} />
       <MessagePreview {...props} />
       {msender.get('messenger').getMode() !== MESSENGER_MODE_NONE ? <ButtonContainer msender={msender} mobileOnly={true} /> : null}
@@ -33,9 +44,19 @@ export default class MsenderContainer extends Component {
 
   render() {
     const { msender } = this.state
-    return <MSenderUI msender={msender}
-                      setIn={this.setInBound}
-                      didGetPetitionData={this.didGetPetitionDataBound} />
+    const { locale, messages } = getMessagesLocale()
+    return (
+      <IntlProvider
+        locale={locale}
+        messages={messages}
+      >
+        <MSenderUI
+          msender={msender}
+          setIn={this.setInBound}
+          didGetPetitionData={this.didGetPetitionDataBound}
+        />
+      </IntlProvider>
+    )
   }
 
   setIn(keys, value) {

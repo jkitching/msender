@@ -13,6 +13,7 @@ import detectEmailMessenger from '../../utils/detectEmailMessenger'
 import isEmailValid from '../../utils/isEmailValid'
 import mailchimpMsenderSubscribe from '../../utils/mailchimpMsenderSubscribe'
 
+
 class MsenderFormStepInfo extends Component {
   constructor() {
     super()
