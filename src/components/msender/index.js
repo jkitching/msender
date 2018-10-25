@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { IntlProvider, FormattedMessage, addLocaleData } from 'react-intl'
+import { IntlProvider, addLocaleData } from 'react-intl'
 import enLocaleData from 'react-intl/locale-data/en'
 import frLocaleData from 'react-intl/locale-data/fr'
 
@@ -24,7 +24,6 @@ const MSenderUI = withPetitionBindings((props) => {
   const { msender } = props
   return (
     <div className={style.msender}>
-      <FormattedMessage id="hello" />
       <MsenderForm {...props} />
       <MessagePreview {...props} />
       {msender.get('messenger').getMode() !== MESSENGER_MODE_NONE ? <ButtonContainer msender={msender} mobileOnly={true} /> : null}
@@ -44,7 +43,7 @@ export default class MsenderContainer extends Component {
 
   render() {
     const { msender } = this.state
-    const { locale, messages } = getMessagesLocale()
+    const { locale, messages } = getMessagesLocale(msender)
     return (
       <IntlProvider
         locale={locale}

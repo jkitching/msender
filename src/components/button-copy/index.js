@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { FormattedMessage } from 'react-intl'
+
 import style from './style.scss'
 
 import { CopyToClipboard } from 'react-copy-to-clipboard'
@@ -40,7 +42,13 @@ class CopyButton extends Component {
     return (
       <CopyToClipboard text={value} onCopy={this.onCopy}>
         <button className={style.button}>
-          <span className={style.text}>{copied ? 'C\'est copié' : 'Copier'}</span>
+          <span className={style.text}>
+            {copied ? (
+              <FormattedMessage id="label_copy_done" />
+            ) : (
+              <FormattedMessage id="label_copy_action" />
+            )}
+          </span>
           {copied ? <CopiedIcon /> : <CopyIcon />}
         </button>
       </CopyToClipboard>

@@ -36,6 +36,7 @@ export default class Msender extends Record({
   send_mailchimp: false,
   mailchimp_is_sent: false,
   mailchimp_source: 'msender',
+  locale: null,
 }) {
   getName() {
     const firstName = this.getFirstName()
@@ -182,5 +183,6 @@ export const msenderFromProps = (props) => {
     enable_mailchimp: (!!props.enable_mailchimp),
     send_mailchimp: (!!props.send_mailchimp),
     mailchimp_source: (props.mailchimp_source ? props.mailchimp_source : 'msender'),
+    locale: (props.locale ? props.locale : null),
   })
 }

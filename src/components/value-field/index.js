@@ -21,11 +21,13 @@ class ValueField extends Component {
         <div className={props.multiline ? style.label_container_multiline : style.label_container}>
           <label htmlFor={inputId} className={style.label} onClick={this.selectContentBound}>
             <span>
-              <span>{props.labelText}</span>
-              {(props.labelHint && props.labelHint.length) > 0 ?
-               <span className={style.label_hint}>{` ${props.labelHint}`}</span> :
-               null
-              }
+              <span>{props.renderLabelText()}</span>
+              {props.renderLabelHint && (
+                <span className={style.label_hint}>
+                  <span>{` `}</span>
+                  {props.renderLabelHint()}
+                </span>
+              )}
             </span>
             {props.multiline ? <CopyButton value={props.value} /> : null}
           </label>

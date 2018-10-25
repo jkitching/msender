@@ -1,4 +1,6 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
+
 import style from './style.scss'
 
 import ValueField from '../value-field'
@@ -7,14 +9,30 @@ const MessagePreview = (props) => {
   const { msender } = props
   return (
     <div className={style.message_preview}>
-      <ValueField labelText="Envoyer à :" value={msender.getToEmailsString()} />
+      <ValueField
+        renderLabelText={() => (
+          <FormattedMessage id="label_value_send_to" />
+        )}
+        value={msender.getToEmailsString()}
+      />
       <hr className={style.message_hr} />
-      <ValueField labelText="Objet :" value={msender.getSubject()} />
+      <ValueField
+        renderLabelText={() => (
+          <FormattedMessage id="label_value_subject" />
+        )}
+        value={msender.getSubject()}
+      />
       <hr className={style.message_hr} />
-      <ValueField labelText="Message :"
-                  labelHint="(vous pourrez le modifier dans votre boite email)"
-                  value={msender.getMessage()}
-                  multiline={true} />
+      <ValueField
+        renderLabelText={() => (
+          <FormattedMessage id="label_value_message" />
+        )}
+        renderLabelHint={() => (
+          <FormattedMessage id="label_value_message_hint" />
+        )}
+        value={msender.getMessage()}
+        multiline={true}
+      />
     </div>
   )
 }

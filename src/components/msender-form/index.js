@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { FormattedMessage } from 'react-intl'
+
 import style from './style.scss'
 
 import Step from '../step'
@@ -66,27 +68,48 @@ class MsenderFormStepInfo extends Component {
       return null
     }
     return (
-      <Checkbox labelText="Tenez-moi au courant des prochaines campagnes et actions de L214"
-                value={msender.get('send_mailchimp')}
-                onChange={this.onChangeSendMailChimp} />
+      <Checkbox
+        renderLabelText={() => (
+          <FormattedMessage id="label_email_subscription" />
+        )}
+        value={msender.get('send_mailchimp')}
+        onChange={this.onChangeSendMailChimp}
+      />
     )
   }
 
   render() {
     const { msender, number } = this.props
     return (
-      <Step title="Mes informations" number={number}>
-        <InputLabel labelText="Prénom"
-                    value={msender.get('first_name')}
-                    onInput={this.onInputFirstName} />
-        <InputLabel labelText="Nom"
-                    value={msender.get('last_name')}
-                    onInput={this.onInputLastName} />
-        <InputLabel labelText="Email"
-                    inputType="email"
-                    value={msender.get('email')}
-                    onInput={this.onInputEmail}
-                    onChange={this.onEmailChange} />
+      <Step
+        renderTitle={() => (
+          <FormattedMessage id="step_my_infos" />
+        )}
+        number={number}
+      >
+        <InputLabel
+          renderLabelText={() => (
+            <FormattedMessage id="label_first_name" />
+          )}
+          value={msender.get('first_name')}
+          onInput={this.onInputFirstName}
+        />
+        <InputLabel
+          renderLabelText={() => (
+            <FormattedMessage id="label_last_name" />
+          )}
+          value={msender.get('last_name')}
+          onInput={this.onInputLastName}
+        />
+        <InputLabel
+          renderLabelText={() => (
+            <FormattedMessage id="label_email" />
+          )}
+          inputType="email"
+          value={msender.get('email')}
+          onInput={this.onInputEmail}
+          onChange={this.onEmailChange}
+        />
         {this.renderMailChimpCheckbox()}
       </Step>
     )
@@ -127,11 +150,15 @@ class MsenderFormStepDetails extends Component {
       return null
     }
     return (
-      <SelectLabel labelText="Département"
-                   value={msender.getIn(['department', 'code'])}
-                   options={msender.getDepartments().map(d => d.getSelectOption()).toArray()}
-                   enabled={enabled}
-                   onChange={this.onChangeDepartment} />
+      <SelectLabel
+        renderLabelText={() => (
+          <FormattedMessage id="label_department" />
+        )}
+        value={msender.getIn(['department', 'code'])}
+        options={msender.getDepartments().map(d => d.getSelectOption()).toArray()}
+        enabled={enabled}
+        onChange={this.onChangeDepartment}
+      />
     )
   }
 
@@ -141,18 +168,27 @@ class MsenderFormStepDetails extends Component {
       return null
     }
     return (
-      <SelectLabel labelText="Enseigne"
-                   value={msender.getIn(['message_to_current', 'email'])}
-                   options={msender.get('message_to').map(d => d.getSelectOption()).toArray()}
-                   enabled={enabled}
-                   onChange={this.onChangeFilterRecipient} />
+      <SelectLabel
+        renderLabelText={() => (
+          <FormattedMessage id="label_recipient" />
+        )}
+        value={msender.getIn(['message_to_current', 'email'])}
+        options={msender.get('message_to').map(d => d.getSelectOption()).toArray()}
+        enabled={enabled}
+        onChange={this.onChangeFilterRecipient}
+      />
     )
   }
 
   render() {
     const { msender, number } = this.props
     return (
-      <Step title={this.getStepName()} number={number}>
+      <Step
+        renderTitle={() => (
+          this.getStepName()
+        )}
+        number={number}
+      >
         {this.renderSelectDepartment()}
         {this.renderFilterRecipient()}
       </Step>
@@ -188,14 +224,18 @@ class MsenderFormStepSend extends Component {
       return null
     }
     return (
-      <SelectLabel labelText="Messagerie"
-                   value={msender.getIn(['messenger', 'identifier'])}
-                   options={getMessengers().map(m => ({
-                    value: m.get('identifier'),
-                    text: m.get('name'),
-                   })).toArray()}
-                   enabled={enabled}
-                   onChange={this.onChangeMessenger} />
+      <SelectLabel
+        renderLabelText={() => (
+          <FormattedMessage id="label_email_client" />
+        )}
+        value={msender.getIn(['messenger', 'identifier'])}
+        options={getMessengers().map(m => ({
+          value: m.get('identifier'),
+          text: m.get('name'),
+        })).toArray()}
+        enabled={enabled}
+        onChange={this.onChangeMessenger}
+      />
     )
   }
 
@@ -225,7 +265,12 @@ class MsenderFormStepSend extends Component {
   render() {
     const { msender, number } = this.props
     return (
-      <Step title="Envoyer mon message" number={number}>
+      <Step
+        renderTitle={() => (
+          <FormattedMessage id="step_send" />
+        )}
+        number={number}
+      >
         {this.renderSelectMessenger()}
         {this.renderCopyAdvice()}
         {this.renderSendButton()}

@@ -1,4 +1,6 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
+
 import style from './style.scss'
 
 const Arrow = (props) => {
@@ -15,7 +17,9 @@ const Arrow = (props) => {
 const CopyAdvice = (props) => {
   return (
     <div className={style.copy_advice}>
-      <span className={style.copy_advice_text}>Copiez les destinataires, l’objet et le message dans votre messagerie</span>
+      <span className={style.copy_advice_text}>
+        <FormattedMessage id="copy_advice" />
+      </span>
       <Arrow />
     </div>
   )
