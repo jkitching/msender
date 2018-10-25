@@ -1,6 +1,6 @@
 {
-  "name": "msender",
-  "version": "2.0.0",
+  "name": "@l214/msender",
+  "version": "2.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,8 +11,12 @@
     "dev": "preact watch --template src/index.ejs",
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
+  "files": [
+    "build"
+  ],
+  "browser": "build/bundle.js",
   "keywords": [],
-  "author": "L214 <web-tech@l214.com>",
+  "author": "L214 Ethique et Animaux <web-tech@l214.com>",
   "license": "MIT",
   "devDependencies": {
     "@storybook/react": "^3.4.5",
@@ -63,5 +67,13 @@
       "node_modules",
       "src"
     ]
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/l214/msender.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/l214/msender/issues"
+  },
+  "homepage": "https://gitlab.com/l214/msender#readme"
 }

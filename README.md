@@ -1,51 +1,5 @@
 # Msender – The L214 email interpellator
 
-## Development
-
-### Prerequisites
-
-* [nvm](https://github.com/creationix/nvm) (or npm > 8.10.0)
-* [Yarn](https://yarnpkg.com/en/)
-
-### Install
-
-```shell
-nvm use
-yarn install
-```
-
-### Run
-
-To start the development server:
-
-```shell
-yarn run start
-```
-
-### Storybook
-
-A React [Storybook](https://storybook.js.org/) is available:
-
-```shell
-yarn run storybook
-```
-
-### Test
-
-Unit tests can be run with:
-
-```shell
-yarn run test
-```
-
-### Build
-
-To build a production ready bundle (in `./build/`):
-
-```shell
-yarn run build
-```
-
 ## Example of use
 ```
 <div data-widget-host="habitat" class="preview">
@@ -54,7 +8,7 @@ yarn run build
       "to": [
         {
           "first_name": "John",
-          "last_name": "Appleseed"
+          "last_name": "Appleseed",
           "organization": "Apple Inc.",
           "email": "john@apple.com",
           "gender": "m",
@@ -76,7 +30,7 @@ yarn run build
   }
   </script>
 </div>
-<script async src="msender/bundle.js"></script>
+<script async src="https://unpkg.com/@l214/msender/build/bundle.js"></script>
 ```
 
 ## Parameters
@@ -198,6 +152,52 @@ Possible `format` values:
 | `titlefull` | e.g. "M. Emmanuel Macron" |
 | `org` | e.g. "Présidence de la République" |
 
+## Development
+
+### Prerequisites
+
+* [nvm](https://github.com/creationix/nvm) (or npm > 8.10.0)
+* [Yarn](https://yarnpkg.com/en/)
+
+### Install
+
+```shell
+nvm use
+yarn install
+```
+
+### Run
+
+To start the development server:
+
+```shell
+yarn run start
+```
+
+### Storybook
+
+A React [Storybook](https://storybook.js.org/) is available:
+
+```shell
+yarn run storybook
+```
+
+### Test
+
+Unit tests can be run with:
+
+```shell
+yarn run test
+```
+
+### Build
+
+To build a production ready bundle (in `./build/`):
+
+```shell
+yarn run build
+```
+
 ## Email client specificities (2015 research)
 
 ### Webmails specificities
@@ -226,3 +226,7 @@ Possible `format` values:
 Source : http://www.journaldunet.com/ebusiness/le-net/classement-services-mail/
 
 * For mobile supports, only the client link will be displayed.
+
+## License
+
+[MIT License](LICENSE)
