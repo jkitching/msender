@@ -13,6 +13,7 @@
 
 .label_container {
   display: flex;
+  overflow: hidden;
 }
 
 .label_container_multiline {
@@ -42,7 +43,8 @@
 }
 
 .input {
-  flex-grow: 1;
+  flex: 1 1 0;
+  min-width: 0;
   font-family: $font-system;
   font-size: 15px;
   line-height: 18px;
