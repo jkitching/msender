@@ -1,32 +1,44 @@
-# Msender – The L214 email interpellator
+# Msender – Create beautiful forms to Interpellate Decision-makers
+
+![](https://cl.ly/05a5f5e39dc9/Image%2525202018-10-26%252520at%2525204.13.00%252520PM.png)
 
 ## Example of use
+
 ```
 <div data-widget-host="habitat" class="preview">
   <script type="text/props">
   {
-      "to": [
-        {
-          "first_name": "John",
-          "last_name": "Appleseed",
-          "organization": "Apple Inc.",
-          "email": "john@apple.com",
-          "gender": "m",
-          "format": "titlefull",
-          "department_code": null
-        }
-      ],
-      "bcc": [
-        {
-          "email": "cyberaction-copie@l214.com"
-        }
-      ],
-      "subject": "Hi Apple",
-      "message": "Bonjour,\n\nApple\n\n{{name}}",
-      "select_department": "metropolitan",
-      "filter_recipient": "manual",
-      "filter_recipient_randomize": true,
-      "step_two_title": "Mes magasins"
+    "to": [{
+        "first_name": "London",
+        "last_name": "Breed",
+        "email": "major@sfgov.org",
+        "format": "full"
+      },
+      {
+        "first_name": "Eric",
+        "last_name": "Garcetti",
+        "email": "major@lamayor.org",
+        "format": "full"
+      }
+    ],
+    "bcc": [{
+      "email": "cyberaction-copie@l214.com"
+    }],
+    "subject": "Vote YES! on Proposition 12",
+    "message": "Dear Sir or Madam,\n\nPlease vote on California Prop 12.\n\nRegards,\n\n{{name}}",
+    "filter_recipient": "manual",
+    "filter_recipient_randomize": true,
+    "step_two_title": "My representatives",
+    "messengers": [
+      "gmail",
+      "applemail",
+      "outlook",
+      "thunderbird",
+      "windowslivemail",
+      "yahoo",
+      "live"
+    ],
+    "locale": "en-EN"
   }
   </script>
 </div>
@@ -82,8 +94,8 @@ The email message. Can be templated with the following tags:
 | `{{name}}` | The sender's full name (e.g. "John Appleseed") |
 | `{{first_name}}` | The sender's first name (e.g. "John") |
 | `{{last_name}}` | The sender's last name (e.g. "Appleseed") |
-| `{{department_name}}` | The sender's department name (e.g. "Nord") |
-| `{{department_code}}` | The sender's department code as a string (e.g. "59") |
+| `{{department_name}}` | The sender's French department name (e.g. "Nord") |
+| `{{department_code}}` | The sender's French department code as a string (e.g. "59") |
 
 ### `filter_recipient`
 
@@ -97,7 +109,7 @@ How the recipient list (the `to` parameter described above) should be filtered. 
 
 ### `select_department`
 
-What departments to show in the list. Possible values are:
+What French departments to show in the list. Possible values are:
 
 | Value | Description |
 | ----- | ----------- |
@@ -121,6 +133,67 @@ Initial state of the MailChimp subscription checkbox.
 ### `mailchimp_source`
 
 MailChimp source (by default `msender`).
+
+### `locale`
+
+The locale (language and country) to use for internationalization. By default, it falls back to the browser's locale, or English (`en`) if not available.
+
+The following language codes are currently supported: `en`, `fr`, `de`, `es`, `pt`, `it`, `nl`.
+
+The UI elements are currently only translated in English and French. You can use the `translations` key to add custom translations.
+
+
+Example:
+
+```js
+locale: 'es-ES'
+```
+
+
+### `translations`
+
+Override the current translation strings or add additional languages.
+
+Example:
+
+```js
+translations: {
+  es: {
+    step_my_infos: 'Mi informacion'
+  }
+}
+```
+
+To get a list of all required strings for a new languages, see `src/translations/en.js`.
+
+### `messengers`
+
+Email clients to enable. If not provided or `null`, all available ones will be included in the list.
+
+Example:
+
+```js
+messengers: [
+  'applemail',
+  'gmail'
+]
+```
+
+Possible values are:
+
+| ID   | Name | Countries |
+| ---- | ---- | --------- |
+| `thunderbird` | Thunderbird | *Worldwide* 🌎 |
+| `applemail` | Apple Mail | *Worldwide* 🌎 |
+| `outlook` | Outlook | *Worldwide* 🌎 |
+| `windowslivemail` | Windows Live Mail | *Worldwide* 🌎 |
+| `gmail` | Gmail | *Worldwide* 🌎 |
+| `yahoo` | Yahoo! | *Worldwide* 🌎 |
+| `live` | Live | *Worldwide* 🌎 |
+| `othernone` | Other (uses `mailto:`) | *Worldwide* 🌎 |
+| `orange` | Orange | *France* 🇫🇷 |
+| `sfr` | SFR | *France* 🇫🇷 |
+| `laposte` | Laposte.net | *France* 🇫🇷 |
 
 ## `Recepient` object
 
@@ -197,6 +270,15 @@ To build a production ready bundle (in `./build/`):
 ```shell
 yarn run build
 ```
+
+## Roadmap
+
+Generally speaking, we aim to make this codebase less specific to L214's use and less specific to the French environment (yay to a more international Msender!).
+
+* Move away from [CSS Modules](https://github.com/css-modules/css-modules) and make it possible to have different themes (and override themes), so users can customize it to adapt to their style guidelines
+* Filter by Department is very specific to France and should be made more flexible: either making it outside the project, or making a more generic "filter by region" with a country locale (French departments, US states, German Länder, etc.) (the field `Recipient.department_code` in not generic)
+* Translate the Recipient titles (currently `M.` and `Mme` in French)
+* Add the ability to add more custom email clients (to fit speicific users and country use-cases)
 
 ## Email client specificities (2015 research)
 
