@@ -157,6 +157,48 @@ storiesOf('Msender/Simple', module)
                       last_name="Pépindepomme"
                       email="jean@pepindepomme.fr" />
   ))
+  .add('override (fr)', () => (
+    <MsenderContainer locale="fr-FR"
+                      to={toJeLeVeux}
+                      bcc={defaultBcc}
+                      subject="Libération Animale"
+                      message={defaultMessageFr}
+                      translations={{
+                        fr: {
+                          step_my_infos: 'Mes super infos'
+                        }
+                      }} />
+  ))
+  .add('default (es)', () => (
+    <MsenderContainer locale="es-ES"
+                      to={toJeLeVeux}
+                      bcc={defaultBcc}
+                      subject="Libération Animale"
+                      message={defaultMessageFr}
+                      translations={{
+                        es: {
+                          /* warning! these are Google Translations :) */
+                          step_my_infos: 'Mi informacion',
+                          step_send: 'Enviar mi mensaje',
+                          label_first_name: 'Primer nombre',
+                          label_last_name: 'Apellido',
+                          label_email: 'Email',
+                          label_department: 'Departamento',
+                          label_recipient: 'Beneficiario',
+                          label_email_client: 'Mensajería',
+                          label_email_subscription: 'Mantenerme informado sobre las próximas campañas y acciones de L214.',
+                          label_value_send_to: 'Enviar a :',
+                          label_value_subject: 'Asunto:',
+                          label_value_message: 'Mensaje :',
+                          label_value_message_hint: '(puedes modificarlo en tu buzón)',
+                          label_copy_action: 'Copiador',
+                          label_copy_done: '¡Está copiado!',
+                          label_send_button_link: 'Enviar el mensaje',
+                          label_send_button_open: 'Abre mi correo',
+                          copy_advice: 'Copie los destinatarios, el asunto y el mensaje en su correo electrónico',
+                        }
+                      }} />
+  ))
 
 
 storiesOf('Msender/Deputies', module)

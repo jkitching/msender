@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { IntlProvider, addLocaleData } from 'react-intl'
-import enLocaleData from 'react-intl/locale-data/en'
-import frLocaleData from 'react-intl/locale-data/fr'
 
 import style from './style.scss'
 
@@ -13,12 +11,11 @@ import { msenderFromProps } from '../../models/msender'
 import { getMessengers, MESSENGER_MODE_NONE } from '../../models/messenger'
 import detectEmailMessenger from '../../utils/detectEmailMessenger'
 import withPetitionBindings from '../../utils/withPetitionBindings'
-import { getMessagesLocale } from '../../utils/i18n'
+import { getMessagesLocale, addAllLocalData } from '../../utils/i18n'
 
 
 // add local configs from React Intl
-addLocaleData(enLocaleData)
-addLocaleData(frLocaleData)
+addAllLocalData()
 
 const MSenderUI = withPetitionBindings((props) => {
   const { msender } = props
