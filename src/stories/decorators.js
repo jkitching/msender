@@ -1,4 +1,14 @@
 import React from 'react'
+import { IntlProvider, addLocaleData } from 'react-intl'
+import enLocaleData from 'react-intl/locale-data/en'
+import frLocaleData from 'react-intl/locale-data/fr'
+
+import { getMessagesLocale } from '../utils/i18n'
+
+
+// add local configs from React Intl
+addLocaleData(enLocaleData)
+addLocaleData(frLocaleData)
 
 const style = {
   backgroundColor: '#EB9339',
@@ -15,10 +25,20 @@ export const StoryDecorator = (props) => {
   )
 }
 
-export const decoratorFn = (props) => (story) => {
+export const decoratorFn = props => story => (
+  <StoryDecorator {...props}>
+    {story()}
+  </StoryDecorator>
+)
+
+export const decoratorIntlFn = props => story => {
+  const { locale, messages } = getMessagesLocale()
   return (
-    <StoryDecorator {...props}>
+    <IntlProvider
+      locale={locale}
+      messages={messages}
+    >
       {story()}
-    </StoryDecorator>
+    </IntlProvider>
   )
 }

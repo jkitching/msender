@@ -19,7 +19,15 @@ const defaultBcc = [
   }
 ]
 
-const defaultMessage = `Bonjour,
+const defaultMessageEn = `Hi,
+
+Please set all animals free!
+
+Kind regards,
+
+{{name}}`
+
+const defaultMessageFr = `Bonjour,
 
 Merci de rendre les animaux libres !
 
@@ -115,27 +123,47 @@ Comptant sur votre pleine mobilisation, je vous prie de croire, Mesdames, Messie
 
 storiesOf('Msender/Simple', module)
   .addDecorator(decoratorFn())
-  .add('default', () => (
-    <MsenderContainer to={toJeLeVeux}
+  .add('default (en)', () => (
+    <MsenderContainer locale="en-US"
+                      to={toJeLeVeux}
                       bcc={defaultBcc}
-                      subject="Libération Animale"
-                      message={defaultMessage} />
+                      subject="Animal Liberation"
+                      message={defaultMessageEn} />
   ))
-  .add('prefilled', () => (
-    <MsenderContainer to={toJeLeVeux}
+  .add('prefilled (en)', () => (
+    <MsenderContainer locale="en-US"
+                      to={toJeLeVeux}
                       bcc={defaultBcc}
-                      subject="Libération Animale"
-                      message={defaultMessage}
+                      subject="Animal Liberation"
+                      message={defaultMessageEn}
                       first_name="John"
                       last_name="Appleseed"
                       email="john@apple.com" />
+  ))
+  .add('default (fr)', () => (
+    <MsenderContainer locale="fr-FR"
+                      to={toJeLeVeux}
+                      bcc={defaultBcc}
+                      subject="Libération Animale"
+                      message={defaultMessageFr} />
+  ))
+  .add('prefilled (fr)', () => (
+    <MsenderContainer locale="fr-FR"
+                      to={toJeLeVeux}
+                      bcc={defaultBcc}
+                      subject="Libération Animale"
+                      message={defaultMessageFr}
+                      first_name="Jean"
+                      last_name="Pépindepomme"
+                      email="jean@pepindepomme.fr" />
   ))
 
 
 storiesOf('Msender/Deputies', module)
   .addDecorator(decoratorFn())
   .add('default', () => (
-    <MsenderContainer to={deputiesFrance}
+    <MsenderContainer locale="fr-FR"
+                      to={deputiesFrance}
                       bcc={defaultBcc}
                       subject="EGalim : inscription de l’interdiction des élevages de poules en cage"
                       message={defaultMessageDeputies}
@@ -147,7 +175,8 @@ storiesOf('Msender/Deputies', module)
                       mailchimp_source="msender-2018-debug" />
   ))
   .add('prefilled', () => (
-    <MsenderContainer to={deputiesFrance}
+    <MsenderContainer locale="fr-FR"
+                      to={deputiesFrance}
                       bcc={defaultBcc}
                       subject="EGalim : inscription de l’interdiction des élevages de poules en cage"
                       message={defaultMessageDeputies}
@@ -166,7 +195,8 @@ storiesOf('Msender/Deputies', module)
 storiesOf('Msender/JeLeVeux.l214.com', module)
   .addDecorator(decoratorFn())
   .add('default', () => (
-    <MsenderContainer to={toJeLeVeux}
+    <MsenderContainer locale="fr-FR"
+                      to={toJeLeVeux}
                       bcc={defaultBcc}
                       subject="Produits la Boulangère B’vegan"
                       message={defaultMessageJeLeVeux}
@@ -176,7 +206,8 @@ storiesOf('Msender/JeLeVeux.l214.com', module)
                       step_two_title="Mes magasins" />
   ))
   .add('prefilled', () => (
-    <MsenderContainer to={toJeLeVeux}
+    <MsenderContainer locale="fr-FR"
+                      to={toJeLeVeux}
                       bcc={defaultBcc}
                       subject="Produits la Boulangère B’vegan"
                       message={defaultMessageJeLeVeux}

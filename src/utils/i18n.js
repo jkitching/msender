@@ -1,6 +1,6 @@
 import translations from '../translations'
 
-export const getMessagesLocale = (msender) => {
+export const getMessagesLocale = (msender = null) => {
   // get the browser's locale by default
   let locale = window.navigator.language
 
@@ -17,7 +17,7 @@ export const getMessagesLocale = (msender) => {
   }
 
   // if a locale is forced in the model, use it
-  if (msender.get('locale')) {
+  if (msender && msender.get('locale')) {
     locale = msender.get('locale')
   }
 
