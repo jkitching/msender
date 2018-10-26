@@ -1,0 +1,24 @@
+@import "../constants.scss";
+
+.label {
+  display: flex;
+  margin: 0 0 15px 0;
+}
+
+.label_text {
+  font-family: $font-montserrat;
+  font-weight: 900;
+  font-size: 16px;
+  text-transform: uppercase;
+  line-height: 19px;
+  color: #000;
+  -webkit-font-smoothing: antialiased;
+  margin: 0 0 7px 0;
+  user-select: none;
+  margin: 0 0 0 5px;
+}
+
+.label_text_disabled {
+  composes: label_text;
+  color: rgba(0, 0, 0, 0.5);
+}

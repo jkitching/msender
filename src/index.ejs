@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Widget Template</title>
+
+  <style>
+    @font-face {
+      font-family: 'Gotham Book';
+      src: url("https://education.l214.com/Conf/fonts/Gotham-Book/Gotham-Book.eot");
+      src: url("https://education.l214.com/Conf/fonts/Gotham-Book/Gotham-Book.eot?#iefix") format("embedded-opentype"), url("https://education.l214.com/Conf/fonts/Gotham-Book/Gotham-Book.woff2") format("woff2"), url("https://education.l214.com/Conf/fonts/Gotham-Book/Gotham-Book.woff") format("woff"), url("https://education.l214.com/Conf/fonts/Gotham-Book/Gotham-Book.ttf") format("truetype"), url("https://education.l214.com/Conf/fonts/Gotham-Book/Gotham-Book.svg#Gotham-Book") format("svg");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Gotham Book';
+      src: url("https://education.l214.com/Conf/fonts/Gotham-BookItalic/Gotham-BookItalic.eot");
+      src: url("https://education.l214.com/Conf/fonts/Gotham-BookItalic/Gotham-BookItalic.eot?#iefix") format("embedded-opentype"), url("https://education.l214.com/Conf/fonts/Gotham-BookItalic/Gotham-BookItalic.woff2") format("woff2"), url("https://education.l214.com/Conf/fonts/Gotham-BookItalic/Gotham-BookItalic.woff") format("woff"), url("https://education.l214.com/Conf/fonts/Gotham-BookItalic/Gotham-BookItalic.ttf") format("truetype"), url("https://education.l214.com/Conf/fonts/Gotham-BookItalic/Gotham-BookItalic.svg#Gotham-BookItalic") format("svg");
+      font-weight: normal;
+      font-style: italic;
+    }
+
+    html, body {
+        font: 14px/1.21 'Helvetica Neue', arial, sans-serif;
+        font-weight: 400;
+        background: #EB9339;
+    }
+
+    .preview {
+      width: 100%;
+      max-width: 1100px;
+      margin: 80px auto;
+      border: 1px dashed rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .preview::before {
+      content: 'WIDGET PREVIEW';
+      position: absolute;
+      display: block;
+      top: -18px;
+      font-size: 11px;
+      color: rgba(0, 0, 0, 0.5);
+    }
+  </style>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div data-widget-host="habitat" class="preview">
+    <script type="text/props">
+      {
+        "to": [
+          {
+            "firstname": "Emmanuel",
+            "lastname": "Macron",
+            "gender": "H",
+            "slug": "x",
+            "email": "audrey.bourolleau@elysee.fr",
+            "format": "titlefull"
+          },
+          {
+            "firstname": "Edouard",
+            "lastname": "Philippe",
+            "gender": "H",
+            "slug": "x",
+            "email": "damien.caze@pm.gouv.fr",
+            "format": "titlefull"
+          },
+          {
+            "firstname": "Stéphane",
+            "lastname": "Travert",
+            "gender": "H",
+            "slug": "x",
+            "email": "claire.le-bigot@agriculture.gouv.fr",
+            "format": "titlefull"
+          },
+          {
+            "firstname": "François",
+            "lastname": "de Rugy",
+            "gender": "H",
+            "slug": "x",
+            "email": "president@assemblee-nationale.fr",
+            "format": "titlefull"
+          },
+          {
+            "firstname": "André",
+            "lastname": "Chassaigne",
+            "gender": "H",
+            "slug": "x",
+            "email": "andre.chassaigne@assemblee-nationale.fr",
+            "format": "titlefull"
+          },
+          {
+            "firstname": "Richard",
+            "lastname": "Ferrand",
+            "gender": "H",
+            "slug": "x",
+            "email": "richard.ferrand@assemblee-nationale.fr",
+            "format": "titlefull"
+          },
+          {
+            "firstname": "Marc",
+            "lastname": "Fesneau",
+            "gender": "H",
+            "slug": "x",
+            "email": "marc.fesneau@assemblee-nationale.fr",
+            "format": "titlefull"
+          },
+          {
+            "firstname": "Christian",
+            "lastname": "Jacob",
+            "gender": "H",
+            "slug": "x",
+            "email": "christian.jacob@assemblee-nationale.fr",
+            "format": "titlefull"
+          },
+          {
+            "firstname": "Jean-Luc",
+            "lastname": "Mélenchon",
+            "gender": "H",
+            "slug": "x",
+            "email": "jean-luc.melenchon@assemblee-nationale.fr",
+            "format": "titlefull"
+          },
+          {
+            "firstname": "Valérie",
+            "lastname": "Rabault",
+            "gender": "F",
+            "slug": "x",
+            "email": "valerie.rabault@assemblee-nationale.fr",
+            "format": "titlefull"
+          },
+          {
+            "firstname": "Franck",
+            "lastname": "Riester",
+            "gender": "H",
+            "slug": "x",
+            "email": "franck.riester@assemblee-nationale.fr",
+            "format": "titlefull"
+          },
+          {
+            "firstname": "Jean-Baptiste",
+            "lastname": "Moreau",
+            "gender": "H",
+            "slug": "x",
+            "email": "jean-baptiste.moreau@assemblee-nationale.fr",
+            "format": "titlefull"
+          },
+          {
+            "firstname": "Laurence",
+            "lastname": "Maillart-Mehaignerie",
+            "gender": "F",
+            "slug": "x",
+            "email": "laurence.maillart-mehaignerie@assemblee-nationale.fr",
+            "format": "titlefull"
+          }
+        ],
+        "bcc": [
+          {
+            "email": "cyberaction-copie@l214.com"
+          }
+        ],
+        "subject": "EGalim : inscription de l’interdiction des élevages de poules en cage",
+        "message": "Monsieur le Président de la République,\nMonsieur le Premier Ministre,\nMonsieur le Président de l’Assemblée nationale,\nMonsieur le Ministre,\nMesdames et Messieurs les Députés,\nMesdames, Messieurs, \n\nL’enquête révélée lundi 14 mai par l’association L214 montre des poules pondeuses subissant un véritable calvaire, enfermées à vie dans des cages. Ces images ont suscité mon indignation.\n\nLe projet de loi issu des États généraux de l’alimentation sera discuté en séance publique à l’Assemblée nationale la semaine prochaine. Lors de la consultation publique, l’arrêt des cages est arrivé parmi les contributions les plus soutenues. C’est pourquoi je m’adresse à vous afin que vous exprimiez publiquement votre soutien à une inscription dans la loi de l’interdiction des élevages de poules en cage et des mesures pour réduire la souffrance des animaux dans les élevages et les abattoirs. Il est également important de soutenir les mesures favorisant la végétalisation de l’aliLe projet dans les cantines.\n\nÀ l’Élysée, à Matignon, au ministère de l’Agriculture et à l’Assemblée nationale : le message que vous porterez sera décisif ; il en va de votre responsabilité. En tant que citoyen, je serai attentif aux positions qui seront prises pendant ces discussions.\n\nComptant sur votre pleine mobilisation, je vous prie de croire, Mesdames, Messieurs, en l’expression de ma très respectueuse considération.\n\n{{name}}\n{{department_name}} ({{department_code}})",
+        "select_department": "legislative",
+        "filter_recipient": "department",
+        "step_two_title": "Mes député·e·s",
+        "enable_mailchimp": true,
+        "mailchimp_source": "msender-2018-stopcages-17-mai"
+      }
+    </script>
+  </div>
+  <script async src="/bundle.js"></script>
+</body>
+
+</html>

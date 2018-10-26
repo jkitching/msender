@@ -1,0 +1,27 @@
+@import "../constants.scss";
+
+.button {
+  display: inline-block;
+  border: 0;
+  background: #000;
+  font-family: $font-montserrat;
+  font-weight: 900;
+  font-size: 14px;
+  text-transform: uppercase;
+  line-height: 18px;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  padding: 10px 15px 11px 15px;
+  outline: none;
+  user-select: none;
+
+  &, &:link, &:active, &:visited, &:hover {
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+.button_disabled {
+  composes: button;
+  background: #555;
+}

@@ -1,0 +1,32 @@
+@import "../constants.scss";
+
+.copy_advice {
+  display: none;
+  margin: 10px -35px 15px 0;
+  align-items: center;
+}
+
+.copy_advice_text {
+  font-family: $font-gotham;
+  font-size: 15px;
+  line-height: 19px;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
+  margin: 0;
+  padding: 5px;
+  border: 2px solid #fff;
+  border-radius: 3px;
+}
+
+.arrow {
+  flex-basis: 1;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .copy_advice {
+    display: flex;
+  }
+}

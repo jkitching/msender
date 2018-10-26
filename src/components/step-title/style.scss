@@ -1,0 +1,51 @@
+@import "../constants.scss";
+
+.step_title {
+  display: block;
+  position: relative;
+  margin: 0 0 15px 0;
+  padding: 8px 0 12px 0;
+  user-select: none;
+}
+
+.step_number {
+  display: inline-block;
+  font-family: $font-gotham;
+  font-size: 18px;
+  line-height: 18px;
+  text-align: center;
+  font-weight: 200;
+  color: #FFFFFF;
+  -webkit-font-smoothing: antialiased;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+  margin: 0 10px 0 0;
+  padding: 6px 0;
+}
+
+.step_text {
+  font-family: $font-gotham;
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 200;
+  color: #FFFFFF;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 3px 0;
+}
+
+.step_hr {
+  border: 0;
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  width: 120px;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+}
