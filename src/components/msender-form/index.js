@@ -10,7 +10,7 @@ import Checkbox from '../checkbox'
 import CopyAdvice from '../copy-advice'
 import ButtonContainer from '../button-container'
 
-import { getMessengers, MESSENGER_MODE_NONE, MESSENGER_MODE_COPY } from '../../models/messenger'
+import { MESSENGER_MODE_NONE, MESSENGER_MODE_COPY } from '../../models/messenger'
 import detectEmailMessenger from '../../utils/detectEmailMessenger'
 import isEmailValid from '../../utils/isEmailValid'
 import mailchimpMsenderSubscribe from '../../utils/mailchimpMsenderSubscribe'
@@ -204,8 +204,8 @@ class MsenderFormStepSend extends Component {
   }
 
   onChangeMessenger(e) {
-    const { setIn } = this.props
-    setIn(['messenger'], getMessengers().find(d => e.target.value === d.get('identifier')))
+    const { msender, setIn } = this.props
+    setIn(['messenger'], msender.getMessengers().find(d => e.target.value === d.get('identifier')))
   }
 
   onSend() {
@@ -229,7 +229,7 @@ class MsenderFormStepSend extends Component {
           <FormattedMessage id="label_email_client" />
         )}
         value={msender.getIn(['messenger', 'identifier'])}
-        options={getMessengers().map(m => ({
+        options={msender.getMessengers().map(m => ({
           value: m.get('identifier'),
           text: m.get('name'),
         })).toArray()}

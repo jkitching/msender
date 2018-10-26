@@ -8,7 +8,7 @@ import MessagePreview from '../message-preview'
 import ButtonContainer from '../button-container'
 
 import { msenderFromProps } from '../../models/msender'
-import { getMessengers, MESSENGER_MODE_NONE } from '../../models/messenger'
+import { MESSENGER_MODE_NONE } from '../../models/messenger'
 import detectEmailMessenger from '../../utils/detectEmailMessenger'
 import withPetitionBindings from '../../utils/withPetitionBindings'
 import { getMessagesLocale, addAllLocalData } from '../../utils/i18n'

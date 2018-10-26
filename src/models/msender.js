@@ -1,6 +1,8 @@
 import Immutable, { Record } from 'immutable'
 
-import { MessengerGmail, MessengerMailto } from './messenger'
+import { getMessengers,
+         MessengerGmail,
+         MessengerMailto } from './messenger'
 import { makeRecipientList } from './recipient'
 import { getDepartments,
          DEPARTMENT_MODE_DEFAULT,
@@ -38,6 +40,7 @@ export default class Msender extends Record({
   mailchimp_source: 'msender',
   locale: null,
   translations: null,
+  messengers: null,
 }) {
   getName() {
     const firstName = this.getFirstName()
@@ -129,6 +132,18 @@ export default class Msender extends Record({
     return message
   }
 
+  // Messengers
+
+  getMessengers() {
+    const identifiers = this.get('messengers')
+    let messengers = getMessengers()
+    if (identifiers) {
+      messengers = messengers.filter(m =>
+        identifiers.contains(m.get('identifier')))
+    }
+    return messengers
+  }
+
   // Conditonal UI
 
   enableDepartmentSelect() {
@@ -186,5 +201,6 @@ export const msenderFromProps = (props) => {
     mailchimp_source: (props.mailchimp_source ? props.mailchimp_source : 'msender'),
     locale: (props.locale ? props.locale : null),
     translations: (props.translations ? Immutable.fromJS(props.translations) : null),
+    messengers: (props.messengers ? Immutable.Set(props.messengers) : null),
   })
 }

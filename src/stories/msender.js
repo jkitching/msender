@@ -49,6 +49,14 @@ Bien cordialement
 
 L214 Ethique & Animaux encourage le développement des alternatives végétales !`
 
+const defaultCaliProp12 = `Dear Sir or Madam,
+
+Please vote "yes" on California Prop 12.
+
+Regards,
+
+{{name}}`
+
 const toJeLeVeux = [
   {
     "organization": "E.Leclerc",
@@ -289,20 +297,38 @@ storiesOf('Msender/California Prop 12', module)
     <MsenderContainer locale="en-EN"
                       to={toCaliProp12}
                       subject="Vote YES! on Proposition 12"
-                      message={defaultMessageJeLeVeux}
+                      message={defaultCaliProp12}
                       filter_recipient={FILTER_RECIPIENT_MANUAL}
                       filter_recipient_randomize={true}
-                      step_two_title="My representatives" />
+                      step_two_title="My representatives"
+                      messengers={[
+                        'gmail',
+                        'applemail',
+                        'outlook',
+                        'thunderbird',
+                        'windowslivemail',
+                        'yahoo',
+                        'live',
+                      ]} />
   ))
   .add('prefilled', () => (
     <MsenderContainer locale="en-EN"
                       to={toCaliProp12}
                       subject="Vote YES! on Proposition 12"
-                      message={defaultMessageJeLeVeux}
+                      message={defaultCaliProp12}
                       filter_recipient={FILTER_RECIPIENT_MANUAL}
                       filter_recipient_randomize={true}
                       step_two_title="My representatives"
                       first_name="John"
                       last_name="Appleseed"
-                      email="john@apple.com" />
+                      email="john@apple.com"
+                      messengers={[
+                        'gmail',
+                        'applemail',
+                        'outlook',
+                        'thunderbird',
+                        'windowslivemail',
+                        'yahoo',
+                        'live',
+                      ]} />
   ))
