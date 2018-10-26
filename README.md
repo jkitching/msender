@@ -2,7 +2,7 @@
 
 ![](https://cl.ly/05a5f5e39dc9/Image%2525202018-10-26%252520at%2525204.13.00%252520PM.png)
 
-## Example of use
+## Example & Demo
 
 ```
 <div data-widget-host="habitat" class="preview">
@@ -42,8 +42,10 @@
   }
   </script>
 </div>
-<script async src="https://unpkg.com/@l214/msender/build/bundle.js"></script>
+<script async src="https://unpkg.com/@l214/msender@2.0.2/build/bundle.js"></script>
 ```
+
+➡️ [See a demo](https://009118p7kl.codesandbox.io/)
 
 ## Parameters
 
@@ -269,6 +271,12 @@ To build a production ready bundle (in `./build/`):
 
 ```shell
 yarn run build
+```
+
+## Publish on NPM
+
+```shell
+yarn run build && npm publish --access public
 ```
 
 ## Roadmap
