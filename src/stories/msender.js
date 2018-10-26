@@ -102,6 +102,27 @@ const toJeLeVeux = [
   }
 ]
 
+const toCaliProp12 = [
+  {
+    "first_name": "London",
+    "last_name": "Breed",
+    "email": "major@sfgov.org",
+    "format": "full"
+  },
+  {
+    "first_name": "Eric",
+    "last_name": "Garcetti",
+    "email": "major@lamayor.org",
+    "format": "full"
+  },
+  {
+    "first_name": "Darrell",
+    "last_name": "Steinberg",
+    "email": "major@cityofsacramento.org",
+    "format": "full"
+  }
+]
+
 const defaultMessageDeputies = `Monsieur le Président de la République,
 Monsieur le Premier Ministre,
 Monsieur le Président de l’Assemblée nationale,
@@ -257,6 +278,30 @@ storiesOf('Msender/JeLeVeux.l214.com', module)
                       filter_recipient={FILTER_RECIPIENT_MANUAL}
                       filter_recipient_randomize={true}
                       step_two_title="Mes magasins"
+                      first_name="John"
+                      last_name="Appleseed"
+                      email="john@apple.com" />
+  ))
+
+storiesOf('Msender/California Prop 12', module)
+  .addDecorator(decoratorFn())
+  .add('default', () => (
+    <MsenderContainer locale="en-EN"
+                      to={toCaliProp12}
+                      subject="Vote YES! on Proposition 12"
+                      message={defaultMessageJeLeVeux}
+                      filter_recipient={FILTER_RECIPIENT_MANUAL}
+                      filter_recipient_randomize={true}
+                      step_two_title="My representatives" />
+  ))
+  .add('prefilled', () => (
+    <MsenderContainer locale="en-EN"
+                      to={toCaliProp12}
+                      subject="Vote YES! on Proposition 12"
+                      message={defaultMessageJeLeVeux}
+                      filter_recipient={FILTER_RECIPIENT_MANUAL}
+                      filter_recipient_randomize={true}
+                      step_two_title="My representatives"
                       first_name="John"
                       last_name="Appleseed"
                       email="john@apple.com" />
