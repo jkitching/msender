@@ -23,13 +23,13 @@ const withPetitionBindings = WrappedComponent => {
       if (userData) {
         this.props.didGetPetitionData(userData)
       }
-      if (window.jQuery) {
+      if (window.jQuery && typeof(window.jQuery().on) === 'function') {
         window.jQuery(document).on('petition:didSucceed', this.onPetitionSucceedBound)
       }
     }
 
     componentWillUnmount() {
-      if (window.jQuery) {
+      if (window.jQuery && typeof(window.jQuery().on) === 'function') {
         window.jQuery(document).off('petition:didSucceed', this.onPetitionSucceedBound)
       }
     }
