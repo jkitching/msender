@@ -11,3 +11,12 @@ _habitat.render({
   selector: '[data-widget-host="habitat"]',
   clean: true,
 })
+
+document.addEventListener('copy', e => {
+  const textContent = e.target.textContent;
+  const filterText = 'CopyToClipboard\n';
+  if (textContent.startsWith(filterText)) {
+    e.clipboardData.setData('text/plain', textContent.replace(filterText, ''));
+    e.preventDefault();
+  }
+});

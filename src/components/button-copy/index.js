@@ -40,7 +40,7 @@ class CopyButton extends Component {
     const { value } = this.props
     const { copied } = this.state
     return (
-      <CopyToClipboard text={value} onCopy={this.onCopy}>
+      <CopyToClipboard text={`CopyToClipboard\n${value}`} onCopy={this.onCopy}>
         <button className={style.button}>
           <span className={style.text}>
             {copied ? (
