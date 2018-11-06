@@ -1,10 +1,10 @@
-# Msender – Create beautiful forms to Interpellate Decision-makers
+# Msender – Create beautiful forms to interpellate decision-makers
 
 ![](https://cl.ly/05a5f5e39dc9/Image%2525202018-10-26%252520at%2525204.13.00%252520PM.png)
 
 ## Example & Demo
 
-```
+```html
 <div data-widget-host="habitat" class="preview">
   <script type="text/props">
   {
@@ -51,13 +51,15 @@
 
 ### `to`
 
-A list of `Recepient` objects to list the available email recepients. See below for a full spec of the `Recepient` object. For example:
+A list of `Recipient`s to send the email to. Can be filtered based on user inputs (see `filter_recipient`). See below for a full spec of the `Recipient` object.
+
+Example:
 
 ```json
 [
   {
     "first_name": "John",
-    "last_name": "Appleseed"
+    "last_name": "Appleseed",
     "organization": "Apple Inc.",
     "email": "john@apple.com",
     "gender": "m",
@@ -69,11 +71,14 @@ A list of `Recepient` objects to list the available email recepients. See below 
 
 ### `cc`
 
-A list of `Recepient` objects to list the available email `cc` targets.
+A list of `Recipient`s to send the email to as `cc`.
 
 ### `bcc`
 
-A list of `Recepient` objects to list the available email `bcc` targets. For example:
+A list of `Recipient`s to send the email to as `bcc`.
+
+
+Example:
 
 ```json
 [
@@ -89,7 +94,7 @@ The email subject.
 
 ### `message`
 
-The email message. Can be templated with the following tags:
+The email message. Can be templated with the following variables:
 
 | Tag | Description |
 | --- | ----------- |
@@ -99,9 +104,19 @@ The email message. Can be templated with the following tags:
 | `{{department_name}}` | The sender's French department name (e.g. "Nord") |
 | `{{department_code}}` | The sender's French department code as a string (e.g. "59") |
 
+
+Example: 
+
+```json
+  {
+    "message": "Hello, my name is {{name}}"
+  }
+]
+```
+
 ### `filter_recipient`
 
-How the recipient list (the `to` parameter described above) should be filtered. The possible values are:
+How the recipient list (the `to` parameter described above) should be filtered. Possible values are:
 
 | Value | Description |
 | ----- | ----------- |
@@ -126,7 +141,7 @@ The title to be displayed on step two (by default will display *Destinataires*).
 
 ### `enable_mailchimp`
 
-Enable newsletter subscription via MailChimp (boolean, default is `false`). If enabled, a checkbox will ask user consent to subscribe to the newsletter (initial state of the checkbox is controlled by `send_mailchimp`).
+If enabled, a checkbox will ask user consent to subscribe to the newsletter (see `send_mailchimp`).
 
 ### `send_mailchimp`
 
@@ -197,17 +212,17 @@ Possible values are:
 | `sfr` | SFR | *France* 🇫🇷 |
 | `laposte` | Laposte.net | *France* 🇫🇷 |
 
-## `Recepient` object
+## `Recipient` object
 
 | Field | Description |
 | ----- | ----------- |
-| `first_name` | Recepient's first name (e.g. "John") |
-| `last_name` | Recepient's first name (e.g. "Appleseed") |
-| `organization` | Recepient's organization name (e.g. "Apple Inc.") |
-| `email` | Recepient's email address (e.g. "john@apple.com") |
-| `gender` | Recepient's gender for title display (see possible values below) |
-| `format` | Formatting of the recipient's full name (see possible values below) |
-| `department_code` | Recepient's department code (for department filtering) |
+| `first_name` | Recipient's first name (e.g. "John") |
+| `last_name` | Recipient's first name (e.g. "Appleseed") |
+| `organization` | Recipient's organization name (e.g. "Apple Inc.") |
+| `email` | Recipient's email address (e.g. "john@apple.com") |
+| `gender` | Recipient's gender for title display (see possible values below) |
+| `format` | Formatting of the Recipient's full name (see possible values below) |
+| `department_code` | Recipient's department code (for department filtering) |
 
 
 Possible `gender` values:
@@ -299,7 +314,7 @@ Generally speaking, we aim to make this codebase less specific to L214's use and
 
 #### Misc info
 
-* Get requests characters limitations by webmail :
+* GET requests characters limitations by webmail:
 * Windows Live Hotmail : ~1750 chars
 * Gmail : ~1900 chars
 * Yahoo Mail : ~7000 chars
