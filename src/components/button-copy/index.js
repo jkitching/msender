@@ -40,7 +40,7 @@ class CopyButton extends Component {
     const { value } = this.props
     const { copied } = this.state
     return (
-      <CopyToClipboard text={`CopyToClipboard\n${value}`} onCopy={this.onCopy}>
+      <CopyToClipboard text={value} onCopy={this.onCopy}>
         <button className={style.button}>
           <span className={style.text}>
             {copied ? (
@@ -55,7 +55,7 @@ class CopyButton extends Component {
     )
   }
 
-  onCopy() {
+  onCopy(copiedText) {
     this.setState({ copied: true })
     if (this.timeout) {
       clearTimeout(this.timeout)
@@ -64,6 +64,7 @@ class CopyButton extends Component {
       this.setState({ copied: false })
       this.timeout = null
     }, 5000)
+    navigator.clipboard.writeText(copiedText)
   }
 }
 
