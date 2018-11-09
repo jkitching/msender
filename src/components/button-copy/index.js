@@ -5,6 +5,14 @@ import style from './style.scss'
 
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 
+/*
+
+  TODO:
+  Only use navigator.clipboard.writeText(copiedText)
+  and remove the CopyToClipboard lib
+
+*/
+
 const CopyIcon = (props) => {
   return (
     <svg width="14px" height="18px" viewBox="0 0 14 18" className={style.icon}>
@@ -55,7 +63,7 @@ class CopyButton extends Component {
     )
   }
 
-  onCopy() {
+  onCopy(copiedText) {
     this.setState({ copied: true })
     if (this.timeout) {
       clearTimeout(this.timeout)
@@ -64,6 +72,7 @@ class CopyButton extends Component {
       this.setState({ copied: false })
       this.timeout = null
     }, 5000)
+    navigator.clipboard.writeText(copiedText)
   }
 }
 
