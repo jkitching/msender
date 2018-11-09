@@ -42,7 +42,7 @@
   }
   </script>
 </div>
-<script async src="https://unpkg.com/@l214/msender@2.0.5/build/bundle.js"></script>
+<script async src="https://unpkg.com/@l214/msender@2.0.6/build/bundle.js"></script>
 ```
 
 ➡️ [See a demo](https://009118p7kl.codesandbox.io/)
