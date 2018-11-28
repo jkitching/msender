@@ -53,6 +53,7 @@
 <body>
   <div id="msender-container" class="preview"></div>
   <script>
+    /* Msender config params */
     var msenderParams = {
       "to": [
         {
@@ -174,6 +175,7 @@
       "mailchimp_source": "msender-2018-stopcages-17-mai"
     };
 
+    /* wait for Msender to load and initialize */
     window.addEventListener('msenderReady', function() {
       msender.renderContainer(document.getElementById('msender-container'), msenderParams);
     });
