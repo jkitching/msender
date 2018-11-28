@@ -5,6 +5,9 @@ import React, { Component } from 'react'
 import MsenderContainer from './components/msender'
 
 const renderContainer = (domElement, props) => {
+  if (typeof domElement === 'string') {
+    domElement = document.querySelector(domElement)
+  }
   React.render(<MsenderContainer {...props} />, domElement)
 }
 
