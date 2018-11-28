@@ -5,9 +5,24 @@ import habitat from 'preact-habitat'
 
 import MsenderContainer from './components/msender'
 
-const _habitat = habitat(MsenderContainer)
+// if there's a habitat found, use it
+const habitatSelector = '[data-widget-host="habitat"]'
+if (document.querySelector(habitatSelector)) {
+  const _habitat = habitat(MsenderContainer)
+  _habitat.render({
+    selector: habitatSelector,
+    clean: true,
+  })  
+}
 
-_habitat.render({
-  selector: '[data-widget-host="habitat"]',
-  clean: true,
-})
+const renderContainer = (domElement, props) => {
+  React.render(<MsenderContainer {...props} />, domElement)
+}
+
+window.msender = {
+  renderContainer
+}
+
+// dispatch our custom event
+const event = new Event('msenderReady')
+window.dispatchEvent(event)
