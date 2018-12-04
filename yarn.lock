@@ -7433,19 +7433,13 @@ preact-compat@^3.14.3, preact-compat@^3.18.0:
     prop-types "^15.5.8"
     standalone-react-addons-pure-render-mixin "^0.1.1"
 
-preact-habitat@^3.1.0:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/preact-habitat/-/preact-habitat-3.2.1.tgz#27d29e3278a35cd8ca0163c370da98ebfe411a9f"
-  dependencies:
-    simulant "^0.2.2"
-
 preact-render-to-string@^3.6.0, preact-render-to-string@^3.7.0:
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/preact-render-to-string/-/preact-render-to-string-3.7.0.tgz#7db4177454bc01395e0d01d6ac07bc5e838e31ee"
   dependencies:
     pretty-format "^3.5.1"
 
-preact-router@^2.5.2, preact-router@^2.5.7:
+preact-router@^2.5.2:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/preact-router/-/preact-router-2.6.0.tgz#55f7fbc84e6b8af0df3ea04c8ce4c268714089b6"
 
@@ -8566,10 +8560,6 @@ simplehttp2server@^2.0.0:
     bin-build "^2.2.0"
     bin-wrapper "^3.0.2"
     logalot "^2.1.0"
-
-simulant@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/simulant/-/simulant-0.2.2.tgz#f1bce52712b6a7a0da38ddfdda7e83b20b1da01e"
 
 slash@^1.0.0:
   version "1.0.0"

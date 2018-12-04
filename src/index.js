@@ -1,13 +1,20 @@
 let poly = require('preact-cli/lib/lib/webpack/polyfills')
 
 import React, { Component } from 'react'
-import habitat from 'preact-habitat'
 
 import MsenderContainer from './components/msender'
 
-const _habitat = habitat(MsenderContainer)
+const renderContainer = (domElement, props) => {
+  if (typeof domElement === 'string') {
+    domElement = document.querySelector(domElement)
+  }
+  React.render(<MsenderContainer {...props} />, domElement)
+}
 
-_habitat.render({
-  selector: '[data-widget-host="habitat"]',
-  clean: true,
-})
+window.msender = {
+  renderContainer
+}
+
+// dispatch our custom event
+const event = new Event('msenderReady')
+window.dispatchEvent(event)

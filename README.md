@@ -5,47 +5,73 @@
 ## Example & Demo
 
 ```html
-<div data-widget-host="habitat" class="preview">
-  <script type="text/props">
-  {
-    "to": [{
-        "first_name": "London",
-        "last_name": "Breed",
-        "email": "major@sfgov.org",
-        "format": "full"
-      },
-      {
-        "first_name": "Eric",
-        "last_name": "Garcetti",
-        "email": "major@lamayor.org",
-        "format": "full"
-      }
-    ],
-    "bcc": [{
-      "email": "cyberaction-copie@l214.com"
-    }],
-    "subject": "Vote YES! on Proposition 12",
-    "message": "Dear Sir or Madam,\n\nPlease vote on California Prop 12.\n\nRegards,\n\n{{name}}",
-    "filter_recipient": "manual",
-    "filter_recipient_randomize": true,
-    "step_two_title": "My representatives",
-    "messengers": [
-      "gmail",
-      "applemail",
-      "outlook",
-      "thunderbird",
-      "windowslivemail",
-      "yahoo",
-      "live"
-    ],
-    "locale": "en-EN"
-  }
-  </script>
-</div>
+<div id="msender-container"></div>
+<script>
+/* Msender config params */
+var msenderParams = {
+  "to": [{
+      "first_name": "London",
+      "last_name": "Breed",
+      "email": "major@sfgov.org",
+      "format": "full"
+    },
+    {
+      "first_name": "Eric",
+      "last_name": "Garcetti",
+      "email": "major@lamayor.org",
+      "format": "full"
+    }
+  ],
+  "bcc": [{
+    "email": "cyberaction-copie@l214.com"
+  }],
+  "subject": "Vote YES! on Proposition 12",
+  "message": "Dear Sir or Madam,\n\nPlease vote on California Prop 12.\n\nRegards,\n\n{{name}}",
+  "filter_recipient": "manual",
+  "filter_recipient_randomize": true,
+  "step_two_title": "My representatives",
+  "messengers": [
+    "gmail",
+    "applemail",
+    "outlook",
+    "thunderbird",
+    "windowslivemail",
+    "yahoo",
+    "live"
+  ],
+  "locale": "en-EN"
+};
+
+/* wait for Msender to load and initialize */
+window.addEventListener('msenderReady', function() {
+  msender.renderContainer('#msender-container', msenderParams);
+});
+</script>
 <script async src="https://unpkg.com/@l214/msender@2.0.6/build/bundle.js"></script>
 ```
 
 ➡️ [See a demo](https://009118p7kl.codesandbox.io/)
+
+## API
+
+### Event `msenderReady` (wait for loading)
+
+It's recommended to load the Msender JavaScript file after other page assets (ideally using `<script async>`) for a better user experience. For that reason, it's necessary to wait for the MSender bundle to be loaded before calling its API.
+
+```js
+window.addEventListener('msenderReady', function() {
+  // window.msender is available
+});
+```
+
+### Initialize with `renderContainer`
+
+```js
+msender.renderContainer(domElement, params);
+```
+
+* `domElement` *(DOM element or string)*: The DOM element where Msender will be rendered. If a string is passed, it will be interpreted as a Selector and the first matching selector will be used.
+* `params` *(object)*: A JavaScript object (dictionary) containing the parameters (as described in the [Parameters](#Parameters) section below).
 
 ## Parameters
 
