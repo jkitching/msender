@@ -1,6 +1,6 @@
 {
   "name": "@l214/msender",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "immutable": "^3.8.2",
+    "immutable-shuffle": "^1.0.3",
     "memoize-immutable": "^3.0.0",
     "preact": "^8.2.5",
     "preact-compat": "^3.18.0",

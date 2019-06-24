@@ -4751,6 +4751,11 @@ immutability-helper@^2.1.2:
   dependencies:
     invariant "^2.2.0"
 
+immutable-shuffle@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/immutable-shuffle/-/immutable-shuffle-1.0.3.tgz#7e378f0210c8f503be8e69c0ad4296c59ab6a7cc"
+  integrity sha512-LCkTp+u/6GwBiQsSLHtWwzddvzRBkadmy2aGh550zbGWNAi897vlQc/mhfteu6SrQwM3QngnAZtl0FV5K7IVRw==
+
 immutable@^3.8.1, immutable@^3.8.2:
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"

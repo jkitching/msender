@@ -47,7 +47,7 @@ window.addEventListener('msenderReady', function() {
   msender.renderContainer('#msender-container', msenderParams);
 });
 </script>
-<script async src="https://unpkg.com/@l214/msender@2.1.0/build/bundle.js"></script>
+<script async src="https://unpkg.com/@l214/msender@2.2.0/build/bundle.js"></script>
 ```
 
 ➡️ [See a demo](https://009118p7kl.codesandbox.io/)
@@ -149,6 +149,7 @@ How the recipient list (the `to` parameter described above) should be filtered. 
 | `all` (default) | Always send to all recipient list |
 | `manual` | Will add a select field to let the user choose one recipient in the list |
 | `department` | Will add a select to choose a French department and will filter recipient by department |
+| `none` | Won't show the recipient field, to be used to let users send emails to their friends |
 
 ### `select_department`
 
@@ -237,6 +238,28 @@ Possible values are:
 | `orange` | Orange | *France* 🇫🇷 |
 | `sfr` | SFR | *France* 🇫🇷 |
 | `laposte` | Laposte.net | *France* 🇫🇷 |
+
+### `max_chars`
+
+Maximum number of characters (max length) allowed in the URL. This is useful to support long lists of receipients especially with online services (e.g. Gmail, Yahoo!) where URL is limited by the HTTP spec and servers.
+
+If set, the list of recipients will be truncated to fit in the given length, with a minimum of 1 recipient.
+
+Example:
+
+```js
+max_chars: 2000,
+```
+
+### `max_chars_randomize`
+
+If set to `true` the list of recipients selected with `max_chars` will be randomized (instead of picking the first ones).
+
+Example:
+
+```js
+max_chars_randomize: true,
+```
 
 ## `Recipient` object
 

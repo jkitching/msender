@@ -1,4 +1,5 @@
 import Immutable, { Record } from 'immutable'
+import shuffle from 'immutable-shuffle'
 
 import { getMessengers,
          MessengerGmail,
@@ -17,6 +18,7 @@ const is_mobile_or_tablet = isMobileOrTablet()
 export const FILTER_RECIPIENT_ALL = 'all'
 export const FILTER_RECIPIENT_MANUAL = 'manual'
 export const FILTER_RECIPIENT_DEPARTMENT = 'department'
+export const FILTER_RECIPIENT_NONE = 'none'
 
 export default class Msender extends Record({
   first_name: null,
@@ -41,6 +43,8 @@ export default class Msender extends Record({
   locale: null,
   translations: null,
   messengers: null,
+  max_chars: null,
+  max_chars_randomize: false,
 }) {
   getName() {
     const firstName = this.getFirstName()
@@ -90,7 +94,10 @@ export default class Msender extends Record({
   }
 
   getToRecipients() {
-    if (this.get('filter_recipient') === FILTER_RECIPIENT_MANUAL) {
+    if (this.get('filter_recipient') === FILTER_RECIPIENT_NONE) {
+      return Immutable.List()
+    }
+    else if (this.get('filter_recipient') === FILTER_RECIPIENT_MANUAL) {
       if (!this.get('message_to_current')) {
         return Immutable.List()
       }
@@ -107,11 +114,21 @@ export default class Msender extends Record({
     }
     return this.get('message_to')
   }
-  getToString(separator = ', ') {
-    return this.getToRecipients().map(recipient => recipient.getToString()).join(separator)
+  getToMaxRecipients(n = null) {
+    let recipients = this.getToRecipients()
+    if (n === null) {
+      return recipients
+    }
+    if (this.get('max_chars_randomize')) {
+      return shuffle(recipients).slice(0, n)
+    }
+    return recipients.slice(0, n)
   }
-  getToEmailsString(separator = ', ') {
-    return this.getToRecipients().map(recipient => recipient.getToEmail()).join(separator)
+  getToString(separator = ', ', n = null) {
+    return this.getToMaxRecipients(n).map(recipient => recipient.getToString()).join(separator)
+  }
+  getToEmailsString(separator = ', ', n = null) {
+    return this.getToMaxRecipients(n).map(recipient => recipient.getToEmail()).join(separator)
   }
   getCcString(separator = ', ') {
     return this.get('message_cc').map(recipient => recipient.getToEmail()).join(separator)
@@ -202,5 +219,7 @@ export const msenderFromProps = (props) => {
     locale: (props.locale ? props.locale : null),
     translations: (props.translations ? Immutable.fromJS(props.translations) : null),
     messengers: (props.messengers ? Immutable.Set(props.messengers) : null),
+    max_chars: (props.max_chars ? props.max_chars : null),
+    max_chars_randomize: (props.max_chars_randomize ? props.max_chars_randomize : false),
   })
 }
