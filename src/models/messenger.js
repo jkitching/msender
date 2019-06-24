@@ -7,6 +7,31 @@ export const MESSENGER_MODE_LINK = 'link'
 export const MESSENGER_MODE_COPY = 'copy'
 export const MESSENGER_MODE_NONE = 'none'
 
+
+/**
+ * A helper function to optimize the number of characters in the URL string.
+ * If there's a `max_chars` limit set and we exceed it, it tries to reduce
+ * the number of recipients.
+ *
+ * @param msender The Msender object
+ * @param genFn The string generation function that will be called until we find
+ *              the right size
+ * @return An optimized string
+ */
+const getSafeMailtoLink = (msender, genFn) => {
+  const maxChars = msender.get('max_chars')
+  let s = genFn(msender, null)
+  if (maxChars === null) {
+    return s
+  }
+  let n = msender.getToRecipients().count() - 1
+  while (s.length > maxChars && n > 0) {
+    s = genFn(msender, n)
+    n = n - 1
+  }
+  return s
+}
+
 class Messenger extends Record({ // abstract
   identifier: null,
   name: null,
@@ -35,11 +60,13 @@ export class MessengerMailto extends Record({
   }
   getMailtoLink(msender) {
     const separator = this.getSeparator()
-    return `mailto:${encodeURIComponent(msender.getToEmailsString(separator))}?` + urlEncode({
-      cc: msender.getCcString(separator),
-      bcc: msender.getBccString(separator),
-      subject: msender.getSubject(),
-      body: msender.getMessage(),
+    return getSafeMailtoLink(msender, (_, n) => {
+      return `mailto:${encodeURIComponent(msender.getToEmailsString(separator, n))}?` + urlEncode({
+        cc: msender.getCcString(separator),
+        bcc: msender.getBccString(separator),
+        subject: msender.getSubject(),
+        body: msender.getMessage(),
+      })
     })
   }
 }
@@ -95,12 +122,18 @@ export class MessengerGmail extends MessengerMailto {
     })
   }
   getMailtoLink(msender) {
-    return 'https://mail.google.com/mail/u/0/?view=cm&fs=1&' + urlEncode({
-      to: msender.getToString(),
-      cc: msender.getCcString(),
-      bcc: msender.getBccString(),
-      su: msender.getSubject(),
-      body: msender.getMessage(),
+    return getSafeMailtoLink(msender, (_, n) => {
+      /* Use the full string (with name, .getToString()) unless we need
+       * to optimize the number of characters in which case we can only
+       * use the email addresses (.getToEmailsString()).
+       */
+      return 'https://mail.google.com/mail/u/0/?view=cm&fs=1&' + urlEncode({
+        to: (n === null ? msender.getToString() : msender.getToEmailsString(',', n)),
+        cc: msender.getCcString(),
+        bcc: msender.getBccString(),
+        su: msender.getSubject(),
+        body: msender.getMessage(),
+      })
     })
   }
 }
@@ -113,12 +146,14 @@ export class MessengerYahoo extends MessengerMailto {
     })
   }
   getMailtoLink(msender) {
-    return 'http://compose.mail.yahoo.com/?' + urlEncode({
-      to: msender.getToEmailsString(),
-      cc: msender.getCcString(),
-      bcc: msender.getBccString(),
-      su: msender.getSubject(),
-      body: msender.getMessage().replace(/\'/g, "′"),
+    return getSafeMailtoLink(msender, (_, n) => {
+      return 'http://compose.mail.yahoo.com/?' + urlEncode({
+        to: msender.getToEmailsString(',', n),
+        cc: msender.getCcString(),
+        bcc: msender.getBccString(),
+        su: msender.getSubject(),
+        body: msender.getMessage().replace(/\'/g, "′"),
+      })
     })
   }
 }

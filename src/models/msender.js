@@ -42,6 +42,7 @@ export default class Msender extends Record({
   locale: null,
   translations: null,
   messengers: null,
+  max_chars: null,
 }) {
   getName() {
     const firstName = this.getFirstName()
@@ -111,11 +112,18 @@ export default class Msender extends Record({
     }
     return this.get('message_to')
   }
-  getToString(separator = ', ') {
-    return this.getToRecipients().map(recipient => recipient.getToString()).join(separator)
+  getToMaxRecipients(n = null) {
+    let recipients = this.getToRecipients()
+    if (n === null) {
+      return recipients
+    }
+    return recipients.slice(0, n)
   }
-  getToEmailsString(separator = ', ') {
-    return this.getToRecipients().map(recipient => recipient.getToEmail()).join(separator)
+  getToString(separator = ', ', n = null) {
+    return this.getToMaxRecipients(n).map(recipient => recipient.getToString()).join(separator)
+  }
+  getToEmailsString(separator = ', ', n = null) {
+    return this.getToMaxRecipients(n).map(recipient => recipient.getToEmail()).join(separator)
   }
   getCcString(separator = ', ') {
     return this.get('message_cc').map(recipient => recipient.getToEmail()).join(separator)
