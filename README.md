@@ -149,6 +149,7 @@ How the recipient list (the `to` parameter described above) should be filtered. 
 | `all` (default) | Always send to all recipient list |
 | `manual` | Will add a select field to let the user choose one recipient in the list |
 | `department` | Will add a select to choose a French department and will filter recipient by department |
+| `none` | Won't show the recipient field, to be used to let users send emails to their friends |
 
 ### `select_department`
 
@@ -237,6 +238,18 @@ Possible values are:
 | `orange` | Orange | *France* 🇫🇷 |
 | `sfr` | SFR | *France* 🇫🇷 |
 | `laposte` | Laposte.net | *France* 🇫🇷 |
+
+### `max_chars`
+
+Maximum number of characters (max length) allowed in the URL. This is useful to support long lists of receipients especially with online services (e.g. Gmail, Yahoo!) where URL is limited by the HTTP spec and servers.
+
+If set, the list of recipients will be truncated to fit in the given length, with a minimum of 1 recipient.
+
+Example:
+
+```js
+max_chars: 2000,
+```
 
 ## `Recipient` object
 

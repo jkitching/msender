@@ -1,5 +1,4 @@
-import Msender, { msenderFromProps,
-                  FILTER_RECIPIENT_ALL,
+import Msender, { FILTER_RECIPIENT_ALL,
                   FILTER_RECIPIENT_MANUAL,
                   FILTER_RECIPIENT_DEPARTMENT,
                   FILTER_RECIPIENT_NONE } from '../msender'

@@ -214,5 +214,6 @@ export const msenderFromProps = (props) => {
     locale: (props.locale ? props.locale : null),
     translations: (props.translations ? Immutable.fromJS(props.translations) : null),
     messengers: (props.messengers ? Immutable.Set(props.messengers) : null),
+    max_chars: (props.max_chars ? props.max_chars : null),
   })
 }
