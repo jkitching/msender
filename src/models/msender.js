@@ -17,6 +17,7 @@ const is_mobile_or_tablet = isMobileOrTablet()
 export const FILTER_RECIPIENT_ALL = 'all'
 export const FILTER_RECIPIENT_MANUAL = 'manual'
 export const FILTER_RECIPIENT_DEPARTMENT = 'department'
+export const FILTER_RECIPIENT_NONE = 'none'
 
 export default class Msender extends Record({
   first_name: null,
@@ -90,7 +91,10 @@ export default class Msender extends Record({
   }
 
   getToRecipients() {
-    if (this.get('filter_recipient') === FILTER_RECIPIENT_MANUAL) {
+    if (this.get('filter_recipient') === FILTER_RECIPIENT_NONE) {
+      return Immutable.List()
+    }
+    else if (this.get('filter_recipient') === FILTER_RECIPIENT_MANUAL) {
       if (!this.get('message_to_current')) {
         return Immutable.List()
       }

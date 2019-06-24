@@ -6,7 +6,8 @@ import { decoratorFn } from './decorators'
 import MsenderContainer from '../components/msender'
 import { FILTER_RECIPIENT_ALL,
          FILTER_RECIPIENT_MANUAL,
-         FILTER_RECIPIENT_DEPARTMENT } from '../models/msender'
+         FILTER_RECIPIENT_DEPARTMENT,
+         FILTER_RECIPIENT_NONE } from '../models/msender'
 import { DEPARTMENT_MODE_DEFAULT,
          DEPARTMENT_MODE_METROPOLITAN,
          DEPARTMENT_MODE_LEGISLATIVE } from '../models/department'
@@ -54,6 +55,15 @@ const defaultCaliProp12 = `Dear Sir or Madam,
 Please vote "yes" on California Prop 12.
 
 Regards,
+
+{{name}}`
+
+const defaultSendToFriend = `Bonjour,
+
+Je voulais te partager cette page sur les engagement des différents partis politiques sur la question animale :
+https://www.politique-animaux.fr/partis
+
+À bientôt,
 
 {{name}}`
 
@@ -331,4 +341,13 @@ storiesOf('Msender/California Prop 12', module)
                         'yahoo',
                         'live',
                       ]} />
+  ))
+
+storiesOf('Msender/Send to a Friend', module)
+  .addDecorator(decoratorFn())
+  .add('default', () => (
+    <MsenderContainer locale="fr-FR"
+                      subject="Engagement des partis politiques sur les animaux"
+                      message={defaultSendToFriend}
+                      filter_recipient={FILTER_RECIPIENT_NONE} />
   ))

@@ -1,7 +1,8 @@
 import Msender, { msenderFromProps,
                   FILTER_RECIPIENT_ALL,
                   FILTER_RECIPIENT_MANUAL,
-                  FILTER_RECIPIENT_DEPARTMENT } from '../msender'
+                  FILTER_RECIPIENT_DEPARTMENT,
+                  FILTER_RECIPIENT_NONE } from '../msender'
 import { getDepartments,
          DEPARTMENT_MODE_DEFAULT,
          DEPARTMENT_MODE_METROPOLITAN,
@@ -115,6 +116,15 @@ describe('getToRecipients', () => {
       message_to: to,
       department: department,
       filter_recipient: FILTER_RECIPIENT_MANUAL,
+      message_to_current: null,
+    }).getToRecipients().toArray()).toEqual([])
+  })
+
+  test('none', () => {
+    expect(new Msender({
+      message_to: to,
+      department: department,
+      filter_recipient: FILTER_RECIPIENT_NONE,
       message_to_current: null,
     }).getToRecipients().toArray()).toEqual([])
   })
