@@ -47,7 +47,7 @@ window.addEventListener('msenderReady', function() {
   msender.renderContainer('#msender-container', msenderParams);
 });
 </script>
-<script async src="https://unpkg.com/@l214/msender@2.1.0/build/bundle.js"></script>
+<script async src="https://unpkg.com/@l214/msender@2.2.0/build/bundle.js"></script>
 ```
 
 ➡️ [See a demo](https://009118p7kl.codesandbox.io/)
