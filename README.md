@@ -251,6 +251,16 @@ Example:
 max_chars: 2000,
 ```
 
+### `max_chars_randomize`
+
+If set to `true` the list of recipients selected with `max_chars` will be randomized (instead of picking the first ones).
+
+Example:
+
+```js
+max_chars_randomize: true,
+```
+
 ## `Recipient` object
 
 | Field | Description |

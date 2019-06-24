@@ -1,4 +1,5 @@
 import Immutable, { Record } from 'immutable'
+import shuffle from 'immutable-shuffle'
 
 import { getMessengers,
          MessengerGmail,
@@ -43,6 +44,7 @@ export default class Msender extends Record({
   translations: null,
   messengers: null,
   max_chars: null,
+  max_chars_randomize: false,
 }) {
   getName() {
     const firstName = this.getFirstName()
@@ -116,6 +118,9 @@ export default class Msender extends Record({
     let recipients = this.getToRecipients()
     if (n === null) {
       return recipients
+    }
+    if (this.get('max_chars_randomize')) {
+      return shuffle(recipients).slice(0, n)
     }
     return recipients.slice(0, n)
   }
@@ -215,5 +220,6 @@ export const msenderFromProps = (props) => {
     translations: (props.translations ? Immutable.fromJS(props.translations) : null),
     messengers: (props.messengers ? Immutable.Set(props.messengers) : null),
     max_chars: (props.max_chars ? props.max_chars : null),
+    max_chars_randomize: (props.max_chars_randomize ? props.max_chars_randomize : false),
   })
 }
