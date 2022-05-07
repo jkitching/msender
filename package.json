@@ -1,5 +1,5 @@
 {
-  "name": "@l214/msender",
+  "name": "@jkitching/msender",
   "version": "2.2.1",
   "description": "",
   "main": "index.js",
@@ -17,6 +17,9 @@
   "browser": "build/bundle.js",
   "keywords": [],
   "author": "L214 Ethique et Animaux <web-tech@l214.com>",
+  "contributors": [
+    "Joel Kitching <joel@jkweb.ca>"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@storybook/react": "^3.4.5",
@@ -70,10 +73,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/l214/msender.git"
+    "url": "git+ssh://git@github.com/jkitching/msender.git"
   },
   "bugs": {
-    "url": "https://gitlab.com/l214/msender/issues"
+    "url": "https://github.com/jkitching/msender/issues"
   },
-  "homepage": "https://gitlab.com/l214/msender#readme"
+  "homepage": "https://github.com/jkitching/msender#readme"
 }
