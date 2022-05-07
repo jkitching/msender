@@ -30,7 +30,7 @@ export const getMessagesLocale = (msender = null) => {
   }
 
   // if no translations found, fall back to English
-  if (typeof allTranslations[locale.substr(0,2)] === 'undefined') {
+  if (typeof allTranslations.get(locale.substr(0,2)) === 'undefined') {
     locale = 'en'
   }
 
