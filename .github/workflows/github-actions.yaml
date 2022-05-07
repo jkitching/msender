@@ -1,0 +1,18 @@
+on: push
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm install -g yarn
+      - uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: yarn-deps-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: yarn-deps-
+      - run: yarn install
+      - run: yarn run test
+      - run: yarn run build
