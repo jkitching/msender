@@ -29,7 +29,6 @@ var msenderParams = {
   "message": "Dear Sir or Madam,\n\nPlease vote on California Prop 12.\n\nRegards,\n\n{{name}}",
   "filter_recipient": "manual",
   "filter_recipient_randomize": true,
-  "step_two_title": "My representatives",
   "messengers": [
     "gmail",
     "applemail",
@@ -39,7 +38,12 @@ var msenderParams = {
     "yahoo",
     "live"
   ],
-  "locale": "en-EN"
+  "locale": "en-EN",
+  "translations": {
+    "en": {
+      "step_two_title": "My representatives"
+    }
+  }
 };
 
 /* wait for Msender to load and initialize */
@@ -161,10 +165,6 @@ What French departments to show in the list. Possible values are:
 | `default` | Only "real" departments (Metropolitan and DROM) |
 | `metropolitan` | Only metropolitan departments |
 | `legislative` | All legislative departments (also includes French overseas collectivities, New Caledonia and Constituencies for French residents overseas) |
-
-### `step_two_title`
-
-The title to be displayed on step two (by default will display *Destinataires*).
 
 ### `enable_mailchimp`
 

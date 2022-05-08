@@ -251,9 +251,13 @@ storiesOf('Msender/Deputies', module)
                       select_department={DEPARTMENT_MODE_LEGISLATIVE}
                       filter_recipient={FILTER_RECIPIENT_DEPARTMENT}
                       filter_recipient_randomize={false}
-                      step_two_title="Mes député·e·s"
                       enable_mailchimp={true}
-                      mailchimp_source="msender-2018-debug" />
+                      mailchimp_source="msender-2018-debug"
+                      translations={{
+                        fr: {
+                          step_two_title: 'Mes député·e·s'
+                        }
+                      }} />
   ))
   .add('prefilled', () => (
     <MsenderContainer locale="fr-FR"
@@ -264,12 +268,16 @@ storiesOf('Msender/Deputies', module)
                       select_department={DEPARTMENT_MODE_LEGISLATIVE}
                       filter_recipient={FILTER_RECIPIENT_DEPARTMENT}
                       filter_recipient_randomize={false}
-                      step_two_title="Mes député·e·s"
                       enable_mailchimp={true}
                       mailchimp_source="msender-2018-debug"
                       first_name="John"
                       last_name="Appleseed"
-                      email="john@apple.com" />
+                      email="john@apple.com"
+                      translations={{
+                        fr: {
+                          step_two_title: 'Mes député·e·s'
+                        }
+                      }} />
   ))
 
 
@@ -284,7 +292,11 @@ storiesOf('Msender/JeLeVeux.l214.com', module)
                       select_department={DEPARTMENT_MODE_METROPOLITAN}
                       filter_recipient={FILTER_RECIPIENT_MANUAL}
                       filter_recipient_randomize={true}
-                      step_two_title="Mes magasins" />
+                      translations={{
+                        fr: {
+                          step_two_title: 'Mes magasins'
+                        }
+                      }} />
   ))
   .add('prefilled', () => (
     <MsenderContainer locale="fr-FR"
@@ -295,10 +307,14 @@ storiesOf('Msender/JeLeVeux.l214.com', module)
                       select_department={DEPARTMENT_MODE_METROPOLITAN}
                       filter_recipient={FILTER_RECIPIENT_MANUAL}
                       filter_recipient_randomize={true}
-                      step_two_title="Mes magasins"
                       first_name="John"
                       last_name="Appleseed"
-                      email="john@apple.com" />
+                      email="john@apple.com"
+                      translations={{
+                        fr: {
+                          step_two_title: 'Mes magasins'
+                        }
+                      }} />
   ))
 
 storiesOf('Msender/California Prop 12', module)
@@ -310,7 +326,6 @@ storiesOf('Msender/California Prop 12', module)
                       message={defaultCaliProp12}
                       filter_recipient={FILTER_RECIPIENT_MANUAL}
                       filter_recipient_randomize={true}
-                      step_two_title="My representatives"
                       messengers={[
                         'gmail',
                         'applemail',
@@ -319,7 +334,12 @@ storiesOf('Msender/California Prop 12', module)
                         'windowslivemail',
                         'yahoo',
                         'live',
-                      ]} />
+                      ]}
+                      translations={{
+                        en: {
+                          step_two_title: 'My representatives'
+                        }
+                      }} />
   ))
   .add('prefilled', () => (
     <MsenderContainer locale="en-EN"
@@ -328,7 +348,6 @@ storiesOf('Msender/California Prop 12', module)
                       message={defaultCaliProp12}
                       filter_recipient={FILTER_RECIPIENT_MANUAL}
                       filter_recipient_randomize={true}
-                      step_two_title="My representatives"
                       first_name="John"
                       last_name="Appleseed"
                       email="john@apple.com"
@@ -340,7 +359,12 @@ storiesOf('Msender/California Prop 12', module)
                         'windowslivemail',
                         'yahoo',
                         'live',
-                      ]} />
+                      ]}
+                      translations={{
+                        en: {
+                          step_two_title: 'My representatives'
+                        }
+                      }} />
   ))
 
 storiesOf('Msender/Send to a Friend', module)

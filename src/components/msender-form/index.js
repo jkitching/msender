@@ -123,15 +123,6 @@ class MsenderFormStepDetails extends Component {
     this.onChangeFilterRecipient = this.onChangeFilterRecipient.bind(this)
   }
 
-  getStepName() {
-    const { msender } = this.props
-    let name = msender.get('step_two_title')
-    if (!name) {
-      name = 'Destinataires'
-    }
-    return name
-  }
-
   onChangeDepartment(e) {
     const { msender, setIn } = this.props
     setIn(['department'], msender.getDepartments()
@@ -185,7 +176,7 @@ class MsenderFormStepDetails extends Component {
     return (
       <Step
         renderTitle={() => (
-          this.getStepName()
+          <FormattedMessage id="step_two_title" />
         )}
         number={number}
       >

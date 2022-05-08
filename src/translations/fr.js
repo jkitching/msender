@@ -1,5 +1,6 @@
 const stringsFr = {
   step_my_infos: 'Mes informations',
+  step_two_title: 'Destinataires',
   step_send: 'Envoyer mon message',
   label_first_name: 'Prénom',
   label_last_name: 'Nom',

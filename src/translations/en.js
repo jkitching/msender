@@ -1,5 +1,6 @@
 const stringsEn = {
   step_my_infos: 'My infos',
+  step_two_title: 'Recipients',
   step_send: 'Send my message',
   label_first_name: 'First Name',
   label_last_name: 'Last Name',
