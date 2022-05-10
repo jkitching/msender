@@ -8,13 +8,13 @@ export default (config, env, helpers) => {
   extractTextPlugin.options.disable = true;
 
   config.resolve.alias = Object.assign({}, config.resolve.alias, {
-    'react': 'preact-compat',
-    'react-dom': 'preact-compat'
+    'react': 'preact/compat',
+    'react-dom': 'preact/compat'
   });
   config.plugins.push(
     new webpack.ProvidePlugin({
       Component: ['preact', 'Component'],
-      React: ['preact-compat']
+      React: ['preact/compat']
     })
   );
 

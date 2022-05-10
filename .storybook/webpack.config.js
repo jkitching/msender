@@ -7,14 +7,14 @@ module.exports = (base, env, helpers) => {
   return Object.assign({}, config, {
     resolve: Object.assign({}, config.resolve, {
       alias: Object.assign({}, (config.resolve || {}).alias, {
-        react: 'preact-compat',
-        'react-dom': 'preact-compat'
+        react: 'preact/compat',
+        'react-dom': 'preact/compat'
       })
     }),
     plugins: [
       new webpack.ProvidePlugin({
         Component: ['preact', 'Component'],
-        React: ['preact-compat']
+        React: ['preact/compat']
       })
     ].concat(config.plugins),
     module: Object.assign({}, config.module, {

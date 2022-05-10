@@ -37,10 +37,9 @@
     "immutable": "^3.8.2",
     "immutable-shuffle": "^1.0.3",
     "memoize-immutable": "^3.0.0",
-    "preact": "^8.2.5",
-    "preact-compat": "^3.18.0",
+    "preact": "^10.0.0",
     "react-copy-to-clipboard": "^5.0.1",
-    "react-intl": "^2.7.2"
+    "react-intl": "^3.0.0"
   },
   "jest": {
     "verbose": true,
@@ -55,8 +54,8 @@
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|scss|less)$": "identity-obj-proxy",
-      "^react$": "preact-compat",
-      "^react-dom$": "preact-compat"
+      "^react$": "preact/compat",
+      "^react-dom$": "preact/compat"
     },
     "coverageThreshold": {
       "global": {

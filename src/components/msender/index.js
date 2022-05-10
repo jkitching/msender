@@ -11,11 +11,8 @@ import { msenderFromProps } from '../../models/msender'
 import { MESSENGER_MODE_NONE } from '../../models/messenger'
 import detectEmailMessenger from '../../utils/detectEmailMessenger'
 import withPetitionBindings from '../../utils/withPetitionBindings'
-import { getMessagesLocale, addAllLocalData } from '../../utils/i18n'
+import { getMessagesLocale } from '../../utils/i18n'
 
-
-// add local configs from React Intl
-addAllLocalData()
 
 const MSenderUI = withPetitionBindings((props) => {
   const { msender } = props

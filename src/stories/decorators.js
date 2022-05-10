@@ -1,11 +1,8 @@
 import React from 'react'
 import { IntlProvider } from 'react-intl'
 
-import { getMessagesLocale, addAllLocalData } from '../utils/i18n'
+import { getMessagesLocale } from '../utils/i18n'
 
-
-// add local configs from React Intl
-addAllLocalData()
 
 const style = {
   backgroundColor: '#EB9339',

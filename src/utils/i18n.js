@@ -1,20 +1,6 @@
 import Immutable from 'immutable'
 
 import { addLocaleData } from 'react-intl'
-import deLocaleData from 'react-intl/locale-data/de'
-import enLocaleData from 'react-intl/locale-data/en'
-import esLocaleData from 'react-intl/locale-data/es'
-import frLocaleData from 'react-intl/locale-data/fr'
-import idLocaleData from 'react-intl/locale-data/id'
-import itLocaleData from 'react-intl/locale-data/it'
-import jaLocaleData from 'react-intl/locale-data/ja'
-import koLocaleData from 'react-intl/locale-data/ko'
-import msLocaleData from 'react-intl/locale-data/ms'
-import nlLocaleData from 'react-intl/locale-data/nl'
-import ptLocaleData from 'react-intl/locale-data/pt'
-import thLocaleData from 'react-intl/locale-data/th'
-import viLocaleData from 'react-intl/locale-data/vi'
-import zhLocaleData from 'react-intl/locale-data/zh'
 
 import translations from '../translations'
 
@@ -52,22 +38,4 @@ export const getMessagesLocale = (msender = null) => {
   // return the messages
   const messages = allTranslations.get(locale.substr(0,2)).toJS()
   return { locale, messages }
-}
-
-export const addAllLocalData = () => {
-  // add local configs from React Intl
-  addLocaleData(deLocaleData)
-  addLocaleData(enLocaleData)
-  addLocaleData(esLocaleData)
-  addLocaleData(frLocaleData)
-  addLocaleData(idLocaleData)
-  addLocaleData(itLocaleData)
-  addLocaleData(jaLocaleData)
-  addLocaleData(koLocaleData)
-  addLocaleData(msLocaleData)
-  addLocaleData(nlLocaleData)
-  addLocaleData(ptLocaleData)
-  addLocaleData(thLocaleData)
-  addLocaleData(viLocaleData)
-  addLocaleData(zhLocaleData)
 }
